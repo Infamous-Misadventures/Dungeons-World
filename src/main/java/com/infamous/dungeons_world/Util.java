@@ -6,6 +6,6 @@ import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 
 public class Util {
     public static ResourceLocation ModLoc(String id){
-        return new ResourceLocation(MODID + ":" + id);
+        return new ResourceLocation(MODID,  id);
     }
 }
