@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dungeons_world:cracked_polished_cw_stone"
+    }
+  ],
+  "result": {
+    "item": "dungeons_world:cracked_polished_cw_stone_button"
+  }
+}

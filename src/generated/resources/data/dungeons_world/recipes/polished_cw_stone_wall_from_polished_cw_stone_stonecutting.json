@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "dungeons_world:polished_cw_stone"
+  },
+  "result": "dungeons_world:polished_cw_stone_wall",
+  "count": 1
+}

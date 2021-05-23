@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "dungeons_world:cw_stone_bricks_stairs",
+    "dungeons_world:cracked_cw_stone_bricks_stairs",
+    "dungeons_world:chiseled_cw_stone_bricks_stairs",
+    "dungeons_world:low_mossy_cw_stone_stairs",
+    "dungeons_world:medium_mossy_cw_stone_stairs",
+    "dungeons_world:high_mossy_cw_stone_stairs",
+    "dungeons_world:polished_cw_stone_stairs",
+    "dungeons_world:cracked_polished_cw_stone_stairs",
+    "dungeons_world:cw_cobblestone_stairs",
+    "dungeons_world:mossy_cw_cobblestone_stairs"
+  ]
+}

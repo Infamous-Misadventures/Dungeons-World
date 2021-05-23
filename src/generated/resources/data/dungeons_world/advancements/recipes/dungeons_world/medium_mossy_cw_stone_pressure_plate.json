@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dungeons_world:medium_mossy_cw_stone_pressure_plate"
+    ]
+  },
+  "criteria": {
+    "has_medium_mossy_cw_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "dungeons_world:medium_mossy_cw_stone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "dungeons_world:medium_mossy_cw_stone_pressure_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_medium_mossy_cw_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

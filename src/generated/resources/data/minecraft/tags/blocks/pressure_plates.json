@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "dungeons_world:cw_stone_bricks_pressure_plate",
+    "dungeons_world:cracked_cw_stone_bricks_pressure_plate",
+    "dungeons_world:chiseled_cw_stone_bricks_pressure_plate",
+    "dungeons_world:low_mossy_cw_stone_pressure_plate",
+    "dungeons_world:medium_mossy_cw_stone_pressure_plate",
+    "dungeons_world:high_mossy_cw_stone_pressure_plate",
+    "dungeons_world:polished_cw_stone_pressure_plate",
+    "dungeons_world:cracked_polished_cw_stone_pressure_plate",
+    "dungeons_world:cw_cobblestone_pressure_plate",
+    "dungeons_world:mossy_cw_cobblestone_pressure_plate"
+  ]
+}

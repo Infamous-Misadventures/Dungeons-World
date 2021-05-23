@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dungeons_world:cw_stone_bricks_stairs_from_cw_stone_bricks_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_cw_stone_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "dungeons_world:cw_stone_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "dungeons_world:cw_stone_bricks_stairs_from_cw_stone_bricks_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cw_stone_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

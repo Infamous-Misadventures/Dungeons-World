@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dungeons_world:low_mossy_cw_stone_slab"
+    ]
+  },
+  "criteria": {
+    "has_low_mossy_cw_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "dungeons_world:low_mossy_cw_stone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "dungeons_world:low_mossy_cw_stone_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_low_mossy_cw_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

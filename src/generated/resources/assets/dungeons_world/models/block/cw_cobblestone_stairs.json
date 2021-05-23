@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "dungeons_world:block/cw_cobblestone",
+    "bottom": "dungeons_world:block/cw_cobblestone",
+    "top": "dungeons_world:block/cw_cobblestone"
+  }
+}
