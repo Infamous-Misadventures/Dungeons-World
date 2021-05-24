@@ -1,0 +1,33 @@
+{
+  "config": {
+    "feature": {
+      "config": {
+        "features": [
+          {
+            "feature": "minecraft:dark_oak",
+            "chance": 0.2
+          },
+          {
+            "feature": "dungeons_world:dark_oak_creeper_woods",
+            "chance": 0.666667
+          },
+          {
+            "feature": "minecraft:fancy_oak",
+            "chance": 0.1
+          },
+          {
+            "feature": "dungeons_world:creeper_woods_rock",
+            "chance": 0.3
+          }
+        ],
+        "default": "dungeons_world:dark_oak_creeper_woods"
+      },
+      "type": "minecraft:random_selector"
+    },
+    "decorator": {
+      "config": {},
+      "type": "minecraft:dark_oak_tree"
+    }
+  },
+  "type": "minecraft:decorated"
+}
