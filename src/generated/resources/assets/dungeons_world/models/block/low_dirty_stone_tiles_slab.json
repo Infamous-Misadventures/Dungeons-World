@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "dungeons_world:block/low_dirty_stone_tiles",
+    "bottom": "dungeons_world:block/low_dirty_stone_tiles",
+    "top": "dungeons_world:block/low_dirty_stone_tiles"
+  }
+}

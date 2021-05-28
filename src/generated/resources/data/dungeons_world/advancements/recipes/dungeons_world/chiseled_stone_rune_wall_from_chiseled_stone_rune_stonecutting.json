@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dungeons_world:chiseled_stone_rune_wall_from_chiseled_stone_rune_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_chiseled_stone_rune": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "dungeons_world:chiseled_stone_rune"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "dungeons_world:chiseled_stone_rune_wall_from_chiseled_stone_rune_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chiseled_stone_rune",
+      "has_the_recipe"
+    ]
+  ]
+}

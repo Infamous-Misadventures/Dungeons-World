@@ -11,8 +11,7 @@ import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
 
-import static com.infamous.dungeons_world.blocks.ModBlocks.BUILDING_BLOCK_HELPERS;
-import static com.infamous.dungeons_world.blocks.ModBlocks.SINGLE_BLOCKS;
+import static com.infamous.dungeons_world.blocks.ModBlocks.*;
 
 public class ModItemModelProvider extends ItemModelProvider {
 
@@ -28,6 +27,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     private void registerBlockItems() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockItems);
         SINGLE_BLOCKS.forEach(this::registerSingleBlockItems);
+        blockItemModel(CHISELED_STONE_COLUMN.get());
     }
 
     private void registerSingleBlockItems(RegistryObject<Block> blockRegistryObject) {

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "dungeons_world:chiseled_stone_spirals"
+  },
+  "result": "dungeons_world:chiseled_stone_spirals_stairs",
+  "count": 1
+}

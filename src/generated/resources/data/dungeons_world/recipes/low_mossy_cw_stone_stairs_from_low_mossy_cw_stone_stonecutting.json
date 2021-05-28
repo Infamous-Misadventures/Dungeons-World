@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:low_mossy_cw_stone"
-  },
-  "result": "dungeons_world:low_mossy_cw_stone_stairs",
-  "count": 1
-}

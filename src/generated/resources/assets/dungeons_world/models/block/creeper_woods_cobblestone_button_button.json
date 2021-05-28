@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "dungeons_world:block/creeper_woods_cobblestone"
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:cw_cobblestone"
-  },
-  "result": "dungeons_world:cw_cobblestone_wall",
-  "count": 1
-}

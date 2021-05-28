@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dungeons_world:creeper_woods_cobblestone_wall"
+    ]
+  },
+  "criteria": {
+    "has_creeper_woods_cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "dungeons_world:creeper_woods_cobblestone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "dungeons_world:creeper_woods_cobblestone_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_creeper_woods_cobblestone",
+      "has_the_recipe"
+    ]
+  ]
+}

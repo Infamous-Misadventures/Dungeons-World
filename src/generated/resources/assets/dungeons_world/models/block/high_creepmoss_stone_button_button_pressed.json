@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "dungeons_world:block/high_creepmoss_stone"
+  }
+}

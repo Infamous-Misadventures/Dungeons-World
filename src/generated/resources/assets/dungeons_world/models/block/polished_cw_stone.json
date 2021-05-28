@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "particle": "dungeons_world:block/polished_cw_stone",
-    "all": "dungeons_world:block/polished_cw_stone"
-  }
-}

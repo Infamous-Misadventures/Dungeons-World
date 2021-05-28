@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "dungeons_world:block/chiseled_stone_rune"
+  }
+}

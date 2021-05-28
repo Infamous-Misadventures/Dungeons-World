@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dungeons_world:chiseled_stone_spirals"
+    }
+  ],
+  "result": {
+    "item": "dungeons_world:chiseled_stone_spirals_button"
+  }
+}

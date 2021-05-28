@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side_tall",
+  "textures": {
+    "wall": "dungeons_world:block/chiseled_creepmoss_stone_bricks"
+  }
+}

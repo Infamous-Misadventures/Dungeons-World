@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "dungeons_world:block/cracked_polished_creepmoss_stone_slab_top"
+    },
+    "type=bottom": {
+      "model": "dungeons_world:block/cracked_polished_creepmoss_stone_slab"
+    },
+    "type=double": {
+      "model": "dungeons_world:block/cracked_polished_creepmoss_stone_slab"
+    }
+  }
+}

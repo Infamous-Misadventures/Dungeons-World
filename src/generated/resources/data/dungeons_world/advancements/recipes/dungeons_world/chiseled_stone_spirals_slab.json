@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dungeons_world:chiseled_stone_spirals_slab"
+    ]
+  },
+  "criteria": {
+    "has_chiseled_stone_spirals": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "dungeons_world:chiseled_stone_spirals"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "dungeons_world:chiseled_stone_spirals_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chiseled_stone_spirals",
+      "has_the_recipe"
+    ]
+  ]
+}

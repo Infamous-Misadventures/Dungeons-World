@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:mossy_cw_cobblestone"
-  },
-  "result": "dungeons_world:mossy_cw_cobblestone_stairs",
-  "count": 1
-}

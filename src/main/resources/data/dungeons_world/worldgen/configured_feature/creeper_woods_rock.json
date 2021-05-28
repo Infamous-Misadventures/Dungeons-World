@@ -5,7 +5,7 @@
         "feature": {
           "config": {
             "state": {
-              "Name": "dungeons_world:medium_mossy_cw_stone"
+              "Name": "dungeons_world:medium_creepmoss_stone"
             }
           },
           "type": "minecraft:forest_rock"

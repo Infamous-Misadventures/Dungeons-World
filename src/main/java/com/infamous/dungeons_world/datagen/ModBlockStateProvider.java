@@ -14,8 +14,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
-import static com.infamous.dungeons_world.blocks.ModBlocks.BUILDING_BLOCK_HELPERS;
-import static com.infamous.dungeons_world.blocks.ModBlocks.SINGLE_BLOCKS;
+import static com.infamous.dungeons_world.blocks.ModBlocks.*;
 import static net.minecraft.block.HorizontalBlock.FACING;
 import static net.minecraft.block.HorizontalFaceBlock.FACE;
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
@@ -30,6 +29,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockHelper);
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
+        registerColumnBlock(CHISELED_STONE_COLUMN);
     }
 
     private void registerBuildingBlockHelper(BuildingBlockHelper buildingBlockHelper){
@@ -42,10 +42,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void registerSingleBlock(RegistryObject<Block> blockRegistryObject) {
-        String id = blockRegistryObject.getId().getPath();
-        ResourceLocation texture = modBlockLoc(id);
-        BlockModelBuilder model = models().withExistingParent(id, "cube_all").texture("particle", texture).texture("all", texture);
-        simpleBlock(blockRegistryObject.get(), model);
+        simpleBlock(blockRegistryObject.get());
+    }
+
+    private void registerColumnBlock(RegistryObject<Block> blockRegistryObject) {
+        logBlock((RotatedPillarBlock) blockRegistryObject.get());
     }
 
     private void registerBuildingBlock(BuildingBlockHelper blockHelper) {

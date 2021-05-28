@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "dungeons_world:block/mossy_cw_cobblestone",
-    "bottom": "dungeons_world:block/mossy_cw_cobblestone",
-    "top": "dungeons_world:block/mossy_cw_cobblestone"
-  }
-}

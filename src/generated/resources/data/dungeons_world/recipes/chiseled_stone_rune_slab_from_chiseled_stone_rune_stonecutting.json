@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "dungeons_world:chiseled_stone_rune"
+  },
+  "result": "dungeons_world:chiseled_stone_rune_slab",
+  "count": 2
+}

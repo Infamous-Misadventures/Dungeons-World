@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "dungeons_world:block/low_creepmoss_stone",
+    "bottom": "dungeons_world:block/low_creepmoss_stone",
+    "top": "dungeons_world:block/low_creepmoss_stone"
+  }
+}

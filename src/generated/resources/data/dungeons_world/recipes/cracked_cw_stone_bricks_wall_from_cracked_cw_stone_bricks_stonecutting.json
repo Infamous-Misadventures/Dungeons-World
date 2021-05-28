@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:cracked_cw_stone_bricks"
-  },
-  "result": "dungeons_world:cracked_cw_stone_bricks_wall",
-  "count": 1
-}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "dungeons_world:high_creepmoss_stone"
+    }
+  },
+  "result": {
+    "item": "dungeons_world:high_creepmoss_stone_wall",
+    "count": 6
+  }
+}

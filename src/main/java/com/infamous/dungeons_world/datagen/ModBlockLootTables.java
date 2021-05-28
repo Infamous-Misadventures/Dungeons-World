@@ -17,6 +17,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static com.infamous.dungeons_world.blocks.ModBlocks.BLOCKS;
+import static com.infamous.dungeons_world.blocks.ModBlocks.CHISELED_STONE_COLUMN;
 
 public class ModBlockLootTables extends BlockLootTables {
 
@@ -26,6 +27,7 @@ public class ModBlockLootTables extends BlockLootTables {
     protected void addTables() {
         ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::registerDroppingSelfBuildingBlockHelper);
         ModBlocks.SINGLE_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
+        this.add(CHISELED_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
     }
 
     @Override

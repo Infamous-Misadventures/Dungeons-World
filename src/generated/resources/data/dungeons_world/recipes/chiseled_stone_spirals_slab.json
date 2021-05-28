@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "dungeons_world:chiseled_stone_spirals"
+    }
+  },
+  "result": {
+    "item": "dungeons_world:chiseled_stone_spirals_slab",
+    "count": 6
+  }
+}

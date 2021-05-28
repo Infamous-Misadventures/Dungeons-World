@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button_inventory",
-  "textures": {
-    "texture": "dungeons_world:block/high_mossy_cw_stone"
-  }
-}

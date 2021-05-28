@@ -24,18 +24,30 @@ public class ModBlocks {
     public static final List<RegistryObject<Block>> SINGLE_BLOCKS = new ArrayList();
 
     //Creeper Woods
-    public static final BuildingBlockHelper CW_STONE_BRICKS = registerBuildingBlock("cw_stone_bricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper CRACKED_CW_STONE_BRICKS = registerBuildingBlock("cracked_cw_stone_bricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper CHISELED_CW_STONE_BRICKS = registerBuildingBlock("chiseled_cw_stone_bricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper LOW_MOSSY_CW_STONE = registerBuildingBlock("low_mossy_cw_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper MEDIUM_MOSSY_CW_STONE = registerBuildingBlock("medium_mossy_cw_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper HIGH_MOSSY_CW_STONE = registerBuildingBlock("high_mossy_cw_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper POLISHED_CW_STONE = registerBuildingBlock("polished_cw_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper CRACKED_POLISHED_CW_STONE = registerBuildingBlock("cracked_polished_cw_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper CW_COBBLESTONE = registerBuildingBlock("cw_cobblestone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper MOSSY_CW_COBBLESTONE = registerBuildingBlock("mossy_cw_cobblestone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> CW_DIRT = registerSingleBlock("cw_dirt", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> MOSSY_CW_DIRT = registerSingleBlock("mossy_cw_dirt", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CREEPMOSS_CREEPER_WOODS_STONE_BRICKS = registerBuildingBlock("creepmoss_creeper_woods_stone_bricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CRACKED_CREEPMOSS_STONE_BRICKS = registerBuildingBlock("cracked_creepmoss_stone_bricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CHISELED_CREEPMOSS_STONE_BRICKS = registerBuildingBlock("chiseled_creepmoss_stone_bricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper LOW_CREEPMOSS_STONE = registerBuildingBlock("low_creepmoss_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper MEDIUM_CREEPMOSS_STONE = registerBuildingBlock("medium_creepmoss_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper HIGH_CREEPMOSS_STONE = registerBuildingBlock("high_creepmoss_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper POLISHED_CREEPMOSS_STONE = registerBuildingBlock("polished_creepmoss_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CRACKED_POLISHED_CREEPMOSS_STONE = registerBuildingBlock("cracked_polished_creepmoss_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CREEPER_WOODS_COBBLESTONE = registerBuildingBlock("creeper_woods_cobblestone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CREEPMOSS_COBBLESTONE = registerBuildingBlock("creepmoss_cobblestone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> CREEPMOSS_DIRT = registerSingleBlock("creepmoss_dirt", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> MOSSY_CREEPMOSS_DIRT = registerSingleBlock("mossy_creepmoss_dirt", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+
+    //Creepy Crypts
+    public static final BuildingBlockHelper CREEPMOSS_STONE_BRICKS = registerBuildingBlock("creepmoss_stone_bricks", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> CHISELED_STONE_COLUMN = registerBlock("chiseled_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CHISELED_STONE_SPIRALS = registerBuildingBlock("chiseled_stone_spirals", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CHISELED_STONE_RUNE = registerBuildingBlock("chiseled_stone_rune", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> CREEPER_CRYPT_FACE = registerSingleBlock("creeper_crypt_face", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper HIGH_DIRTY_STONE_TILES = registerBuildingBlock("high_dirty_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper LOW_DIRTY_STONE_TILES = registerBuildingBlock("low_dirty_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final BuildingBlockHelper CREEPMOSS_STONE_TILES = registerBuildingBlock("creepmoss_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+
+
 
     private static RegistryObject<Block> registerBlock(String id, Supplier<Block> sup) {
         BLOCK_IDS.add(id);

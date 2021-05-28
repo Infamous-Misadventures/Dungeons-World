@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:high_mossy_cw_stone"
-  },
-  "result": "dungeons_world:high_mossy_cw_stone_slab",
-  "count": 2
-}

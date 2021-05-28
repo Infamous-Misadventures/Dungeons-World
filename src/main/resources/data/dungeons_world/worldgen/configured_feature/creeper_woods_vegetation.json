@@ -4,16 +4,8 @@
       "config": {
         "features": [
           {
-            "feature": "minecraft:dark_oak",
-            "chance": 0.2
-          },
-          {
-            "feature": "dungeons_world:dark_oak_creeper_woods",
-            "chance": 0.666667
-          },
-          {
-            "feature": "minecraft:fancy_oak",
-            "chance": 0.1
+            "feature": "dungeons_world:dark_oak_bush_creeper_woods",
+            "chance": 0.3
           },
           {
             "feature": "dungeons_world:creeper_woods_rock",
