@@ -7,7 +7,7 @@
       "model": "dungeons_world:block/low_creepmoss_stone_slab"
     },
     "type=double": {
-      "model": "dungeons_world:block/low_creepmoss_stone_slab"
+      "model": "dungeons_world:block/low_creepmoss_stone"
     }
   }
 }

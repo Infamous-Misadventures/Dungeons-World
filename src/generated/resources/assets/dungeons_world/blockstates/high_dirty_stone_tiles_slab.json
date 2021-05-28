@@ -7,7 +7,7 @@
       "model": "dungeons_world:block/high_dirty_stone_tiles_slab"
     },
     "type=double": {
-      "model": "dungeons_world:block/high_dirty_stone_tiles_slab"
+      "model": "dungeons_world:block/high_dirty_stone_tiles"
     }
   }
 }

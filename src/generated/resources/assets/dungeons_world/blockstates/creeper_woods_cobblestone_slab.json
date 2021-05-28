@@ -7,7 +7,7 @@
       "model": "dungeons_world:block/creeper_woods_cobblestone_slab"
     },
     "type=double": {
-      "model": "dungeons_world:block/creeper_woods_cobblestone_slab"
+      "model": "dungeons_world:block/creeper_woods_cobblestone"
     }
   }
 }

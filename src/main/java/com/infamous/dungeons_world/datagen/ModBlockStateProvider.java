@@ -53,7 +53,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation texture = modBlockLoc(blockHelper.getBlockId());
         BlockModelBuilder model = models().withExistingParent(blockHelper.getId(), "cube_all").texture("particle", texture).texture("all", texture);
         simpleBlock(blockHelper.getBlock().get(), model);
-        slabBlock((SlabBlock) blockHelper.getSlab().get(), blockHelper.getSlab().get().getRegistryName(), texture);
+        slabBlock((SlabBlock) blockHelper.getSlab().get(), blockHelper.getBlock().get().getRegistryName(), texture);
         stairsBlock((StairsBlock)  blockHelper.getStairs().get(), texture);
         wallBlock((WallBlock) blockHelper.getWall().get(), texture);
         models().wallInventory(blockHelper.getWall().get().getRegistryName().getPath() + "_inventory", texture);
