@@ -1,23 +1,30 @@
 package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
+import com.infamous.dungeons_world.blocks.GlowingMushroomBlock;
 import com.infamous.dungeons_world.blocks.ModBlocks;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.loot.ConstantRange;
+import net.minecraft.loot.ItemLootEntry;
+import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.conditions.MatchTool;
+import net.minecraft.loot.functions.SetCount;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.infamous.dungeons_world.blocks.ModBlocks.BLOCKS;
-import static com.infamous.dungeons_world.blocks.ModBlocks.CHISELED_STONE_COLUMN;
+import static com.infamous.dungeons_world.blocks.ModBlocks.*;
 
 public class ModBlockLootTables extends BlockLootTables {
 
@@ -27,7 +34,9 @@ public class ModBlockLootTables extends BlockLootTables {
     protected void addTables() {
         ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::registerDroppingSelfBuildingBlockHelper);
         ModBlocks.SINGLE_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
-        this.add(CHISELED_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
+        this.add(DEEP_DIRT.get(), BlockLootTables::createSingleItemTable);
+        this.add(DEEP_GRASS_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
+        this.add(GLOWING_MUSHROOM.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(applyExplosionDecay(GLOWING_MUSHROOM.get(), ItemLootEntry.lootTableItem(block).apply(SetCount.setCount(ConstantRange.exactly(2)).when(BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingMushroomBlock.MUSHROOMS, 2)))).apply(SetCount.setCount(ConstantRange.exactly(3)).when(BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingMushroomBlock.MUSHROOMS, 3)))).apply(SetCount.setCount(ConstantRange.exactly(4)).when(BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingMushroomBlock.MUSHROOMS, 4))))))));
     }
 
     @Override

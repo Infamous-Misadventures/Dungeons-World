@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:creeper_woods_cobblestone"
-  },
-  "result": "dungeons_world:creeper_woods_cobblestone_wall",
-  "count": 1
-}

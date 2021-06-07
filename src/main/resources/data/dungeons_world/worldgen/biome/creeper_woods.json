@@ -67,7 +67,8 @@
   "starts": [
     "minecraft:mineshaft",
     "minecraft:stronghold",
-    "minecraft:ruined_portal"
+    "minecraft:ruined_portal",
+    "dungeons_world:configured_cw_ruined_tower"
   ],
   "spawners": {
     "monster": [
@@ -97,13 +98,7 @@
       },
       {
         "type": "minecraft:creeper",
-        "weight": 100,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:slime",
-        "weight": 100,
+        "weight": 200,
         "minCount": 4,
         "maxCount": 4
       },

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:creepmoss_stone_tiles"
-  },
-  "result": "dungeons_world:creepmoss_stone_tiles_stairs",
-  "count": 1
-}

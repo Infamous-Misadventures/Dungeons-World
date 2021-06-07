@@ -1,0 +1,140 @@
+{
+  "variants": {
+    "mushrooms=1,squeezed=true": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1s"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1s",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1s",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1s",
+        "y": 270
+      }
+    ],
+    "mushrooms=1,squeezed=false": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_1",
+        "y": 270
+      }
+    ],
+    "mushrooms=2,squeezed=true": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2s"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2s",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2s",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2s",
+        "y": 270
+      }
+    ],
+    "mushrooms=2,squeezed=false": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_2",
+        "y": 270
+      }
+    ],
+    "mushrooms=3,squeezed=true": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3s"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3s",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3s",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3s",
+        "y": 270
+      }
+    ],
+    "mushrooms=3,squeezed=false": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_3",
+        "y": 270
+      }
+    ],
+    "mushrooms=4,squeezed=true": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4s"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4s",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4s",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4s",
+        "y": 270
+      }
+    ],
+    "mushrooms=4,squeezed=false": [
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4"
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/glowing_mushroom_4",
+        "y": 270
+      }
+    ]
+  }
+}

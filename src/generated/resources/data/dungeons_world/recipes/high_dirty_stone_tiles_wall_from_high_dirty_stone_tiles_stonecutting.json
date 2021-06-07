@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:high_dirty_stone_tiles"
-  },
-  "result": "dungeons_world:high_dirty_stone_tiles_wall",
-  "count": 1
-}

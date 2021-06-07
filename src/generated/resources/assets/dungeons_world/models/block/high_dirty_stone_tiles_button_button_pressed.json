@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button_pressed",
-  "textures": {
-    "texture": "dungeons_world:block/high_dirty_stone_tiles"
-  }
-}

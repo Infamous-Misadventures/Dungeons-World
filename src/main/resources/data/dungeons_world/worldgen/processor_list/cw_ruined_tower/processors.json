@@ -1,0 +1,12 @@
+{
+  "processors": [
+    {
+      "processor_type": "structure_toolkit:block_mossify",
+      "mossiness": 0.2
+    },
+    {
+      "processor_type": "structure_toolkit:vines",
+      "rarity": 0.2
+    }
+  ]
+}

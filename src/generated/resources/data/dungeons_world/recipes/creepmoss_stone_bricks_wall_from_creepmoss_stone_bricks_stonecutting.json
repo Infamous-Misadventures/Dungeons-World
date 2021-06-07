@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:creepmoss_stone_bricks"
-  },
-  "result": "dungeons_world:creepmoss_stone_bricks_wall",
-  "count": 1
-}

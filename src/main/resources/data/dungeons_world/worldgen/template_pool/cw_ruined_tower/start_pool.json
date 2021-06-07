@@ -1,0 +1,17 @@
+{
+  "name": "dungeons_world:cw_ruined_tower/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:cw_ruined_tower",
+        "processors": "dungeons_world:cw_ruined_tower/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "side": "dungeons_world:block/high_dirty_stone_tiles",
-    "bottom": "dungeons_world:block/high_dirty_stone_tiles",
-    "top": "dungeons_world:block/high_dirty_stone_tiles"
-  }
-}

@@ -27,7 +27,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     private void registerBlockItems() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockItems);
         SINGLE_BLOCKS.forEach(this::registerSingleBlockItems);
-        blockItemModel(CHISELED_STONE_COLUMN.get());
+        blockItemModel(DEEP_DIRT.get());
+        //blockItemModel(CHISELED_STONE_COLUMN.get());
     }
 
     private void registerSingleBlockItems(RegistryObject<Block> blockRegistryObject) {

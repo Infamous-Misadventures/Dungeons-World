@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "dungeons_world:block/chiseled_stone_rune",
-    "bottom": "dungeons_world:block/chiseled_stone_rune",
-    "top": "dungeons_world:block/chiseled_stone_rune"
-  }
-}

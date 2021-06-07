@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "dungeons_world:block/chiseled_stone_spirals",
-    "bottom": "dungeons_world:block/chiseled_stone_spirals",
-    "top": "dungeons_world:block/chiseled_stone_spirals"
-  }
-}

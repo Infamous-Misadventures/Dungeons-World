@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "dungeons_world:creepmoss_cobblestone"
-  },
-  "result": "dungeons_world:creepmoss_cobblestone_wall",
-  "count": 1
-}
