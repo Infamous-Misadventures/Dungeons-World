@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "dungeons_world:block/medium_creepmoss_stone_bricks"
+  }
+}

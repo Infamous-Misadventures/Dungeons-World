@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.infamous.dungeons_world.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "dungeons_world.refmap.json",
+  "mixins": [
+    "NoiseChunkGeneratorMixin"
+  ],
+  "client":[
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

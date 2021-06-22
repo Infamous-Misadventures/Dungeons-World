@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "dungeons_world:block/low_creepmoss_chiseled_stone_bricks"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "scale": 0.2,
+  "scale": 0.05,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -11,10 +11,10 @@
     "fog_color": 12638463,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "grass_color": 612178,
-    "foliage_color": 612178
+    "grass_color": 1669220,
+    "foliage_color": 1669220
   },
-  "surface_builder": "minecraft:grass",
+  "surface_builder": "dungeons_world:creeper_woods",
   "carvers": {
     "air": [
       "minecraft:cave",
@@ -98,7 +98,7 @@
       },
       {
         "type": "minecraft:creeper",
-        "weight": 200,
+        "weight": 300,
         "minCount": 4,
         "maxCount": 4
       },
@@ -165,5 +165,5 @@
   "temperature": 0.7,
   "downfall": 0.8,
   "category": "forest",
-  "depth": 0.1
+  "depth": 0.125
 }

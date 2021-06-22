@@ -3,11 +3,16 @@ package com.infamous.dungeons_world.datagen;
 import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
 import com.infamous.dungeons_world.blocks.ModBlocks;
+import com.infamous.dungeons_world.tags.ModTags;
 import net.minecraft.block.material.Material;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+
+import static com.infamous.dungeons_world.blocks.ModBlocks.DEEP_DIRT;
+import static com.infamous.dungeons_world.blocks.ModBlocks.DEEP_GRASS_BLOCK;
+import static net.minecraft.block.Blocks.RED_MUSHROOM;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
 
@@ -18,6 +23,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags() {
         ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::addBlocksToTags);
+        this.tag(ModTags.Blocks.DIRT).add(DEEP_DIRT.get());
+        this.tag(ModTags.Blocks.DIRT).add(DEEP_GRASS_BLOCK.get());
     }
 
     private void addBlocksToTags(BuildingBlockHelper blockHelper) {

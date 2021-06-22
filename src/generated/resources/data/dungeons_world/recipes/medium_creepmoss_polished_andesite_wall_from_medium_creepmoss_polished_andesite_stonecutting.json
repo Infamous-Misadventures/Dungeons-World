@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "dungeons_world:medium_creepmoss_polished_andesite"
+  },
+  "result": "dungeons_world:medium_creepmoss_polished_andesite_wall",
+  "count": 1
+}

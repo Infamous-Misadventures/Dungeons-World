@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "dungeons_world:deep_dirt",
+    "dungeons_world:deep_grass_block"
+  ]
+}

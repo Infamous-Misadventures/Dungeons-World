@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dungeons_world:high_creepmoss_cobblestone"
+    }
+  ],
+  "result": {
+    "item": "dungeons_world:high_creepmoss_cobblestone_button"
+  }
+}

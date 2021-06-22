@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "particle": "dungeons_world:block/high_creepmoss_cobblestone",
+    "all": "dungeons_world:block/high_creepmoss_cobblestone"
+  }
+}

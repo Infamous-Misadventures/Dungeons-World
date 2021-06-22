@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "dungeons_world:block/medium_creepmoss_cracked_stone_bricks"
+  }
+}

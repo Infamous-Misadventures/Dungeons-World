@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "dungeons_world:block/medium_creepmoss_stone_bricks_slab_top"
+    },
+    "type=bottom": {
+      "model": "dungeons_world:block/medium_creepmoss_stone_bricks_slab"
+    },
+    "type=double": {
+      "model": "dungeons_world:block/medium_creepmoss_stone_bricks"
+    }
+  }
+}

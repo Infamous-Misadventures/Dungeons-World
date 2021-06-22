@@ -29,7 +29,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockHelper);
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
-        //registerColumnBlock(CHISELED_STONE_COLUMN);
+        registerColumnBlock(CHISELED_STONE_COLUMN);
     }
 
     private void registerBuildingBlockHelper(BuildingBlockHelper buildingBlockHelper){

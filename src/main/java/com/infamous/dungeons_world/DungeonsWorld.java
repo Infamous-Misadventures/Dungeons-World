@@ -5,6 +5,7 @@ import com.infamous.dungeons_world.blocks.ModBlocks;
 import com.infamous.dungeons_world.items.ModItems;
 import com.infamous.dungeons_world.structures.ModConfiguredStructures;
 import com.infamous.dungeons_world.structures.ModStructures;
+import com.infamous.dungeons_world.world.surfacebuilder.ModSurfaceBuilders;
 import com.mojang.serialization.Codec;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -55,6 +56,7 @@ public class DungeonsWorld {
         ModItems.ITEMS.register(modEventBus);
         ModBiomes.BIOMES.register(modEventBus);
         ModStructures.STRUCTURES.register(modEventBus);
+        ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
         modEventBus.addListener(this::setup);
 
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;

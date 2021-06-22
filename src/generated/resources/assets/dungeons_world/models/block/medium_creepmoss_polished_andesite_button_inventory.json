@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "dungeons_world:block/medium_creepmoss_polished_andesite"
+  }
+}

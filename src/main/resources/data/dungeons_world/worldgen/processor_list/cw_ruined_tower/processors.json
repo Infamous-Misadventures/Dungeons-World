@@ -1,12 +1,28 @@
 {
   "processors": [
     {
-      "processor_type": "structure_toolkit:block_mossify",
-      "mossiness": 0.2
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "minecraft:cobblestone",
+          "step_size": 0.1
+        },
+        {
+          "resource_location": "minecraft:cracked_stone_bricks",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:stone_bricks"
     },
     {
-      "processor_type": "structure_toolkit:vines",
-      "rarity": 0.2
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "minecraft:cobblestone_stairs",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:stone_brick_stairs"
     }
   ]
 }

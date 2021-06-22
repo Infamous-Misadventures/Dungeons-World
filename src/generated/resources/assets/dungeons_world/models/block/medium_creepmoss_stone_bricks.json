@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "particle": "dungeons_world:block/medium_creepmoss_stone_bricks",
+    "all": "dungeons_world:block/medium_creepmoss_stone_bricks"
+  }
+}
