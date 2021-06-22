@@ -1,7 +1,5 @@
 package com.infamous.dungeons_world.mixin;
 
-import com.infamous.dungeons_world.util.OpenSimplex2F;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.NoiseChunkGenerator;
@@ -12,8 +10,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 
 @Mixin(NoiseChunkGenerator.class)
 public abstract class NoiseChunkGeneratorMixin extends ChunkGenerator {
@@ -26,6 +22,9 @@ public abstract class NoiseChunkGeneratorMixin extends ChunkGenerator {
     @Shadow
     private long seed;
 
+    @Shadow
+    public abstract int getSeaLevel();
+
     public NoiseChunkGeneratorMixin(BiomeProvider p_i231888_1_, DimensionStructuresSettings p_i231888_2_) {
         super(p_i231888_1_, p_i231888_2_);
     }
@@ -33,8 +32,6 @@ public abstract class NoiseChunkGeneratorMixin extends ChunkGenerator {
     public NoiseChunkGeneratorMixin(BiomeProvider p_i231887_1_, BiomeProvider p_i231887_2_, DimensionStructuresSettings p_i231887_3_, long p_i231887_4_) {
         super(p_i231887_1_, p_i231887_2_, p_i231887_3_, p_i231887_4_);
     }
-
-    @Shadow public abstract int getSeaLevel();
 
     @Inject(at = @At("TAIL"), method = "Lnet/minecraft/world/gen/NoiseChunkGenerator;fillNoiseColumn([DII)V", cancellable = true)
     public void dungeons_world_fillNoiseColumn(double[] p_222548_1_, int p_222548_2_, int p_222548_3_, CallbackInfo ci) {
