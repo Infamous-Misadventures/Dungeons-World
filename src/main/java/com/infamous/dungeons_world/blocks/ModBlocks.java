@@ -1,6 +1,8 @@
 package com.infamous.dungeons_world.blocks;
 
 import com.infamous.dungeons_world.DungeonsWorld;
+import com.infamous.dungeons_world.client.renderer.tileentity.itemstackrenderer.ModISTERs;
+import com.infamous.dungeons_world.tileentity.DungeonsChestType;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -8,6 +10,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -19,12 +23,18 @@ import java.util.function.Supplier;
 
 import static com.infamous.dungeons_world.blocks.BuildingBlockHelper.*;
 import static com.infamous.dungeons_world.items.ModItems.registerBlockItem;
+import static com.infamous.dungeons_world.tileentity.DungeonsChestType.*;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DungeonsWorld.MODID);
     public static final List<String> BLOCK_IDS = new ArrayList<>();
     public static final List<BuildingBlockHelper> BUILDING_BLOCK_HELPERS = new ArrayList();
     public static final List<RegistryObject<Block>> SINGLE_BLOCKS = new ArrayList();
+
+    //All
+    public static final RegistryObject<Block> COMMON_CHEST = registerChestBlock("common_chest", () -> new DungeonsChestBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), COMMON), COMMON);
+    public static final RegistryObject<Block> FANCY_CHEST = registerChestBlock("fancy_chest", () -> new DungeonsChestBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), FANCY), FANCY);
+    public static final RegistryObject<Block> OBSIDIAN_CHEST = registerChestBlock("obsidian_chest", () -> new DungeonsChestBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), OBSIDIAN), OBSIDIAN);
 
     //Creeper Woods && Creepy Crypts
     public static final BuildingBlockHelper LOW_CREEPMOSS_STONE = registerCreepmossBuildingBlock("low_creepmoss_stone", () -> new CreepmossBlock(Creepmoss.CreepmossLevel.LOW, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Creepmoss.CreepmossLevel.LOW);
@@ -43,8 +53,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> DEEP_GRASS_BLOCK = registerBlock("deep_grass_block", () -> new GrassBlock(AbstractBlock.Properties.of(Material.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> CHISELED_STONE_COLUMN = registerBlock("chiseled_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
-    public static final RegistryObject<Block> GLOWING_MUSHROOM = registerBlock("glowing_mushroom", () -> new GlowingMushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE)
+    public static final RegistryObject<Block> FULL_GLOWING_MUSHROOM = registerBlock("full_glowing_mushroom", () -> new GlowingMushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE)
             .lightLevel(block -> GlowingMushroomBlock.isSqueezed(block) ? 2+ 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS) : 4 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS)).sound(SoundType.SLIME_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> GLOWING_MUSHROOM = registerBlock("glowing_mushroom", () -> new MushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).lightLevel(lightLevel -> 3).hasPostProcess(ModBlocks::always)));
 
     //
     /*public static final BuildingBlockHelper CHISELED_STONE_SPIRALS = registerBuildingBlock("chiseled_stone_spirals", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
@@ -54,12 +65,18 @@ public class ModBlocks {
     public static final BuildingBlockHelper LOW_DIRTY_STONE_TILES = registerBuildingBlock("low_dirty_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final BuildingBlockHelper CREEPMOSS_STONE_TILES = registerBuildingBlock("creepmoss_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));*/
 
-
-
     private static RegistryObject<Block> registerBlock(String id, Supplier<Block> sup) {
         BLOCK_IDS.add(id);
         RegistryObject<Block> blockRegistryObject = BLOCKS.register(id, sup);
         registerBlockItem(id, blockRegistryObject, blockSupplier -> new BlockItem(blockSupplier.get(), new Item.Properties().tab(DungeonsWorld.TAB)));
+        return blockRegistryObject;
+    }
+
+    private static RegistryObject<Block> registerChestBlock(String id, Supplier<Block> sup, DungeonsChestType chestType) {
+        BLOCK_IDS.add(id);
+        RegistryObject<Block> blockRegistryObject = BLOCKS.register(id, sup);
+        registerBlockItem(id, blockRegistryObject, blockSupplier -> new BlockItem(blockSupplier.get(), new Item.Properties().tab(DungeonsWorld.TAB)
+                .setISTER(() -> () -> ModISTERs.createChestTileEntity(chestType))));
         return blockRegistryObject;
     }
 
@@ -98,5 +115,9 @@ public class ModBlocks {
 
     public static void initRenderTypes(){
         RenderTypeLookup.setRenderLayer(DEEP_GRASS_BLOCK.get(), RenderType.translucent());
+    }
+
+    private static boolean always(BlockState p_235426_0_, IBlockReader p_235426_1_, BlockPos p_235426_2_) {
+        return true;
     }
 }

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "dungeons_world:glowing_mushroom"
+          "name": "dungeons_world:common_chest"
         }
       ],
       "conditions": [

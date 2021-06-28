@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.function.Predicate;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
+import static net.minecraft.block.Blocks.AIR;
 
 public class NoiseChunkGeneratorMixinCallback {
     protected static long seed;
@@ -41,6 +42,24 @@ public class NoiseChunkGeneratorMixinCallback {
         }
     }
 
+    public static BlockState dungeons_world_afterGenerateBaseState(double noise, int x, int y, int z, int seaLevel, long seed, BiomeProvider biomeSource, BlockState defaultBlock, BlockState defaultFluid) {
+        BlockState blockState = null;
+        if(biomeSource.getNoiseBiome(x, seaLevel, z).getRegistryName().equals(new ResourceLocation(MODID, "creeper_woods"))) {
+            if (isHighGround(x, z, seed) && noise > -0.2D) {
+                blockState = defaultBlock;
+            } else if (!isHighGround(x, z, seed) && noise > 0.2D) {
+                blockState = defaultBlock;
+            } else if (y < seaLevel) {
+                blockState = defaultFluid;
+            } else {
+                blockState = AIR.defaultBlockState();
+            }
+        }else{
+            blockState = vanillaGenerateBaseState(noise, y, seaLevel, defaultBlock, defaultFluid);
+        }
+        return blockState;
+    }
+
     private static boolean isHighGround(int x, int z, long seed) {
         setSeed(seed);
         double sampleNoise = noiseGen.noise2(x * 0.015D, z * 0.015D);
@@ -49,6 +68,19 @@ public class NoiseChunkGeneratorMixinCallback {
         }else{
             return  true;
         }
+    }
+
+    private static BlockState vanillaGenerateBaseState(double noise, int y, int seaLevel, BlockState defaultBlock, BlockState defaultFluid) {
+        BlockState blockstate;
+        if (noise > 0.0D) {
+            blockstate = defaultBlock;
+        } else if (y < seaLevel) {
+            blockstate = defaultFluid;
+        } else {
+            blockstate = AIR.defaultBlockState();
+        }
+
+        return blockstate;
     }
 
 }

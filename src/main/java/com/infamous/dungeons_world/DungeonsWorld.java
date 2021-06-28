@@ -2,11 +2,17 @@ package com.infamous.dungeons_world;
 
 import com.infamous.dungeons_world.biomes.ModBiomes;
 import com.infamous.dungeons_world.blocks.ModBlocks;
+import com.infamous.dungeons_world.client.renderer.tileentity.DungeonsChestTileEntityRenderer;
 import com.infamous.dungeons_world.items.ModItems;
 import com.infamous.dungeons_world.structures.ModConfiguredStructures;
 import com.infamous.dungeons_world.structures.ModStructures;
+import com.infamous.dungeons_world.tileentity.ModTileEntityTypes;
+import com.infamous.dungeons_world.world.gen.feature.ModConfiguredFeatures;
+import com.infamous.dungeons_world.world.gen.feature.ModFeatures;
+import com.infamous.dungeons_world.world.gen.provider.ModBlockstateProviders;
 import com.infamous.dungeons_world.world.surfacebuilder.ModSurfaceBuilders;
 import com.mojang.serialization.Codec;
+import net.minecraft.client.renderer.Atlases;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -27,6 +33,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -53,8 +60,11 @@ public class DungeonsWorld {
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModBlockstateProviders.BLOCK_STATE_PROVIDERS.register(modEventBus);
         ModBiomes.BIOMES.register(modEventBus);
+        ModFeatures.FEATURES.register(modEventBus);
         ModStructures.STRUCTURES.register(modEventBus);
         ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
         modEventBus.addListener(this::setup);
@@ -75,6 +85,7 @@ public class DungeonsWorld {
     private void setup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(() -> {
+            ModConfiguredFeatures.registerConfiguredFeatures();
             ModStructures.setupStructures();
             ModConfiguredStructures.registerConfiguredStructures();
             BiomeManager.addBiome(
@@ -89,6 +100,7 @@ public class DungeonsWorld {
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         ModBlocks.initRenderTypes();
+        ClientRegistry.bindTileEntityRenderer(ModTileEntityTypes.CHEST.get(), DungeonsChestTileEntityRenderer::new);
     }
 
 

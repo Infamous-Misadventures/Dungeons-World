@@ -3,8 +3,8 @@
 	"parent": "block/block",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "dungeons_world:block/glowing_mushroom",
-		"particle": "dungeons_world:block/glowing_mushroom"
+		"0": "dungeons_world:block/full_glowing_mushroom",
+		"particle": "dungeons_world:block/full_glowing_mushroom"
 	},
 	"elements": [
 		{

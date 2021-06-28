@@ -1,6 +1,10 @@
 {
+  "block.dungeons_world.chiseled_stone_column": "Chiseled Stone Column",
+  "block.dungeons_world.common_chest": "Common Chest",
   "block.dungeons_world.deep_dirt": "Deep Dirt",
   "block.dungeons_world.deep_grass_block": "Deep Grass Block",
+  "block.dungeons_world.fancy_chest": "Fancy Chest",
+  "block.dungeons_world.full_glowing_mushroom": "Full Glowing Mushroom",
   "block.dungeons_world.glowing_mushroom": "Glowing Mushroom",
   "block.dungeons_world.high_creepmoss_cobblestone": "High Creepmoss Cobblestone",
   "block.dungeons_world.high_creepmoss_cobblestone_button": "High Creepmoss Cobblestone Button",
@@ -74,6 +78,7 @@
   "block.dungeons_world.medium_creepmoss_stone_slab": "Medium Creepmoss Stone Slab",
   "block.dungeons_world.medium_creepmoss_stone_stairs": "Medium Creepmoss Stone Stairs",
   "block.dungeons_world.medium_creepmoss_stone_wall": "Medium Creepmoss Stone Wall",
+  "block.dungeons_world.obsidian_chest": "Obsidian Chest",
   "dungeons_world.tip.creepy_crypt_location": "The Creepy Crypt can be found in the Creeper Woods!",
   "itemGroup.dungeons_world": "Dungeons World"
 }

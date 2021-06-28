@@ -1,5 +1,5 @@
 {
-  "type": "dungeons_world:creeper_woods",
+  "type": "minecraft:default",
   "config": {
     "top_material": {
       "Name": "dungeons_world:deep_grass_block",

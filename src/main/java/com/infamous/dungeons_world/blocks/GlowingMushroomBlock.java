@@ -1,8 +1,13 @@
 package com.infamous.dungeons_world.blocks;
 
 import net.minecraft.block.*;
+import net.minecraft.client.audio.Sound;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
@@ -11,9 +16,13 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
@@ -30,6 +39,8 @@ public class GlowingMushroomBlock  extends BushBlock implements IGrowable {
     protected static final VoxelShape TWO_AABB = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 6.0D, 13.0D);
     protected static final VoxelShape THREE_AABB = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 6.0D, 14.0D);
     protected static final VoxelShape FOUR_AABB = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D);
+
+    private int soundDelay = 0;
 
     public GlowingMushroomBlock(AbstractBlock.Properties properties) {
         super(properties);
@@ -134,6 +145,25 @@ public class GlowingMushroomBlock  extends BushBlock implements IGrowable {
     }
 
     public boolean isPathfindable(BlockState p_196266_1_, IBlockReader p_196266_2_, BlockPos p_196266_3_, PathType p_196266_4_) {
-        return false;
+        return true;
+    }
+
+    private void setSqueezed(World world, BlockPos blockPos){
+        BlockState blockState = world.getBlockState(blockPos);
+        if(blockState.is(this)) {
+            world.setBlockAndUpdate(blockPos, blockState.setValue(SQUEEZED, true));
+        }
+    }
+
+
+    public void stepOn(World world, BlockPos blockPos, Entity entity) {
+        if(soundDelay == 0) {
+            world.playSound(null, blockPos, SoundEvents.NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 3.0F, 1.0f);
+            soundDelay = 5;
+        }else{
+            soundDelay--;
+        }
+        this.setSqueezed(world, blockPos);
+        super.stepOn(world, blockPos, entity);
     }
 }

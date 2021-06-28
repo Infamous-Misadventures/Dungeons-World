@@ -30,6 +30,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockHelper);
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
         registerColumnBlock(CHISELED_STONE_COLUMN);
+        registerCrossBlock(GLOWING_MUSHROOM);
     }
 
     private void registerBuildingBlockHelper(BuildingBlockHelper buildingBlockHelper){
@@ -47,6 +48,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void registerColumnBlock(RegistryObject<Block> blockRegistryObject) {
         logBlock((RotatedPillarBlock) blockRegistryObject.get());
+    }
+
+    private void registerCrossBlock(RegistryObject<Block> block) {
+        String id = block.getId().getPath();
+        ResourceLocation texture = modBlockLoc(id);
+        BlockModelBuilder blockModel = models().withExistingParent(id, "block/cross").texture("cross", texture);
+        getVariantBuilder(block.get())
+                .partialState().setModels(new ConfiguredModel(blockModel));
     }
 
     private void registerBuildingBlock(BuildingBlockHelper blockHelper) {
