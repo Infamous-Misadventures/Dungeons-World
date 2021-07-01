@@ -4,6 +4,7 @@ import com.infamous.dungeons_world.biomes.ModBiomes;
 import com.infamous.dungeons_world.blocks.ModBlocks;
 import com.infamous.dungeons_world.client.renderer.tileentity.DungeonsChestTileEntityRenderer;
 import com.infamous.dungeons_world.items.ModItems;
+import com.infamous.dungeons_world.particles.ModParticleTypes;
 import com.infamous.dungeons_world.structures.ModConfiguredStructures;
 import com.infamous.dungeons_world.structures.ModStructures;
 import com.infamous.dungeons_world.tileentity.ModTileEntityTypes;
@@ -67,6 +68,7 @@ public class DungeonsWorld {
         ModFeatures.FEATURES.register(modEventBus);
         ModStructures.STRUCTURES.register(modEventBus);
         ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
+        ModParticleTypes.PARTICLES.register((modEventBus));
         modEventBus.addListener(this::setup);
 
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;

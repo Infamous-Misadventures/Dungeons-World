@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dungeons_world:block/mossy_grave"
+    },
+    "facing=east":
+    {
+      "model": "dungeons_world:block/mossy_grave",
+      "y": 90
+    },
+    "facing=south":
+    {
+      "model": "dungeons_world:block/mossy_grave",
+      "y": 180
+    },
+    "facing=west":
+    {
+      "model": "dungeons_world:block/mossy_grave",
+      "y": 270
+    }
+  }
+}

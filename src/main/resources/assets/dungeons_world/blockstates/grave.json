@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dungeons_world:block/grave"
+    },
+    "facing=east":
+    {
+      "model": "dungeons_world:block/grave",
+      "y": 90
+    },
+    "facing=south":
+    {
+      "model": "dungeons_world:block/grave",
+      "y": 180
+    },
+    "facing=west":
+    {
+      "model": "dungeons_world:block/grave",
+      "y": 270
+    }
+  }
+}

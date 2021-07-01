@@ -42,6 +42,8 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(DEEP_GRASS_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
         this.add(FULL_GLOWING_MUSHROOM.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(applyExplosionDecay(FULL_GLOWING_MUSHROOM.get(), ItemLootEntry.lootTableItem(block).apply(SetCount.setCount(ConstantRange.exactly(2)).when(BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingMushroomBlock.MUSHROOMS, 2)))).apply(SetCount.setCount(ConstantRange.exactly(3)).when(BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingMushroomBlock.MUSHROOMS, 3)))).apply(SetCount.setCount(ConstantRange.exactly(4)).when(BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingMushroomBlock.MUSHROOMS, 4))))))));
         this.add(GLOWING_MUSHROOM.get(), BlockLootTables::createSingleItemTable);
+        this.add(GRAVE.get(), BlockLootTables::createSingleItemTable);
+        this.add(MOSSY_GRAVE.get(), BlockLootTables::createSingleItemTable);
 
     }
 

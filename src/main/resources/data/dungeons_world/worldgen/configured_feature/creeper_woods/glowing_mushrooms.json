@@ -22,8 +22,8 @@
     "decorator": {
       "config": {
         "count": {
-          "base": 5,
-          "spread": 2
+          "base": 7,
+          "spread": 3
         }
       },
       "type": "minecraft:count"

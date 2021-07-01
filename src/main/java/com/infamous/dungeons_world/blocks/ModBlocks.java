@@ -54,8 +54,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHISELED_STONE_COLUMN = registerBlock("chiseled_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> FULL_GLOWING_MUSHROOM = registerBlock("full_glowing_mushroom", () -> new GlowingMushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE)
-            .lightLevel(block -> GlowingMushroomBlock.isSqueezed(block) ? 2+ 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS) : 4 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS)).sound(SoundType.SLIME_BLOCK).noOcclusion()));
+            .lightLevel(block -> GlowingMushroomBlock.isSqueezed(block) ? 4 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS) : 2 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS)).sound(SoundType.SLIME_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> GLOWING_MUSHROOM = registerBlock("glowing_mushroom", () -> new MushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).lightLevel(lightLevel -> 3).hasPostProcess(ModBlocks::always)));
+    public static final RegistryObject<Block> GRAVE = registerBlock("grave", () -> new CreeperGraveBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
+    public static final RegistryObject<Block> MOSSY_GRAVE = registerBlock("mossy_grave", () -> new CreeperGraveBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
 
     //
     /*public static final BuildingBlockHelper CHISELED_STONE_SPIRALS = registerBuildingBlock("chiseled_stone_spirals", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
@@ -115,6 +117,7 @@ public class ModBlocks {
 
     public static void initRenderTypes(){
         RenderTypeLookup.setRenderLayer(DEEP_GRASS_BLOCK.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(GLOWING_MUSHROOM.get(), RenderType.cutout());
     }
 
     private static boolean always(BlockState p_235426_0_, IBlockReader p_235426_1_, BlockPos p_235426_2_) {

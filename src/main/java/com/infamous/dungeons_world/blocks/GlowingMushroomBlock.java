@@ -1,28 +1,20 @@
 package com.infamous.dungeons_world.blocks;
 
 import net.minecraft.block.*;
-import net.minecraft.client.audio.Sound;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.FallingBlockEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
@@ -30,17 +22,24 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
+
+import static com.infamous.dungeons_world.particles.ModParticleTypes.GLOWING_MUSHROOM_PARTICLE;
 
 public class GlowingMushroomBlock  extends BushBlock implements IGrowable {
     public static final IntegerProperty MUSHROOMS = IntegerProperty.create("mushrooms", 1, 4);
     public static final BooleanProperty SQUEEZED = BooleanProperty.create("squeezed");;
-    protected static final VoxelShape ONE_AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 6.0D, 10.0D);
-    protected static final VoxelShape TWO_AABB = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 6.0D, 13.0D);
-    protected static final VoxelShape THREE_AABB = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 6.0D, 14.0D);
-    protected static final VoxelShape FOUR_AABB = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 7.0D, 14.0D);
+    protected static final VoxelShape ONE_AABB = Block.box(4.5D, 0D, 4.5D, 11.5D, 8D, 11.5D);
+    protected static final AxisAlignedBB ONE_TOUCH_AABB =  new AxisAlignedBB(4.5D/16, 0D/16, 4.5D/16, 11.5D/16, 13D/16, 11.5D/16);
+    protected static final VoxelShape TWO_AABB = Block.box(3.0D, 0.0D, 4.0D, 13.0D, 5D, 13.0D);
+    protected static final AxisAlignedBB TWO_TOUCH_AABB = new AxisAlignedBB(3.0D/16, 0.0D/16, 4.0D/16, 13.0D/16, 11.0D/16, 13.0D/16);
+    protected static final VoxelShape THREE_AABB = Block.box(2.0D, 0.0D, 0.0D, 15.0D, 6.0D, 14.0D);
+    protected static final AxisAlignedBB THREE_TOUCH_AABB = new AxisAlignedBB(2.0D/16, 0.0D/16, 0.0D/16, 15.0D/16, 12.0D/16, 14.0D/16);
+    protected static final VoxelShape FOUR_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 15.0D);
+    protected static final AxisAlignedBB FOUR_TOUCH_AABB = new AxisAlignedBB(0.0D/16, 0.0D/16, 0.0D/16, 16.0D/16, 13.0D/16, 15.0D/16);
 
-    private int soundDelay = 0;
+    private static final int SQUEEZE_TIME = 5;
 
     public GlowingMushroomBlock(AbstractBlock.Properties properties) {
         super(properties);
@@ -148,22 +147,97 @@ public class GlowingMushroomBlock  extends BushBlock implements IGrowable {
         return true;
     }
 
-    private void setSqueezed(World world, BlockPos blockPos){
+    private void setSqueezed(World world, BlockPos blockPos, boolean squeezed){
         BlockState blockState = world.getBlockState(blockPos);
         if(blockState.is(this)) {
-            world.setBlockAndUpdate(blockPos, blockState.setValue(SQUEEZED, true));
+            world.setBlockAndUpdate(blockPos, blockState.setValue(SQUEEZED, squeezed));
         }
     }
 
+    public void playOnSound(World world, BlockPos blockPos) {
+        world.playSound(null, blockPos, SoundEvents.NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 3.0F, 1.0f);
+    }
 
-    public void stepOn(World world, BlockPos blockPos, Entity entity) {
-        if(soundDelay == 0) {
-            world.playSound(null, blockPos, SoundEvents.NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 3.0F, 1.0f);
-            soundDelay = 5;
+    @Override
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        for(int i = 0; i < rand.nextInt(1) + 1; ++i) {
+            if(rand.nextFloat() < 0.15F) {
+                double posX = (double) pos.above().above().getX() + rand.nextDouble() + rand.nextInt(3) - 1.5D;
+                double posY = (double) pos.above().above().getY() + rand.nextDouble() + rand.nextInt(3) - 1.5D;
+                double posZ = (double) pos.above().above().getZ() + rand.nextDouble() + rand.nextInt(3) - 1.5D;
+                worldIn.addParticle(GLOWING_MUSHROOM_PARTICLE.get(),
+                        posX,
+                        posY,
+                        posZ,
+                        (rand.nextFloat() / 2.0F),
+                        (rand.nextFloat() / 2.0F),
+                        (rand.nextFloat() / 2.0F));
+            }
+        }
+    }
+
+    public void tick(BlockState blockState, ServerWorld world, BlockPos blockPos, Random random) {
+        boolean squeezed = isSqueezed(blockState);
+        if (squeezed) {
+            this.checkSqueezed(world, blockPos, blockState, squeezed);
+        }
+    }
+
+    public void entityInside(BlockState blockState, World world, BlockPos blockPos, Entity entity) {
+        if (!world.isClientSide) {
+            boolean squeezed = isSqueezed(blockState);
+            if (!squeezed) {
+                this.checkSqueezed(world, blockPos, blockState, squeezed);
+            }
+        }
+    }
+
+    protected void checkSqueezed(World world, BlockPos blockPos, BlockState blockState, boolean flag) {
+        boolean flag1 = this.shouldSqueeze(world, blockState, blockPos);
+        if (flag1 && flag != flag1) {
+            this.setSqueezed(world, blockPos, true);
+            this.playOnSound(world, blockPos);
+        }
+
+        if (flag1) {
+            world.getBlockTicks().scheduleTick(new BlockPos(blockPos), this, this.getSqueezedTime());
         }else{
-            soundDelay--;
+            this.setSqueezed(world, blockPos, false);
         }
-        this.setSqueezed(world, blockPos);
-        super.stepOn(world, blockPos, entity);
     }
+
+    private int getSqueezedTime() {
+        return SQUEEZE_TIME;
+    }
+
+
+    protected boolean shouldSqueeze(World world,BlockState blockState, BlockPos blockPos) {
+        AxisAlignedBB axisalignedbb = this.getTouchAABB(blockState).move(blockPos);
+        List<? extends Entity> list = world.getEntities(null, axisalignedbb);
+
+        if (!list.isEmpty()) {
+            for(Entity entity : list) {
+                if (!entity.isIgnoringBlockTriggers()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    protected AxisAlignedBB getTouchAABB(BlockState blockState){
+        switch(blockState.getValue(MUSHROOMS)) {
+            case 1:
+            default:
+                return ONE_TOUCH_AABB;
+            case 2:
+                return TWO_TOUCH_AABB;
+            case 3:
+                return THREE_TOUCH_AABB;
+            case 4:
+                return FOUR_TOUCH_AABB;
+        }
+    }
+
 }
