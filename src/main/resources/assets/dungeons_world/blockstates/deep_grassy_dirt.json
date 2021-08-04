@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "dungeons_world:block/deep_grassy_dirt"
+      },
+      {
+        "model": "dungeons_world:block/deep_grassy_dirt",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/deep_grassy_dirt",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/deep_grassy_dirt",
+        "y": 270
+      }
+    ]
+  }
+}

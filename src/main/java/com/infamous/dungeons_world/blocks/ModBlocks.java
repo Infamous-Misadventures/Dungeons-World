@@ -50,8 +50,12 @@ public class ModBlocks {
     public static final BuildingBlockHelper LOW_CREEPMOSS_POLISHED_ANDESITE = registerCreepmossBuildingBlock("low_creepmoss_polished_andesite", () -> new CreepmossBlock(Creepmoss.CreepmossLevel.LOW, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Creepmoss.CreepmossLevel.LOW);
     public static final BuildingBlockHelper MEDIUM_CREEPMOSS_POLISHED_ANDESITE = registerCreepmossBuildingBlock("medium_creepmoss_polished_andesite", () -> new CreepmossBlock(Creepmoss.CreepmossLevel.MEDIUM, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Creepmoss.CreepmossLevel.MEDIUM);
     public static final RegistryObject<Block> DEEP_DIRT = registerSimpleBlock("deep_dirt", () -> new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> DEEP_GRASSY_DIRT = registerBlock("deep_grassy_dirt", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> DEEP_DIRTY_GRASS = registerBlock("deep_dirty_grass", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> DEEP_GRASS_BLOCK = registerBlock("deep_grass_block", () -> new DeepGrassBlock(AbstractBlock.Properties.of(Material.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
-    public static final RegistryObject<Block> CHISELED_STONE_COLUMN = registerBlock("chiseled_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> LINES_STONE_COLUMN = registerBlock("lines_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> SMOOTH_STONE_COLUMN = registerBlock("smooth_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> SKELETON_CARVED_STONE_COLUMN = registerBlock("skeleton_carved_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> FULL_GLOWING_MUSHROOM = registerBlock("full_glowing_mushroom", () -> new GlowingMushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE)
             .lightLevel(block -> GlowingMushroomBlock.isSqueezed(block) ? 4 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS) : 2 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS)).sound(SoundType.SLIME_BLOCK).noOcclusion()));
@@ -117,6 +121,8 @@ public class ModBlocks {
 
     public static void initRenderTypes(){
         RenderTypeLookup.setRenderLayer(DEEP_GRASS_BLOCK.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(DEEP_GRASSY_DIRT.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(DEEP_DIRTY_GRASS.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(GLOWING_MUSHROOM.get(), RenderType.cutout());
     }
 

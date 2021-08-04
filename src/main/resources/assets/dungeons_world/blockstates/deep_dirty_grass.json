@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "dungeons_world:block/deep_dirty_grass"
+      },
+      {
+        "model": "dungeons_world:block/deep_dirty_grass",
+        "y": 90
+      },
+      {
+        "model": "dungeons_world:block/deep_dirty_grass",
+        "y": 180
+      },
+      {
+        "model": "dungeons_world:block/deep_dirty_grass",
+        "y": 270
+      }
+    ]
+  }
+}

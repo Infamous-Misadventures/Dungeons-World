@@ -138,7 +138,9 @@ dependencies {
     //Tools
     runtimeOnly fg.deobf("loadnbtblock:loadnbtblock:1.0")
     //runtimeOnly fg.deobf("blame:blame:1.16.5-3.0.2-forge")
-    runtimeOnly fg.deobf("structure_toolkit:structure_toolkit:1.16.5-0.0.1")
+    //runtimeOnly fg.deobf("structure_toolkit:structure_toolkit:1.16.5-0.0.1")
+    implementation fg.deobf("curse.maven:structure-toolkit-484907:3408499")
+    runtimeOnly fg.deobf("curse.maven:structure-toolkit-484907:3408499")
 
     //Compat tests
 

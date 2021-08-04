@@ -6,15 +6,13 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 import static com.infamous.dungeons_world.blocks.ModBlocks.*;
+import static net.minecraft.block.Blocks.SMOOTH_STONE;
 import static net.minecraft.block.HorizontalBlock.FACING;
 import static net.minecraft.block.HorizontalFaceBlock.FACE;
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
@@ -29,7 +27,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockHelper);
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
-        registerColumnBlock(CHISELED_STONE_COLUMN);
+        registerColumnBlock(LINES_STONE_COLUMN);
+        registerColumnBlock(SMOOTH_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
+        registerColumnBlock(SKELETON_CARVED_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
         registerCrossBlock(GLOWING_MUSHROOM);
     }
 
@@ -48,6 +48,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void registerColumnBlock(RegistryObject<Block> blockRegistryObject) {
         logBlock((RotatedPillarBlock) blockRegistryObject.get());
+    }
+
+    private void registerColumnBlock(RegistryObject<Block> blockRegistryObject, Block alternateEnd){
+        axisBlock((RotatedPillarBlock) blockRegistryObject.get(), blockTexture(blockRegistryObject.get()), blockTexture(alternateEnd));
+    }
+
+    private void registerColumnBlock(RegistryObject<Block> blockRegistryObject, ResourceLocation alternateEnd){
+        axisBlock((RotatedPillarBlock) blockRegistryObject.get(), blockTexture(blockRegistryObject.get()), alternateEnd);
     }
 
     private void registerCrossBlock(RegistryObject<Block> block) {
@@ -189,5 +197,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public ResourceLocation modBlockLoc(String name) {
         return modLoc(BLOCK_FOLDER + "/" + name);
+    }
+
+    private ResourceLocation extend(ResourceLocation rl, String suffix) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
     }
 }

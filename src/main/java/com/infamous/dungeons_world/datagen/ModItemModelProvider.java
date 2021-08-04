@@ -28,7 +28,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockItems);
         SINGLE_BLOCKS.forEach(this::registerSingleBlockItems);
         blockItemModel(DEEP_DIRT.get());
-        blockItemModel(CHISELED_STONE_COLUMN.get());
+        blockItemModel(LINES_STONE_COLUMN.get());
+        blockItemModel(SMOOTH_STONE_COLUMN.get());
+        blockItemModel(SKELETON_CARVED_STONE_COLUMN.get());
         blockItemModel(GLOWING_MUSHROOM.get());
         blockItemModel(GRAVE.get());
         blockItemModel(MOSSY_GRAVE.get());

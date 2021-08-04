@@ -80,7 +80,7 @@ public class DungeonsWorld {
     public static final ItemGroup TAB = new ItemGroup(MODID) {
         @Override
         public ItemStack makeIcon(){
-            return new ItemStack(Items.ACACIA_DOOR);
+            return new ItemStack(ModBlocks.FANCY_CHEST.get());
         }
     };
 

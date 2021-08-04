@@ -11,8 +11,8 @@
     "fog_color": 12638463,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "grass_color": 1669220,
-    "foliage_color": 1669220
+    "grass_color": 1612453,
+    "foliage_color": 1612453
   },
   "surface_builder": "dungeons_world:creeper_woods",
   "carvers": {

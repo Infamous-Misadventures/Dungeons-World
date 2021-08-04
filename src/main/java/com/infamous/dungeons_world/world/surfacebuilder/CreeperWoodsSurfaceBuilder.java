@@ -43,7 +43,7 @@ public class CreeperWoodsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
 
         double sampleNoise = noiseGen.noise2(x * 0.015D, z * 0.015D);
         if(sampleNoise < 0.3 && sampleNoise > (0.3 * -1)){
-            int topHeight = startHeight - 1;
+            int topHeight = startHeight - 2;
             mutable.move(Direction.UP, startHeight);
             for (int yPos = startHeight; yPos >= 0; --yPos) {
                 if (yPos > topHeight) {
@@ -57,7 +57,7 @@ public class CreeperWoodsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
                 mutable.move(Direction.DOWN);
             }
         }else{
-            int topHeight = startHeight + 3;
+            int topHeight = startHeight + 2;
             mutable.move(Direction.UP, topHeight);
             for (int yPos = topHeight; yPos >= 0; --yPos) {
                 if (yPos == topHeight){
