@@ -1,0 +1,9 @@
+{
+  "type": "dungeons_world:dungeons_chest_loot",
+  "conditions": [
+    {
+      "condition": "random_chance",
+      "chance": 1
+    }
+  ]
+}

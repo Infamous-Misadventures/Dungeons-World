@@ -10,13 +10,12 @@ import com.infamous.dungeons_world.structures.ModStructures;
 import com.infamous.dungeons_world.tileentity.ModTileEntityTypes;
 import com.infamous.dungeons_world.world.gen.feature.ModConfiguredFeatures;
 import com.infamous.dungeons_world.world.gen.feature.ModFeatures;
+import com.infamous.dungeons_world.world.gen.processors.ModProcessors;
 import com.infamous.dungeons_world.world.gen.provider.ModBlockstateProviders;
 import com.infamous.dungeons_world.world.surfacebuilder.ModSurfaceBuilders;
 import com.mojang.serialization.Codec;
-import net.minecraft.client.renderer.Atlases;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -88,6 +87,7 @@ public class DungeonsWorld {
     {
         event.enqueueWork(() -> {
             ModConfiguredFeatures.registerConfiguredFeatures();
+            ModProcessors.init();
             ModStructures.setupStructures();
             ModConfiguredStructures.registerConfiguredStructures();
             BiomeManager.addBiome(

@@ -3,7 +3,7 @@
   "values": [
     "dungeons_world:deep_dirt",
     "dungeons_world:deep_grassy_dirt",
-    "dungeons_world:deep_grass_block",
-    "dungeons_world:deep_dirty_grass"
+    "dungeons_world:deep_dirty_grass",
+    "dungeons_world:deep_grass_block"
   ]
 }

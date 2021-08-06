@@ -18,7 +18,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 import static com.infamous.dungeons_world.blocks.BuildingBlockHelper.*;
@@ -30,6 +32,7 @@ public class ModBlocks {
     public static final List<String> BLOCK_IDS = new ArrayList<>();
     public static final List<BuildingBlockHelper> BUILDING_BLOCK_HELPERS = new ArrayList();
     public static final List<RegistryObject<Block>> SINGLE_BLOCKS = new ArrayList();
+    public static final Map<DungeonsChestType, RegistryObject<Block>> CHEST_TYPES = new HashMap<>();
 
     //All
     public static final RegistryObject<Block> COMMON_CHEST = registerChestBlock("common_chest", () -> new DungeonsChestBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), COMMON), COMMON);
@@ -83,6 +86,7 @@ public class ModBlocks {
         RegistryObject<Block> blockRegistryObject = BLOCKS.register(id, sup);
         registerBlockItem(id, blockRegistryObject, blockSupplier -> new BlockItem(blockSupplier.get(), new Item.Properties().tab(DungeonsWorld.TAB)
                 .setISTER(() -> () -> ModISTERs.createChestTileEntity(chestType))));
+        CHEST_TYPES.put(chestType, blockRegistryObject);
         return blockRegistryObject;
     }
 

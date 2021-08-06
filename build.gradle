@@ -141,6 +141,8 @@ dependencies {
     //runtimeOnly fg.deobf("structure_toolkit:structure_toolkit:1.16.5-0.0.1")
     implementation fg.deobf("curse.maven:structure-toolkit-484907:3408499")
     runtimeOnly fg.deobf("curse.maven:structure-toolkit-484907:3408499")
+    implementation fg.deobf("curse.maven:dungeons-gear-401247:3377033")
+    runtimeOnly fg.deobf("curse.maven:dungeons-gear-401247:3377033")
 
     //Compat tests
 

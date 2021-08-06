@@ -23,6 +23,41 @@
         }
       ],
       "to_replace": "minecraft:stone_brick_stairs"
+    },
+    {
+      "processor_type": "dungeons_world:dungeons_chests",
+      "base_loot_table": "dungeons_world:chests/creeper_woods",
+      "chest_types": [
+        {
+          "chest_type": "common",
+          "weight": 4
+        },
+        {
+          "chest_type": "fancy",
+          "weight": 3
+        },
+        {
+          "chest_type": "obsidian",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "processor_type": "structure_toolkit:spawner_randomizer",
+      "spawner_mob_entries": [
+        {
+          "resourcelocation": "minecraft:creeper",
+          "weight": 50
+        },
+        {
+          "resourcelocation": "minecraft:zombie",
+          "weight": 50
+        },
+        {
+          "resourcelocation": "minecraft:skeleton",
+          "weight": 50
+        }
+      ]
     }
   ]
 }
