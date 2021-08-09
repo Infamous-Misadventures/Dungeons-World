@@ -28,6 +28,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockHelper);
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
         registerColumnBlock(LINES_STONE_COLUMN);
+        registerColumnBlock(GROOVED_POLISHED_GRANITE_COLUMN);
         registerColumnBlock(SMOOTH_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
         registerColumnBlock(SKELETON_CARVED_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
         registerCrossBlock(GLOWING_MUSHROOM);

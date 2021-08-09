@@ -12,6 +12,12 @@
     "dungeons_world:medium_creepmoss_cracked_stone_bricks_slab",
     "dungeons_world:low_creepmoss_chiseled_stone_bricks_slab",
     "dungeons_world:low_creepmoss_polished_andesite_slab",
-    "dungeons_world:medium_creepmoss_polished_andesite_slab"
+    "dungeons_world:medium_creepmoss_polished_andesite_slab",
+    "dungeons_world:stone_tiles_slab",
+    "dungeons_world:dirty_stone_tiles_slab",
+    "dungeons_world:high_dirty_stone_tiles_slab",
+    "dungeons_world:detailed_stone_tiles_slab",
+    "dungeons_world:dirty_detailed_stone_tiles_slab",
+    "dungeons_world:high_dirty_detailed_stone_tiles_slab"
   ]
 }

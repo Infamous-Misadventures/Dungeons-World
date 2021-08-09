@@ -13,6 +13,7 @@ public class ModConfiguredStructures {
      * Static instance of our structure so we can reference it and add it to biomes easily.
      */
     public static StructureFeature<?, ?> CONFIGURED_CW_RUINED_TOWER = ModStructures.CW_RUINED_TOWER.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_CW_ANCIENT_TRUNK = ModStructures.CW_ANCIENT_TRUNK.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_DUNGEONS_BLACKSMITH = ModStructures.DUNGEONS_BLACKSMITH.get().configured(IFeatureConfig.NONE);
 
     /**
@@ -25,6 +26,7 @@ public class ModConfiguredStructures {
     public static void registerConfiguredStructures() {
         Registry<StructureFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE;
         Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_cw_ruined_tower"), CONFIGURED_CW_RUINED_TOWER);
+        Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_cw_ancient_trunk"), CONFIGURED_CW_ANCIENT_TRUNK);
         Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_dungeons_blacksmith"), CONFIGURED_DUNGEONS_BLACKSMITH);
 
         /* Ok so, this part may be hard to grasp but basically, just add your structure to this to
@@ -43,6 +45,7 @@ public class ModConfiguredStructures {
          * Requires AccessTransformer ( see resources/META-INF/accesstransformer.cfg )
          */
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.CW_RUINED_TOWER.get(), CONFIGURED_CW_RUINED_TOWER);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.CW_ANCIENT_TRUNK.get(), CONFIGURED_CW_ANCIENT_TRUNK);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.DUNGEONS_BLACKSMITH.get(), CONFIGURED_DUNGEONS_BLACKSMITH);
     }
 }

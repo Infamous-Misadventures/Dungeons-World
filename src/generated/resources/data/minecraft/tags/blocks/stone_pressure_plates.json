@@ -12,6 +12,12 @@
     "dungeons_world:medium_creepmoss_cracked_stone_bricks_pressure_plate",
     "dungeons_world:low_creepmoss_chiseled_stone_bricks_pressure_plate",
     "dungeons_world:low_creepmoss_polished_andesite_pressure_plate",
-    "dungeons_world:medium_creepmoss_polished_andesite_pressure_plate"
+    "dungeons_world:medium_creepmoss_polished_andesite_pressure_plate",
+    "dungeons_world:stone_tiles_pressure_plate",
+    "dungeons_world:dirty_stone_tiles_pressure_plate",
+    "dungeons_world:high_dirty_stone_tiles_pressure_plate",
+    "dungeons_world:detailed_stone_tiles_pressure_plate",
+    "dungeons_world:dirty_detailed_stone_tiles_pressure_plate",
+    "dungeons_world:high_dirty_detailed_stone_tiles_pressure_plate"
   ]
 }

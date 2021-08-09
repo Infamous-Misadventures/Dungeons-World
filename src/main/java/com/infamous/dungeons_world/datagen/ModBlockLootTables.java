@@ -37,6 +37,7 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(FANCY_CHEST.get(), BlockLootTables::createSingleItemTable);
         this.add(OBSIDIAN_CHEST.get(), BlockLootTables::createSingleItemTable);
         this.add(LINES_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
+        this.add(GROOVED_POLISHED_GRANITE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(SMOOTH_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(SKELETON_CARVED_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(DEEP_DIRT.get(), BlockLootTables::createSingleItemTable);

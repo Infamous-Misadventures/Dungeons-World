@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "dungeons_world:block/dirty_detailed_stone_tiles"
+    }
+  }
+}

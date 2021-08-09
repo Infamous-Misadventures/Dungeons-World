@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "dungeons_world:block/high_dirty_detailed_stone_tiles"
+  }
+}

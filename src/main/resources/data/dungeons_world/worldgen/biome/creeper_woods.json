@@ -69,7 +69,8 @@
     "minecraft:mineshaft",
     "minecraft:stronghold",
     "minecraft:ruined_portal",
-    "dungeons_world:configured_cw_ruined_tower"
+    "dungeons_world:configured_cw_ruined_tower",
+    "dungeons_world:configured_cw_ancient_trunk"
   ],
   "spawners": {
     "monster": [

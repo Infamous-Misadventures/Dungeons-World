@@ -56,9 +56,18 @@ public class ModBlocks {
     public static final RegistryObject<Block> DEEP_GRASSY_DIRT = registerBlock("deep_grassy_dirt", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> DEEP_DIRTY_GRASS = registerBlock("deep_dirty_grass", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> DEEP_GRASS_BLOCK = registerBlock("deep_grass_block", () -> new DeepGrassBlock(AbstractBlock.Properties.of(Material.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
+
     public static final RegistryObject<Block> LINES_STONE_COLUMN = registerBlock("lines_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> SMOOTH_STONE_COLUMN = registerBlock("smooth_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> SKELETON_CARVED_STONE_COLUMN = registerBlock("skeleton_carved_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> GROOVED_POLISHED_GRANITE_COLUMN = registerBlock("grooved_polished_granite_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+
+    public static final BuildingBlockHelper STONE_TILES = registerDirtyBuildingBlock("stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.UNAFFECTED, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.UNAFFECTED);
+    public static final BuildingBlockHelper DIRTY_STONE_TILES = registerDirtyBuildingBlock("dirty_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.MEDIUM, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.MEDIUM);
+    public static final BuildingBlockHelper HIGH_DIRTY_STONE_TILES = registerDirtyBuildingBlock("high_dirty_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.HIGH, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.HIGH);
+    public static final BuildingBlockHelper DETAILED_STONE_TILES = registerDirtyBuildingBlock("detailed_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.UNAFFECTED, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.UNAFFECTED);
+    public static final BuildingBlockHelper DIRTY_DETAILED_STONE_TILES = registerDirtyBuildingBlock("dirty_detailed_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.MEDIUM, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.MEDIUM);
+    public static final BuildingBlockHelper HIGH_DIRTY_DETAILED_STONE_TILES = registerDirtyBuildingBlock("high_dirty_detailed_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.HIGH, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.HIGH);
 
     public static final RegistryObject<Block> FULL_GLOWING_MUSHROOM = registerBlock("full_glowing_mushroom", () -> new GlowingMushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE)
             .lightLevel(block -> GlowingMushroomBlock.isSqueezed(block) ? 4 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS) : 2 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS)).sound(SoundType.SLIME_BLOCK).noOcclusion()));
@@ -101,6 +110,19 @@ public class ModBlocks {
                 .withBlockId(id).withBlock(registerBlock(id, sup))
                 .withSlab(registerBlock(id + SLAB_ID, () -> new SlabBlock(AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE))))
                 .withStairs(registerBlock(id + STAIRS_ID, () -> new StairsBlock(() -> sup.get().defaultBlockState(), AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE))))
+                .withButton(registerBlock(id + BUTTON_ID, () -> new StoneButtonBlock(AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE).noCollission().strength(0.5F))))
+                .withPressurePlate(registerBlock(id + PLATE_ID, () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE).noCollission().strength(0.5F))))
+                .withWall(registerBlock(id + WALL_ID, () -> new WallBlock(AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE))))
+                .createBuildingBlockHelper();
+        BUILDING_BLOCK_HELPERS.add(buildingBlockHelper);
+        return buildingBlockHelper;
+    }
+
+    private static BuildingBlockHelper registerDirtyBuildingBlock(String id, Supplier<Block> sup, Dirty.DirtLevel dirtLevel) {
+        BuildingBlockHelper buildingBlockHelper = new BuildingBlockHelper.Builder()
+                .withBlockId(id).withBlock(registerBlock(id, sup))
+                .withSlab(registerBlock(id + SLAB_ID, () -> new DirtySlabBlock(dirtLevel, AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE))))
+                .withStairs(registerBlock(id + STAIRS_ID, () -> new DirtyStairsBlock(dirtLevel, () -> sup.get().defaultBlockState(), AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE))))
                 .withButton(registerBlock(id + BUTTON_ID, () -> new StoneButtonBlock(AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE).noCollission().strength(0.5F))))
                 .withPressurePlate(registerBlock(id + PLATE_ID, () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE).noCollission().strength(0.5F))))
                 .withWall(registerBlock(id + WALL_ID, () -> new WallBlock(AbstractBlock.Properties.copy(sup.get()).harvestLevel(0).harvestTool(ToolType.PICKAXE))))

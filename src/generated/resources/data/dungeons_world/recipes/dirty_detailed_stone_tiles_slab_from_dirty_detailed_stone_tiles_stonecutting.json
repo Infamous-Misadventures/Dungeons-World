@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "dungeons_world:dirty_detailed_stone_tiles"
+  },
+  "result": "dungeons_world:dirty_detailed_stone_tiles_slab",
+  "count": 2
+}

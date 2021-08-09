@@ -43,6 +43,7 @@ public class ModStructures {
      * So it is best to keep your structure names the same as long as you can instead of changing them frequently.
      */
     public static final RegistryObject<Structure<NoFeatureConfig>> CW_RUINED_TOWER = STRUCTURES.register("cw_ruined_tower", () -> (new CreeperWoodsRuinedTower(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> CW_ANCIENT_TRUNK = STRUCTURES.register("cw_ancient_trunk", () -> (new CreeperWoodsAncientTrunk(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> DUNGEONS_BLACKSMITH = STRUCTURES.register("dungeons_blacksmith", () -> (new DungeonsBlacksmith(NoFeatureConfig.CODEC)));
 
 
@@ -56,6 +57,12 @@ public class ModStructures {
                 new StructureSeparationSettings(10 /* average distance apart in chunks between spawn attempts */,
                         5 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
                         637198423 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
+                true);
+        setupMapSpacingAndLand(
+                CW_ANCIENT_TRUNK.get(), /* The instance of the structure */
+                new StructureSeparationSettings(10 /* average distance apart in chunks between spawn attempts */,
+                        5 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
+                        8726314 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
         setupMapSpacingAndLand(
                 DUNGEONS_BLACKSMITH.get(), /* The instance of the structure */

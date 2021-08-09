@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "particle": "dungeons_world:block/high_dirty_detailed_stone_tiles",
+    "all": "dungeons_world:block/high_dirty_detailed_stone_tiles"
+  }
+}

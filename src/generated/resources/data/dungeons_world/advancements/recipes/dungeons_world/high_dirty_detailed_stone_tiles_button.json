@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dungeons_world:high_dirty_detailed_stone_tiles_button"
+    ]
+  },
+  "criteria": {
+    "has_high_dirty_detailed_stone_tiles": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "dungeons_world:high_dirty_detailed_stone_tiles"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "dungeons_world:high_dirty_detailed_stone_tiles_button"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_high_dirty_detailed_stone_tiles",
+      "has_the_recipe"
+    ]
+  ]
+}

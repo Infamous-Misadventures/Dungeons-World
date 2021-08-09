@@ -9,12 +9,16 @@ import mod.patrigan.structure_toolkit.util.RandomType;
 import mod.patrigan.structure_toolkit.world.gen.processors.ProcessorUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ChestBlock;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.properties.ChestType;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IServerWorld;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.gen.feature.template.IStructureProcessorType;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
@@ -32,6 +36,8 @@ import static mod.patrigan.structure_toolkit.util.RandomType.RANDOM_TYPE_CODEC;
 import static net.minecraft.block.Blocks.AIR;
 import static net.minecraft.block.Blocks.CHEST;
 import static net.minecraft.block.ChestBlock.*;
+import static net.minecraft.state.properties.BlockStateProperties.CHEST_TYPE;
+import static net.minecraft.util.Direction.DOWN;
 import static net.minecraftforge.registries.ForgeRegistries.BLOCKS;
 
 public class DungeonsChestProcessor extends StructureProcessor {
@@ -61,8 +67,14 @@ public class DungeonsChestProcessor extends StructureProcessor {
 
     @Override
     public Template.BlockInfo process(IWorldReader world, BlockPos piecePos, BlockPos structurePos, Template.BlockInfo rawBlockInfo, Template.BlockInfo blockInfo, PlacementSettings settings, Template template) {
-        if ((blockInfo.state.is(COMMON_CHEST.get()) || blockInfo.state.is(CHEST))  && blockInfo.state.hasTileEntity()) {
-            Random random = ProcessorUtil.getRandom(randomType, blockInfo.pos, piecePos, structurePos, world, SEED);
+        if ((blockInfo.state.is(COMMON_CHEST.get()) || blockInfo.state.is(CHEST)) && blockInfo.state.hasTileEntity()) {
+            Random random;
+            if(blockInfo.state.getValue(TYPE).equals(ChestType.LEFT)) {
+                Direction connectedDirection = getConnectedDirection(blockInfo.state.rotate((IWorld)world, blockInfo.pos, settings.getRotation()));
+                random = ProcessorUtil.getRandom(randomType, blockInfo.pos.relative(connectedDirection), piecePos, structurePos, world, SEED);
+            }else {
+                random = ProcessorUtil.getRandom(randomType, blockInfo.pos, piecePos, structurePos, world, SEED);
+            }
             if (random.nextFloat() < rarity) {
                 DungeonsChestType chestType = GeneralUtils.getRandomEntry(chestTypes, random);
                 BlockState blockState = CHEST_TYPES.get(chestType).get().defaultBlockState();
@@ -72,8 +84,10 @@ public class DungeonsChestProcessor extends StructureProcessor {
                 LockableLootTileEntity lockableLootTileEntity = (LockableLootTileEntity) tileEntity;
                 lockableLootTileEntity.setLevelAndPosition(serverWorld, blockInfo.pos);
                 CompoundNBT nbt = blockInfo.nbt;
-                nbt.putString("LootTable", this.baseLootTable.toString() + "/" + chestType.name().toLowerCase());
-                nbt.putLong("LootTableSeed", serverWorld.random.nextLong());
+                if(!blockInfo.state.getValue(TYPE).equals(ChestType.LEFT)) {
+                    nbt.putString("LootTable", this.baseLootTable.toString() + "/" + chestType.name().toLowerCase());
+                    nbt.putLong("LootTableSeed", serverWorld.random.nextLong());
+                }
                 return new Template.BlockInfo(
                         blockInfo.pos,
                         blockState,
