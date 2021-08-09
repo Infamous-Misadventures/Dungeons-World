@@ -218,8 +218,8 @@ public class CreeperWoodsAncientTrunk extends Structure<NoFeatureConfig> {
             //
             // By lifting the house up by 1 and lowering the bounding box, the land at bottom of house will now be
             // flush with the surrounding terrain without blocking off the doorstep.
-            //this.pieces.forEach(piece -> piece.move(0, 1, 0));
-            //this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
+            this.pieces.forEach(piece -> piece.move(0, 1, 0));
+            this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
 
 
             // Sets the bounds of the structure once you are finished.

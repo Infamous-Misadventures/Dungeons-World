@@ -10,7 +10,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "weight": 75,
+          "weight": 115,
           "name": "dungeons_world:chests/common"
         }
       ]

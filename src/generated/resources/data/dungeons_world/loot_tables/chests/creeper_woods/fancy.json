@@ -10,8 +10,22 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "weight": 85,
+          "weight": 130,
           "name": "dungeons_world:chests/fancy"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:exploration_map",
+              "destination": "dungeons_world:cw_ruined_tower",
+              "decoration": "red_x",
+              "zoom": 1,
+              "skip_existing_chunks": false
+            }
+          ],
+          "name": "minecraft:map"
         }
       ]
     }

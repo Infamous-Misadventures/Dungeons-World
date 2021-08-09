@@ -10,6 +10,7 @@ import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
+import net.minecraftforge.fml.ModList;
 
 import java.util.*;
 
@@ -36,8 +37,8 @@ public class DungeonsChestLootModifier extends LootModifier {
 
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        //if(!RepurposedStructures.RSModdedLootConfig.importModdedItems.get() || isInBlacklist(context.getQueriedLootTableId()))
-           // return generatedLoot; // easier blacklist for users
+        if(!ModList.get().isLoaded("dungeons_gear"))
+           return generatedLoot; // easier blacklist for users
 
         if(!TABLE_LIST.contains(context.getQueriedLootTableId()))
             return generatedLoot; // Safety net

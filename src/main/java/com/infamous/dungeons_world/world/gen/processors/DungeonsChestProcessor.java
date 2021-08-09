@@ -9,7 +9,6 @@ import mod.patrigan.structure_toolkit.util.RandomType;
 import mod.patrigan.structure_toolkit.world.gen.processors.ProcessorUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ChestBlock;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.ChestType;
 import net.minecraft.tileentity.LockableLootTileEntity;
@@ -36,8 +35,6 @@ import static mod.patrigan.structure_toolkit.util.RandomType.RANDOM_TYPE_CODEC;
 import static net.minecraft.block.Blocks.AIR;
 import static net.minecraft.block.Blocks.CHEST;
 import static net.minecraft.block.ChestBlock.*;
-import static net.minecraft.state.properties.BlockStateProperties.CHEST_TYPE;
-import static net.minecraft.util.Direction.DOWN;
 import static net.minecraftforge.registries.ForgeRegistries.BLOCKS;
 
 public class DungeonsChestProcessor extends StructureProcessor {
