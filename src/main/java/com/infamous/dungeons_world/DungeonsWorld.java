@@ -16,7 +16,6 @@ import com.infamous.dungeons_world.world.surfacebuilder.ModSurfaceBuilders;
 import com.mojang.serialization.Codec;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
@@ -27,7 +26,6 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
@@ -45,8 +43,6 @@ import org.apache.logging.log4j.Logger;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.infamous.dungeons_world.Util.ModLoc;
 
 @Mod(DungeonsWorld.MODID)
 public class DungeonsWorld {
@@ -90,13 +86,7 @@ public class DungeonsWorld {
             ModProcessors.init();
             ModStructures.setupStructures();
             ModConfiguredStructures.registerConfiguredStructures();
-            BiomeManager.addBiome(
-                    BiomeManager.BiomeType.WARM,
-                    new BiomeManager.BiomeEntry(
-                            RegistryKey.create(Registry.BIOME_REGISTRY, ModLoc("creeper_woods")),
-                            5
-                    )
-            );
+            ModBiomes.initBiomes();
         });
     }
 

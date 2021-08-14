@@ -1,12 +1,14 @@
 package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.DungeonsWorld;
+import com.infamous.dungeons_world.biomes.ModBiomes;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 
+import static com.infamous.dungeons_world.biomes.ModBiomes.BIOME_NAMES;
 import static com.infamous.dungeons_world.blocks.ModBlocks.BLOCK_IDS;
 import static com.infamous.dungeons_world.items.ModItems.ITEM_IDS;
 import static net.minecraftforge.registries.ForgeRegistries.BLOCKS;
@@ -25,6 +27,13 @@ public class ModLanguageProvider extends LanguageProvider {
         add("itemGroup.dungeons_world", "Dungeons World");
         addConfigOptions();
         addTips();
+        addBiomes();
+    }
+
+    private void addBiomes() {
+        for (String biomeName : BIOME_NAMES) {
+            add("biome.dungeons_world."+biomeName, getNameFromId(biomeName));
+        }
     }
 
     private void addTips() {
