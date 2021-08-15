@@ -1,0 +1,17 @@
+{
+  "name": "dungeons_world:cw_enderman_head/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:cw_enderman_head",
+        "processors": "dungeons_world:cw_enderman_head/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

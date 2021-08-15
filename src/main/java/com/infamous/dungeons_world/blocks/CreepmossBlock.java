@@ -8,7 +8,7 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
-public class CreepmossBlock  extends Block implements Creepmoss {
+public class CreepmossBlock extends Block implements Creepmoss {
     private final Creepmoss.CreepmossLevel creepmossLevel;
 
     public CreepmossBlock(Creepmoss.CreepmossLevel creepmossLevel, AbstractBlock.Properties settings) {

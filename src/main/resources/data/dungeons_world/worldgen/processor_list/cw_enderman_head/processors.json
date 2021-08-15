@@ -1,0 +1,22 @@
+{
+  "processors": [
+    {
+      "processor_type": "dungeons_world:dungeons_chests",
+      "base_loot_table": "dungeons_world:chests/creeper_woods",
+      "chest_types": [
+        {
+          "chest_type": "common",
+          "weight": 2
+        },
+        {
+          "chest_type": "fancy",
+          "weight": 7
+        },
+        {
+          "chest_type": "obsidian",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

@@ -169,6 +169,8 @@ public class DungeonsWorld {
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
             tempMap.putIfAbsent(ModStructures.CW_RUINED_TOWER.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CW_RUINED_TOWER.get()));
             tempMap.putIfAbsent(ModStructures.CW_ANCIENT_TRUNK.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CW_ANCIENT_TRUNK.get()));
+            tempMap.putIfAbsent(ModStructures.CW_CREEPER_HEAD.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CW_CREEPER_HEAD.get()));
+            tempMap.putIfAbsent(ModStructures.CW_ENDERMAN_HEAD.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CW_ENDERMAN_HEAD.get()));
             tempMap.putIfAbsent(ModStructures.DUNGEONS_BLACKSMITH.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.DUNGEONS_BLACKSMITH.get()));
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
