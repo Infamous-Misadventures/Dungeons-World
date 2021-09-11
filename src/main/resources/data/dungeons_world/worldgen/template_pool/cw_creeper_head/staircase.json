@@ -1,5 +1,5 @@
 {
-  "name": "dungeons_world:cw_creeper_head/start_pool",
+  "name": "dungeons_world:cw_creeper_head/staircase",
 
   "fallback": "minecraft:empty",
 
@@ -7,8 +7,8 @@
     {
       "weight": 1,
       "element": {
-        "location": "dungeons_world:cw_creeper_head/head",
-        "processors": "dungeons_world:cw_creeper_head/processors",
+        "location": "dungeons_world:cw_creeper_head/staircase",
+        "processors": "dungeons_world:cw_creeper_head/staircase_processors",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -16,8 +16,8 @@
     {
       "weight": 1,
       "element": {
-        "location": "dungeons_world:cw_creeper_head/head_entrance",
-        "processors": "dungeons_world:cw_creeper_head/entrance_processors",
+        "location": "dungeons_world:cw_creeper_head/staircase_bottom_1",
+        "processors": "dungeons_world:cw_creeper_head/staircase_processors",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

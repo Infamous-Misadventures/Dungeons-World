@@ -1,0 +1,88 @@
+{
+  "processors": [
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:medium_creepmoss_stone_bricks",
+          "step_size": 0.06
+        },
+        {
+          "resource_location": "dungeons_world:low_creepmoss_stone_bricks",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:stone_bricks"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:medium_creepmoss_stone_bricks_stairs",
+          "step_size": 0.06
+        },
+        {
+          "resource_location": "dungeons_world:low_creepmoss_stone_bricks_stairs",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:stone_brick_stairs"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:medium_creepmoss_stone_bricks_slab",
+          "step_size": 0.06
+        },
+        {
+          "resource_location": "dungeons_world:low_creepmoss_stone_bricks_slab",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:stone_brick_slab"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:medium_creepmoss_polished_andesite",
+          "step_size": 0.06
+        },
+        {
+          "resource_location": "dungeons_world:low_creepmoss_polished_andesite",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:polished_andesite"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:low_creepmoss_chiseled_stone_bricks",
+          "step_size": 0.16
+        }
+      ],
+      "to_replace": "minecraft:chiseled_stone_bricks"
+    },
+    {
+      "processor_type": "dungeons_world:dungeons_chests",
+      "base_loot_table": "dungeons_world:chests/creeper_woods",
+      "chest_types": [
+        {
+          "chest_type": "common",
+          "weight": 2
+        },
+        {
+          "chest_type": "fancy",
+          "weight": 7
+        },
+        {
+          "chest_type": "obsidian",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

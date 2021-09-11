@@ -22,6 +22,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags() {
         ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::addBlocksToTags);
         this.tag(ModTags.Blocks.DIRT).add(DEEP_DIRT.get());
+        this.tag(ModTags.Blocks.DIRT).add(PEBBLED_DEEP_DIRT.get());
         this.tag(ModTags.Blocks.DIRT).add(DEEP_GRASSY_DIRT.get());
         this.tag(ModTags.Blocks.DIRT).add(DEEP_DIRTY_GRASS.get());
         this.tag(ModTags.Blocks.DIRT).add(DEEP_GRASS_BLOCK.get());

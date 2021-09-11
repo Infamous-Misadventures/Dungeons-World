@@ -1,0 +1,32 @@
+{
+  "processors": [
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:medium_creepmoss_stone_bricks",
+          "step_size": 0.06
+        },
+        {
+          "resource_location": "dungeons_world:low_creepmoss_stone_bricks",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:stone_bricks"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:medium_creepmoss_stone_bricks_stairs",
+          "step_size": 0.06
+        },
+        {
+          "resource_location": "dungeons_world:low_creepmoss_stone_bricks_stairs",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "minecraft:stone_brick_stairs"
+    }
+  ]
+}
