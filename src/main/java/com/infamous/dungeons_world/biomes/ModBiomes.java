@@ -27,6 +27,7 @@ public class ModBiomes {
     // No static variable to hold as these dummy biomes should NOT be held and referenced elsewhere.
     static {
         RegistryObject<Biome> creeper_woods = createBiome("creeper_woods", BiomeMaker::theVoidBiome);
+        RegistryObject<Biome> soggy_swamp = createBiome("soggy_swamp", BiomeMaker::theVoidBiome);
     }
 
     public static RegistryObject<Biome> createBiome(String name, Supplier<Biome> biome) {
@@ -35,10 +36,11 @@ public class ModBiomes {
     }
 
     public static void initBiomes() {
-        addBiomeTypes("creeper_woods");
+        addBiomeTypesCreeperWoods("creeper_woods");
+        addBiomeTypesSoggySwamp("soggy_swamp");
     }
 
-    public static void addBiomeTypes(String biomeName) {
+    public static void addBiomeTypesCreeperWoods(String biomeName) {
         RegistryKey<Biome> biomeKey = RegistryKey.create(Registry.BIOME_REGISTRY, ModLoc(biomeName));
         BiomeManager.addBiome(
                 BiomeManager.BiomeType.WARM,
@@ -48,5 +50,17 @@ public class ModBiomes {
                 )
         );
         BiomeDictionary.addTypes(biomeKey, OVERWORLD, FOREST, SPOOKY);
+    }
+
+    public static void addBiomeTypesSoggySwamp(String biomeName) {
+        RegistryKey<Biome> biomeKey = RegistryKey.create(Registry.BIOME_REGISTRY, ModLoc(biomeName));
+        BiomeManager.addBiome(
+                BiomeManager.BiomeType.WARM,
+                new BiomeManager.BiomeEntry(
+                        biomeKey,
+                        5
+                )
+        );
+        BiomeDictionary.addTypes(biomeKey, OVERWORLD, SWAMP, SPOOKY);
     }
 }

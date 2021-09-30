@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "dungeons_world:block/rocky_deep_dirt"
+  }
+}

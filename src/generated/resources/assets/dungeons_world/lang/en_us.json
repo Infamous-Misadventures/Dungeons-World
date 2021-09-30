@@ -1,5 +1,7 @@
 {
   "biome.dungeons_world.creeper_woods": "Creeper Woods",
+  "biome.dungeons_world.soggy_swamp": "Soggy Swamp",
+  "block.dungeons_world.cobbled_deep_dirt": "Cobbled Deep Dirt",
   "block.dungeons_world.common_chest": "Common Chest",
   "block.dungeons_world.deep_dirt": "Deep Dirt",
   "block.dungeons_world.deep_dirty_grass": "Deep Dirty Grass",
@@ -116,6 +118,7 @@
   "block.dungeons_world.mossy_grave": "Mossy Grave",
   "block.dungeons_world.obsidian_chest": "Obsidian Chest",
   "block.dungeons_world.pebbled_deep_dirt": "Pebbled Deep Dirt",
+  "block.dungeons_world.rocky_deep_dirt": "Rocky Deep Dirt",
   "block.dungeons_world.skeleton_carved_stone_column": "Skeleton Carved Stone Column",
   "block.dungeons_world.smooth_stone_column": "Smooth Stone Column",
   "block.dungeons_world.stone_tiles": "Stone Tiles",

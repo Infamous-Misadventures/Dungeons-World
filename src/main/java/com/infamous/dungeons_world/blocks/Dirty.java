@@ -71,7 +71,7 @@ public interface Dirty extends Degradable<Dirty.DirtLevel> {
     }
 
     default void tickDegradation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        float f = 1;
+        float f = 0.25f;
         AxisAlignedBB area = new AxisAlignedBB(pos).inflate(1, 0, 1).expandTowards(0, 1, 0);
         if (random.nextFloat() < f && world.getBlockStates(area).anyMatch(blockState -> blockState.is(DIRT) || blockState.getBlock() instanceof Dirty)) {
             this.tryDegrade(state, world, pos, random);

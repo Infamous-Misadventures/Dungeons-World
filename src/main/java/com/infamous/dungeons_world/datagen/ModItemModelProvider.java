@@ -29,6 +29,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         SINGLE_BLOCKS.forEach(this::registerSingleBlockItems);
         blockItemModel(DEEP_DIRT.get());
         blockItemModel(PEBBLED_DEEP_DIRT.get());
+        blockItemModel(ROCKY_DEEP_DIRT.get());
+        blockItemModel(COBBLED_DEEP_DIRT.get());
         blockItemModel(LINES_STONE_COLUMN.get());
         blockItemModel(GROOVED_POLISHED_GRANITE_COLUMN.get());
         blockItemModel(SMOOTH_STONE_COLUMN.get());

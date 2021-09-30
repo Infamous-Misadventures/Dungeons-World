@@ -42,6 +42,8 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(SKELETON_CARVED_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(DEEP_DIRT.get(), BlockLootTables::createSingleItemTable);
         this.add(PEBBLED_DEEP_DIRT.get(), BlockLootTables::createSingleItemTable);
+        this.add(ROCKY_DEEP_DIRT.get(), BlockLootTables::createSingleItemTable);
+        this.add(COBBLED_DEEP_DIRT.get(), BlockLootTables::createSingleItemTable);
         this.add(DEEP_GRASSY_DIRT.get(), block -> createSingleItemTableWithSilkTouch(block, DEEP_DIRT.get()));
         this.add(DEEP_DIRTY_GRASS.get(), block -> createSingleItemTableWithSilkTouch(block, DEEP_DIRT.get()));
         this.add(DEEP_GRASS_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(block, DEEP_DIRT.get()));
