@@ -12,7 +12,6 @@ import net.minecraftforge.fml.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 import static com.infamous.dungeons_world.blocks.ModBlocks.*;
-import static net.minecraft.block.Blocks.SMOOTH_STONE;
 import static net.minecraft.block.HorizontalBlock.FACING;
 import static net.minecraft.block.HorizontalFaceBlock.FACE;
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
@@ -27,6 +26,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockHelper);
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
+        ROTTEN_BLOCKS.forEach(this::registerRottenBlock);
         registerColumnBlock(LINES_STONE_COLUMN);
         registerColumnBlock(GROOVED_POLISHED_GRANITE_COLUMN);
         registerColumnBlock(SMOOTH_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
@@ -45,6 +45,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void registerSingleBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlock(blockRegistryObject.get());
+    }
+
+    private void registerRottenBlock(RegistryObject<Block> blockRegistryObject) {
+        Block block = blockRegistryObject.get();
+        ResourceLocation planksTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + block.getRegistryName().getPath().replaceFirst("rotten_", ""));
+        simpleBlock(block, models().singleTexture(block.getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/rotten_abstract_planks"), "planks", planksTexture));
     }
 
     private void registerColumnBlock(RegistryObject<Block> blockRegistryObject) {

@@ -1,0 +1,31 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "#planks",
+    "rotten": "dungeons_world:block/rotten_abstract_planks"
+  },
+  "elements": [
+    {   "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#planks", "cullface": "down" },
+        "up":    { "texture": "#planks", "cullface": "up" },
+        "north": { "texture": "#planks", "cullface": "north" },
+        "south": { "texture": "#planks", "cullface": "south" },
+        "west":  { "texture": "#planks", "cullface": "west" },
+        "east":  { "texture": "#planks", "cullface": "east" }
+      }
+    },
+    {   "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#rotten", "cullface": "down" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#rotten", "cullface": "up" },
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#rotten", "cullface": "north" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#rotten", "cullface": "south" },
+        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#rotten", "cullface": "west" },
+        "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#rotten", "cullface": "east" }
+      }
+    }
+  ]
+}

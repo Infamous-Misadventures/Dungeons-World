@@ -1,0 +1,6 @@
+{
+  "parent": "dungeons_world:block/rotten_abstract_planks",
+  "textures": {
+    "planks": "minecraft:block/crimson_planks"
+  }
+}
