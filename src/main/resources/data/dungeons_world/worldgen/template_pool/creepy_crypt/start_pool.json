@@ -1,0 +1,8 @@
+{
+  "name": "dungeons_world:creepy_crypt/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+  ]
+}

@@ -16,6 +16,8 @@ public class ModConfiguredStructures {
     public static StructureFeature<?, ?> CONFIGURED_CW_ANCIENT_TRUNK = ModStructures.CW_ANCIENT_TRUNK.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_CW_CREEPER_HEAD = ModStructures.CW_CREEPER_HEAD.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_CW_ENDERMAN_HEAD = ModStructures.CW_ENDERMAN_HEAD.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_ILLAGER_CARAVAN = ModStructures.ILLAGER_CARAVAN.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_CREEPY_CRYPT = ModStructures.CREEPY_CRYPT.get().configured(IFeatureConfig.NONE);
     public static StructureFeature<?, ?> CONFIGURED_DUNGEONS_BLACKSMITH = ModStructures.DUNGEONS_BLACKSMITH.get().configured(IFeatureConfig.NONE);
 
     /**
@@ -30,7 +32,9 @@ public class ModConfiguredStructures {
         Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_cw_ruined_tower"), CONFIGURED_CW_RUINED_TOWER);
         Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_cw_ancient_trunk"), CONFIGURED_CW_ANCIENT_TRUNK);
         Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_cw_creeper_head"), CONFIGURED_CW_CREEPER_HEAD);
-        Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_cw_enderman_head"), CONFIGURED_CW_ENDERMAN_HEAD);
+        Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_cw_enderman_head"), CONFIGURED_ILLAGER_CARAVAN);
+        Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_illager_caravan"), CONFIGURED_CREEPY_CRYPT);
+        Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_creepy_crypt"), CONFIGURED_CW_ENDERMAN_HEAD);
         Registry.register(registry, new ResourceLocation(DungeonsWorld.MODID, "configured_dungeons_blacksmith"), CONFIGURED_DUNGEONS_BLACKSMITH);
 
         /* Ok so, this part may be hard to grasp but basically, just add your structure to this to
@@ -52,6 +56,8 @@ public class ModConfiguredStructures {
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.CW_ANCIENT_TRUNK.get(), CONFIGURED_CW_ANCIENT_TRUNK);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.CW_CREEPER_HEAD.get(), CONFIGURED_CW_CREEPER_HEAD);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.CW_ENDERMAN_HEAD.get(), CONFIGURED_CW_ENDERMAN_HEAD);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.CREEPY_CRYPT.get(), CONFIGURED_CREEPY_CRYPT);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.ILLAGER_CARAVAN.get(), CONFIGURED_ILLAGER_CARAVAN);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(ModStructures.DUNGEONS_BLACKSMITH.get(), CONFIGURED_DUNGEONS_BLACKSMITH);
     }
 }

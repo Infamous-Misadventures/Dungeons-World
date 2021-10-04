@@ -1,0 +1,17 @@
+{
+  "name": "dungeons_world:illager_caravan/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:illager_caravan/centerpiece/tomb",
+        "processors": "dungeons_world:illager_caravan/street_processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

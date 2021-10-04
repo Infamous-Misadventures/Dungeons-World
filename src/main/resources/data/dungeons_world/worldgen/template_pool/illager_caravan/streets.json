@@ -1,0 +1,44 @@
+{
+  "name": "dungeons_world:illager_caravan/streets",
+
+  "fallback": "dungeons_world:illager_caravan/terminators",
+
+  "elements": [
+    {
+      "weight": 20,
+      "element": {
+        "location": "dungeons_world:illager_caravan/streets/straight_01",
+        "processors": "dungeons_world:illager_caravan/street_processors",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 5,
+      "element": {
+        "location": "dungeons_world:illager_caravan/streets/corner_01",
+        "processors": "dungeons_world:illager_caravan/street_processors",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:illager_caravan/terminators/gate_01",
+        "processors": "dungeons_world:illager_caravan/street_processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight":2,
+      "element": {
+        "location": "dungeons_world:illager_caravan/terminators/flat_01",
+        "processors": "dungeons_world:illager_caravan/street_processors",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

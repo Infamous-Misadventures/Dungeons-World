@@ -46,6 +46,8 @@ public class ModStructures {
     public static final RegistryObject<Structure<NoFeatureConfig>> CW_ANCIENT_TRUNK = STRUCTURES.register("cw_ancient_trunk", () -> (new CreeperWoodsAncientTrunk(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> CW_CREEPER_HEAD = STRUCTURES.register("cw_creeper_head", () -> (new CreeperWoodsCreeperHead(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> CW_ENDERMAN_HEAD = STRUCTURES.register("cw_enderman_head", () -> (new CreeperWoodsEndermanHead(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> ILLAGER_CARAVAN = STRUCTURES.register("illager_caravan", () -> (new IllagerCaravan(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> CREEPY_CRYPT = STRUCTURES.register("creepy_crypt", () -> (new CreepyCrypt(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> DUNGEONS_BLACKSMITH = STRUCTURES.register("dungeons_blacksmith", () -> (new DungeonsBlacksmith(NoFeatureConfig.CODEC)));
 
 
@@ -79,13 +81,23 @@ public class ModStructures {
                         9371457 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
         setupMapSpacingAndLand(
+                ILLAGER_CARAVAN.get(), /* The instance of the structure */
+                new StructureSeparationSettings(30 /* average distance apart in chunks between spawn attempts */,
+                        15 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
+                        5341413 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
+                true);
+        setupMapSpacingAndLand(
+                CREEPY_CRYPT.get(), /* The instance of the structure */
+                new StructureSeparationSettings(30 /* average distance apart in chunks between spawn attempts */,
+                        20 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
+                        4867104 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
+                false);
+        setupMapSpacingAndLand(
                 DUNGEONS_BLACKSMITH.get(), /* The instance of the structure */
                 new StructureSeparationSettings(10 /* average distance apart in chunks between spawn attempts */,
                         5 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
                         32841468 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
-
-
         // Add more structures here and so on
     }
 

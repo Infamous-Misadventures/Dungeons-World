@@ -145,6 +145,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:dungeons-gear-401247:3377033")
     //runtimeOnly fg.deobf("curse.maven:terraforged-363820:3414123")
     runtimeOnly fg.deobf("curse.maven:natures-compass-252848:3382150")
+    runtimeOnly fg.deobf("curse.maven:blame-406201:3440093")
 
     //Compat tests
 

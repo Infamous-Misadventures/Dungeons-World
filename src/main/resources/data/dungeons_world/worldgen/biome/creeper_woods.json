@@ -51,10 +51,10 @@
     ],
     [],
     [
-      "minecraft:spring_water",
-      "minecraft:spring_lava",
-      "dungeons_world:creeper_woods/small_dark_oak",
+      "dungeons_world:creeper_woods/mega_dark_oak_pine",
       "dungeons_world:creeper_woods/glowing_mushrooms",
+      "dungeons_world:creeper_woods/dark_oak_pine",
+      "dungeons_world:creeper_woods/small_dark_oak",
       "minecraft:flower_default",
       "minecraft:patch_grass_forest",
       "dungeons_world:creeper_woods/dark_oak_bush",

@@ -171,6 +171,8 @@ public class DungeonsWorld {
             tempMap.putIfAbsent(ModStructures.CW_ANCIENT_TRUNK.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CW_ANCIENT_TRUNK.get()));
             tempMap.putIfAbsent(ModStructures.CW_CREEPER_HEAD.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CW_CREEPER_HEAD.get()));
             tempMap.putIfAbsent(ModStructures.CW_ENDERMAN_HEAD.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CW_ENDERMAN_HEAD.get()));
+            tempMap.putIfAbsent(ModStructures.CREEPY_CRYPT.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.CREEPY_CRYPT.get()));
+            tempMap.putIfAbsent(ModStructures.ILLAGER_CARAVAN.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.ILLAGER_CARAVAN.get()));
             tempMap.putIfAbsent(ModStructures.DUNGEONS_BLACKSMITH.get(), DimensionStructuresSettings.DEFAULTS.get(ModStructures.DUNGEONS_BLACKSMITH.get()));
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
