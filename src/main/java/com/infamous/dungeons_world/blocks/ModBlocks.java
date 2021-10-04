@@ -40,10 +40,11 @@ public class ModBlocks {
     public static final List<RegistryObject<Block>> ROTTEN_BLOCKS = new ArrayList();
     public static final Map<DungeonsChestType, RegistryObject<Block>> CHEST_TYPES = new HashMap<>();
 
-    //All Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS
+    //All
     public static final RegistryObject<Block> COMMON_CHEST = registerChestBlock("common_chest", () -> new DungeonsChestBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), COMMON), COMMON);
     public static final RegistryObject<Block> FANCY_CHEST = registerChestBlock("fancy_chest", () -> new DungeonsChestBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), FANCY), FANCY);
     public static final RegistryObject<Block> OBSIDIAN_CHEST = registerChestBlock("obsidian_chest", () -> new DungeonsChestBlock(AbstractBlock.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), DungeonsChestType.OBSIDIAN), DungeonsChestType.OBSIDIAN);
+    public static final RegistryObject<Block> COMMON_URN = registerBlock("common_urn", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> ROTTEN_OAK_PLANKS =  registerRottenBlock("rotten_oak_planks", () -> new Block(AbstractBlock.Properties.copy(OAK_PLANKS)));
     public static final RegistryObject<Block> ROTTEN_SPRUCE_PLANKS =  registerRottenBlock("rotten_spruce_planks", () -> new Block(AbstractBlock.Properties.copy(SPRUCE_PLANKS)));
     public static final RegistryObject<Block> ROTTEN_BIRCH_PLANKS =  registerRottenBlock("rotten_birch_planks", () -> new Block(AbstractBlock.Properties.copy(BIRCH_PLANKS)));
@@ -52,6 +53,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ROTTEN_DARK_OAK_PLANKS =  registerRottenBlock("rotten_dark_oak_planks", () -> new Block(AbstractBlock.Properties.copy(DARK_OAK_PLANKS)));
     public static final RegistryObject<Block> ROTTEN_CRIMSON_PLANKS =  registerRottenBlock("rotten_crimson_planks", () -> new Block(AbstractBlock.Properties.copy(CRIMSON_PLANKS)));
     public static final RegistryObject<Block> ROTTEN_WARPED_PLANKS =  registerRottenBlock("rotten_warped_planks", () -> new Block(AbstractBlock.Properties.copy(WARPED_PLANKS)));
+
 
     //Creeper Woods && Creepy Crypts
     public static final BuildingBlockHelper LOW_CREEPMOSS_STONE = registerCreepmossBuildingBlock("low_creepmoss_stone", () -> new CreepmossBlock(Creepmoss.CreepmossLevel.LOW, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Creepmoss.CreepmossLevel.LOW);

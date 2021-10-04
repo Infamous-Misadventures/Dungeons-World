@@ -48,6 +48,7 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(GLOWING_MUSHROOM.get(), BlockLootTables::createSingleItemTable);
         this.add(GRAVE.get(), BlockLootTables::createSingleItemTable);
         this.add(MOSSY_GRAVE.get(), BlockLootTables::createSingleItemTable);
+        this.add(COMMON_URN.get(), BlockLootTables::createSingleItemTable);
 
     }
 

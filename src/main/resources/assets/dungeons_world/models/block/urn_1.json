@@ -1,0 +1,8 @@
+{
+	"parent": "dungeons_world:block/urn_base",
+	"texture_size": [64, 64],
+	"textures": {
+		"texture": "dungeons_world:block/urn_1",
+		"particle": "dungeons_world:block/urn_1"
+	}
+}
