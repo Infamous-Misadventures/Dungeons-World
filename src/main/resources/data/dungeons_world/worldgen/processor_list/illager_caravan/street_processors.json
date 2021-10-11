@@ -6,17 +6,81 @@
       "chest_types": [
         {
           "chest_type": "common",
-          "weight": 10
+          "weight": 11
         },
         {
           "chest_type": "fancy",
           "weight": 4
-        },
-        {
-          "chest_type": "obsidian",
-          "weight": 1
         }
       ]
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:deep_dirt_path",
+          "step_size": 0.1
+        },
+        {
+          "resource_location": "dungeons_world:deep_dirty_grass",
+          "step_size": 0.05
+        }
+      ],
+      "to_replace": "dungeons_world:deep_grassy_dirt"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:deep_grassy_dirt",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "dungeons_world:deep_dirty_grass"
+    },
+    {
+      "rules": [
+        {
+          "output_state": {
+            "Name": "dungeons_world:pebbled_deep_dirt"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_dirt_path",
+            "probability": 0.1,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "dungeons_world:pebbled_deep_dirt"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_grassy_dirt",
+            "probability": 0.1,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "dungeons_world:deep_dirt"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_dirt_path",
+            "probability": 0.03,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        }
+      ],
+      "processor_type": "minecraft:rule"
     }
   ]
 }

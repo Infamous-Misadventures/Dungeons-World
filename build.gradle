@@ -119,6 +119,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
     maven {
         url "https://www.cursemaven.com"
     }
@@ -141,11 +142,17 @@ dependencies {
     //runtimeOnly fg.deobf("structure_toolkit:structure_toolkit:1.16.5-0.0.1")
     implementation fg.deobf("curse.maven:structure-toolkit-484907:3419956")
     runtimeOnly fg.deobf("curse.maven:structure-toolkit-484907:3419956")
-    implementation fg.deobf("curse.maven:dungeons-gear-401247:3377033")
-    runtimeOnly fg.deobf("curse.maven:dungeons-gear-401247:3377033")
     //runtimeOnly fg.deobf("curse.maven:terraforged-363820:3414123")
     runtimeOnly fg.deobf("curse.maven:natures-compass-252848:3382150")
     runtimeOnly fg.deobf("curse.maven:blame-406201:3440093")
+
+    // Dungeons Mods
+    runtimeOnly fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.45')
+    runtimeOnly fg.deobf("dungeons_mobs:dungeons_mobs:1.16.5-2.0.0")
+    runtimeOnly fg.deobf("dungeons_libraries:dungeons_libraries:1.16.5-0.0.1")
+    runtimeOnly fg.deobf("curse.maven:blame-406201:3440093")
+    implementation fg.deobf("curse.maven:dungeons-gear-401247:3377033")
+    runtimeOnly fg.deobf("curse.maven:dungeons-gear-401247:3377033")
 
     //Compat tests
 

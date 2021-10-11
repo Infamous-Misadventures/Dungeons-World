@@ -1,9 +1,12 @@
 package com.infamous.dungeons_world.structures;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.infamous.dungeons_world.DungeonsWorld;
+import com.infamous.dungeons_world.compat.DungeonsMobsCompat;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
@@ -25,8 +28,15 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraftforge.fml.ModList;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+
+import static net.minecraft.entity.CreatureAttribute.ILLAGER;
+import static net.minecraft.entity.EntityType.PILLAGER;
 
 public class IllagerCaravan extends Structure<NoFeatureConfig> {
     public IllagerCaravan(Codec<NoFeatureConfig> codec) {
@@ -77,13 +87,33 @@ public class IllagerCaravan extends Structure<NoFeatureConfig> {
      *         as it is easier to use that.
      */
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
+//            new MobSpawnInfo.Spawners(EntityType.ILLUSIONER, 1, 1, 1),
+//            new MobSpawnInfo.Spawners(EntityType.VINDICATOR, 50, 2, 3),
+//            new MobSpawnInfo.Spawners(EntityType.PILLAGER, 100, 2, 4),
+//            new MobSpawnInfo.Spawners(EntityType.EVOKER, 20, 1, 1)
     );
+
     @Override
     public List<MobSpawnInfo.Spawners> getDefaultSpawnList() {
-        return STRUCTURE_MONSTERS;
+        ArrayList<MobSpawnInfo.Spawners> spawners = new ArrayList<>(STRUCTURE_MONSTERS);
+        spawners.addAll(getDungeonsMobsSpawnList());
+        return spawners;
+    }
+
+    private Collection<? extends MobSpawnInfo.Spawners> getDungeonsMobsSpawnList() {
+        if(DungeonsMobsCompat.isLoaded()){
+            return ImmutableList.of(
+                new MobSpawnInfo.Spawners(DungeonsMobsCompat.getEnchanter().get(), 60, 1, 1)
+            );
+        }else{
+            return Collections.emptyList();
+        }
     }
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_CREATURES = ImmutableList.of(
+            new MobSpawnInfo.Spawners(EntityType.SHEEP, 100, 2, 4),
+            new MobSpawnInfo.Spawners(EntityType.COW, 100, 2, 4),
+            new MobSpawnInfo.Spawners(EntityType.PIG, 100, 2, 4)
     );
     @Override
     public List<MobSpawnInfo.Spawners> getDefaultCreatureSpawnList() {

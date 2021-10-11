@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "dungeons_world:block/dirty_polished_granite",
+    "bottom": "dungeons_world:block/dirty_polished_granite",
+    "top": "dungeons_world:block/dirty_polished_granite"
+  }
+}

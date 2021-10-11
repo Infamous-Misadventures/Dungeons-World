@@ -32,7 +32,7 @@ public interface Creepmoss extends Degradable<Creepmoss.CreepmossLevel> {
     };
     Supplier<BiMap<Block, Block>> CREEPMOSS_LEVEL_DECREASES = Suppliers.memoize(() -> CREEPMOSS_LEVEL_INCREASES.get().inverse());
 
-    static Optional<Block> getDecreasedOxidationBlock(Block block) {
+    static Optional<Block> getDecreasedCreepmossBlock(Block block) {
         return Optional.ofNullable(CREEPMOSS_LEVEL_DECREASES.get().get(block));
     }
 
@@ -47,11 +47,15 @@ public interface Creepmoss extends Degradable<Creepmoss.CreepmossLevel> {
     }
 
     static Optional<BlockState> getDecreasedCreepmossState(BlockState state) {
-        return getDecreasedOxidationBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
+        return getDecreasedCreepmossBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
     }
 
     static Optional<Block> getIncreasedCreepmossBlock(Block block) {
         return Optional.ofNullable(CREEPMOSS_LEVEL_INCREASES.get().get(block));
+    }
+
+    static Optional<BlockState> getIncreasedCreepmossState(BlockState state) {
+        return getIncreasedCreepmossBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
     }
 
     static BlockState getUnaffectedOxidationState(BlockState state) {

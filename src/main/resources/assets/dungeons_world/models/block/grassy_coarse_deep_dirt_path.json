@@ -1,0 +1,33 @@
+{   "parent": "block/block",
+    "textures": {
+        "particle": "dungeons_world:block/coarse_deep_dirt",
+        "bottom": "dungeons_world:block/coarse_deep_dirt",
+        "top": "dungeons_world:block/coarse_deep_dirt",
+        "side": "dungeons_world:block/coarse_deep_dirt",
+        "overlay_top": "dungeons_world:block/deep_grassy_dirt_overlay",
+        "overlay_side": "dungeons_world:block/deep_grassy_dirty_side_overlay"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 15, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+                "north": { "uv": [ 0, 1, 16, 16 ], "texture": "#side", "cullface": "north" },
+                "south": { "uv": [ 0, 1, 16, 16 ], "texture": "#side", "cullface": "south" },
+                "west":  { "uv": [ 0, 1, 16, 16 ], "texture": "#side", "cullface": "west" },
+                "east":  { "uv": [ 0, 1, 16, 16 ], "texture": "#side", "cullface": "east" }
+            }
+        },
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 15, 16 ],
+            "faces": {
+                "up": { "uv": [ 0, 0, 16, 16 ], "texture": "#overlay_top", "tintindex": 0, "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "north" },
+                "south": { "uv": [ 0, 1, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "south" },
+                "west":  { "uv": [ 0, 1, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "west" },
+                "east":  { "uv": [ 0, 1, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "east" }
+            }
+        }
+    ]
+}

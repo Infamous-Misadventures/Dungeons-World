@@ -3,6 +3,7 @@ package com.infamous.dungeons_world.datagen;
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
 import com.infamous.dungeons_world.blocks.GlowingMushroomBlock;
 import com.infamous.dungeons_world.blocks.ModBlocks;
+import com.infamous.dungeons_world.blocks.PathBlock;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
@@ -33,6 +34,7 @@ public class ModBlockLootTables extends BlockLootTables {
     protected void addTables() {
         ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::registerDroppingSelfBuildingBlockHelper);
         ModBlocks.SINGLE_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
+        ModBlocks.PATH_BLOCKS.forEach(pathBlock -> this.add(pathBlock.get(), block -> createSingleItemTableWithSilkTouch(block, ((PathBlock) block).getUnshoveled())));
         ModBlocks.ROTTEN_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
         this.add(COMMON_CHEST.get(), BlockLootTables::createSingleItemTable);
         this.add(FANCY_CHEST.get(), BlockLootTables::createSingleItemTable);
@@ -40,7 +42,11 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(LINES_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(GROOVED_POLISHED_GRANITE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(SMOOTH_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
+        this.add(CHISELED_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(SKELETON_CARVED_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
+        this.add(SKELETON_CARVED_GRANITE_COLUMN.get(), BlockLootTables::createSingleItemTable);
+        this.add(GRASSY_COARSE_DEEP_DIRT.get(), block -> createSingleItemTableWithSilkTouch(block, GRASSY_COARSE_DEEP_DIRT.get()));
+        this.add(GRASSY_COARSE_DEEP_DIRT_PATH.get(), block -> createSingleItemTableWithSilkTouch(block, GRASSY_COARSE_DEEP_DIRT.get()));
         this.add(DEEP_GRASSY_DIRT.get(), block -> createSingleItemTableWithSilkTouch(block, DEEP_DIRT.get()));
         this.add(DEEP_DIRTY_GRASS.get(), block -> createSingleItemTableWithSilkTouch(block, DEEP_DIRT.get()));
         this.add(DEEP_GRASS_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(block, DEEP_DIRT.get()));

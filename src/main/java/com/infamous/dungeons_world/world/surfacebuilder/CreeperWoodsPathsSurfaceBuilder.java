@@ -40,7 +40,7 @@ public class CreeperWoodsPathsSurfaceBuilder extends SurfaceBuilder<SurfaceBuild
         double sampleNoise = noiseGen.noise2(x * 0.015D, z * 0.015D);
         BlockState topBlock;
         if(sampleNoise < 0.09 && sampleNoise > (0.09 * -1)){
-            topBlock = DEEP_DIRT.get().defaultBlockState();
+            topBlock = DEEP_DIRT_PATH.get().defaultBlockState();
         } else if(sampleNoise < 0.13 && sampleNoise > (0.13 * -1)) {
             topBlock = DEEP_GRASSY_DIRT.get().defaultBlockState();
         } else if(sampleNoise < 0.22 && sampleNoise > (0.22 * -1)) {

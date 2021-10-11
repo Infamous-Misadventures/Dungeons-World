@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "side": "dungeons_world:block/grooved_polished_granite_column",
-    "end": "dungeons_world:block/grooved_polished_granite_column_top"
+    "end": "dungeons_world:block/polished_granite_column_top"
   }
 }

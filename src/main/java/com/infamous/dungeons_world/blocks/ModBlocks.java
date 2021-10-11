@@ -10,33 +10,31 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import static com.infamous.dungeons_world.blocks.BuildingBlockHelper.*;
 import static com.infamous.dungeons_world.items.ModItems.registerBlockItem;
 import static com.infamous.dungeons_world.tileentity.DungeonsChestType.*;
 import static net.minecraft.block.Blocks.*;
-import static net.minecraft.tags.BlockTags.PLANKS;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DungeonsWorld.MODID);
     public static final List<String> BLOCK_IDS = new ArrayList<>();
+    // Block Groupings
     public static final List<BuildingBlockHelper> BUILDING_BLOCK_HELPERS = new ArrayList();
     public static final List<RegistryObject<Block>> SINGLE_BLOCKS = new ArrayList();
+    public static final List<RegistryObject<Block>> PATH_BLOCKS = new ArrayList();
     public static final List<RegistryObject<Block>> ROTTEN_BLOCKS = new ArrayList();
     public static final Map<DungeonsChestType, RegistryObject<Block>> CHEST_TYPES = new HashMap<>();
 
@@ -69,24 +67,40 @@ public class ModBlocks {
     public static final BuildingBlockHelper LOW_CREEPMOSS_POLISHED_ANDESITE = registerCreepmossBuildingBlock("low_creepmoss_polished_andesite", () -> new CreepmossBlock(Creepmoss.CreepmossLevel.LOW, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Creepmoss.CreepmossLevel.LOW);
     public static final BuildingBlockHelper MEDIUM_CREEPMOSS_POLISHED_ANDESITE = registerCreepmossBuildingBlock("medium_creepmoss_polished_andesite", () -> new CreepmossBlock(Creepmoss.CreepmossLevel.MEDIUM, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Creepmoss.CreepmossLevel.MEDIUM);
     public static final RegistryObject<Block> DEEP_DIRT = registerSimpleBlock("deep_dirt", () -> new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> DEEP_DIRT_PATH = registerPathBlock("deep_dirt_path", () -> new PathBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL), DEEP_DIRT.get(), DEEP_DIRT.get().getRegistryName()));
+    public static final RegistryObject<Block> GRASSY_COARSE_DEEP_DIRT = registerBlock("grassy_coarse_deep_dirt", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> GRASSY_COARSE_DEEP_DIRT_PATH = registerBlock("grassy_coarse_deep_dirt_path", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> PEBBLED_DEEP_DIRT = registerSimpleBlock("pebbled_deep_dirt", () -> new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> PEBBLED_DEEP_DIRT_PATH = registerPathBlock("pebbled_deep_dirt_path", () -> new PathBlock(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL), PEBBLED_DEEP_DIRT.get(), DEEP_DIRT.get().getRegistryName()));
+    public static final RegistryObject<Block> COARSE_DEEP_DIRT = registerSimpleBlock("coarse_deep_dirt", () -> new Block(AbstractBlock.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> COARSE_DEEP_DIRT_PATH = registerPathBlock("coarse_deep_dirt_path", () -> new PathBlock(AbstractBlock.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL), COARSE_DEEP_DIRT.get(), DEEP_DIRT.get().getRegistryName()));
     public static final RegistryObject<Block> ROCKY_DEEP_DIRT = registerSimpleBlock("rocky_deep_dirt", () -> new Block(AbstractBlock.Properties.of(Material.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> COBBLED_DEEP_DIRT = registerSimpleBlock("cobbled_deep_dirt", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(0.6F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> DEEP_GRASSY_DIRT = registerBlock("deep_grassy_dirt", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> DEEP_DIRTY_GRASS = registerBlock("deep_dirty_grass", () -> new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> DEEP_GRASS_BLOCK = registerBlock("deep_grass_block", () -> new DeepGrassBlock(AbstractBlock.Properties.of(Material.GRASS).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> SKULL_SAND = registerSimpleBlock("skull_sand", () -> new Block(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL)));
 
     public static final RegistryObject<Block> LINES_STONE_COLUMN = registerBlock("lines_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> SMOOTH_STONE_COLUMN = registerBlock("smooth_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> CHISELED_STONE_COLUMN = registerBlock("chiseled_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> SKELETON_CARVED_STONE_COLUMN = registerBlock("skeleton_carved_stone_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     public static final RegistryObject<Block> GROOVED_POLISHED_GRANITE_COLUMN = registerBlock("grooved_polished_granite_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
+    public static final RegistryObject<Block> SKELETON_CARVED_GRANITE_COLUMN = registerBlock("skeleton_carved_granite_column", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
     public static final BuildingBlockHelper STONE_TILES = registerDirtyBuildingBlock("stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.UNAFFECTED, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.UNAFFECTED);
+    public static final RegistryObject<Block> DEEP_STONE_TILES_PATH = registerPathBlock("deep_stone_tiles_path", () -> new DirtyPathBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), STONE_TILES.getBlock().get(), DEEP_DIRT.get().getRegistryName(), Dirty.DirtLevel.UNAFFECTED));
     public static final BuildingBlockHelper DIRTY_STONE_TILES = registerDirtyBuildingBlock("dirty_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.MEDIUM, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.MEDIUM);
+    public static final RegistryObject<Block> DEEP_DIRTY_STONE_TILES_PATH = registerPathBlock("deep_dirty_stone_tiles_path", () -> new DirtyPathBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), DIRTY_STONE_TILES.getBlock().get(), DEEP_DIRT.get().getRegistryName(), Dirty.DirtLevel.MEDIUM));
     public static final BuildingBlockHelper HIGH_DIRTY_STONE_TILES = registerDirtyBuildingBlock("high_dirty_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.HIGH, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.HIGH);
+    public static final RegistryObject<Block> DEEP_HIGH_DIRTY_STONE_TILES_PATH = registerPathBlock("deep_high_dirty_stone_tiles_path", () -> new DirtyPathBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), HIGH_DIRTY_STONE_TILES.getBlock().get(), DEEP_DIRT.get().getRegistryName(), Dirty.DirtLevel.HIGH));
     public static final BuildingBlockHelper DETAILED_STONE_TILES = registerDirtyBuildingBlock("detailed_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.UNAFFECTED, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.UNAFFECTED);
+    public static final RegistryObject<Block> DEEP_DETAILED_STONE_TILES_PATH = registerPathBlock("deep_detailed_stone_tiles_path", () -> new DirtyPathBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), DETAILED_STONE_TILES.getBlock().get(), DEEP_DIRT.get().getRegistryName(), Dirty.DirtLevel.UNAFFECTED));
     public static final BuildingBlockHelper DIRTY_DETAILED_STONE_TILES = registerDirtyBuildingBlock("dirty_detailed_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.MEDIUM, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.MEDIUM);
+    public static final RegistryObject<Block> DEEP_DIRTY_DETAILED_STONE_TILES_PATH = registerPathBlock("deep_dirty_detailed_stone_tiles_path", () -> new DirtyPathBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), DIRTY_DETAILED_STONE_TILES.getBlock().get(), DEEP_DIRT.get().getRegistryName(), Dirty.DirtLevel.MEDIUM));
     public static final BuildingBlockHelper HIGH_DIRTY_DETAILED_STONE_TILES = registerDirtyBuildingBlock("high_dirty_detailed_stone_tiles", () -> new DirtyBlock(Dirty.DirtLevel.HIGH, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.HIGH);
+    public static final RegistryObject<Block> DEEP_HIGH_DIRTY_DETAILED_STONE_TILES_PATH = registerPathBlock("deep_high_dirty_detailed_stone_tiles_path", () -> new DirtyPathBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F), HIGH_DIRTY_DETAILED_STONE_TILES.getBlock().get(), DEEP_DIRT.get().getRegistryName(), Dirty.DirtLevel.HIGH));
+    public static final BuildingBlockHelper DIRTY_POLISHED_GRANITE = registerDirtyBuildingBlock("dirty_polished_granite", () -> new DirtyBlock(Dirty.DirtLevel.MEDIUM, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Dirty.DirtLevel.MEDIUM);
 
     public static final RegistryObject<Block> FULL_GLOWING_MUSHROOM = registerBlock("full_glowing_mushroom", () -> new GlowingMushroomBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE)
             .lightLevel(block -> GlowingMushroomBlock.isSqueezed(block) ? 4 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS) : 2 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS)).sound(SoundType.SLIME_BLOCK).noOcclusion()));
@@ -121,6 +135,12 @@ public class ModBlocks {
     private static RegistryObject<Block> registerSimpleBlock(String id, Supplier<Block> sup) {
         RegistryObject<Block> singleBlock = registerBlock(id, sup);
         SINGLE_BLOCKS.add(singleBlock);
+        return singleBlock;
+    }
+
+    private static RegistryObject<Block> registerPathBlock(String id, Supplier<Block> sup) {
+        RegistryObject<Block> singleBlock = registerBlock(id, sup);
+        PATH_BLOCKS.add(singleBlock);
         return singleBlock;
     }
 
@@ -175,6 +195,8 @@ public class ModBlocks {
         RenderTypeLookup.setRenderLayer(DEEP_GRASS_BLOCK.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(DEEP_GRASSY_DIRT.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(DEEP_DIRTY_GRASS.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(GRASSY_COARSE_DEEP_DIRT.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(GRASSY_COARSE_DEEP_DIRT_PATH.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(GLOWING_MUSHROOM.get(), RenderType.cutout());
     }
 

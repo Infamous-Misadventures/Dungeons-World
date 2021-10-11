@@ -1,0 +1,120 @@
+{
+  "processors": [
+    {
+      "processor_type": "dungeons_world:dungeons_chests",
+      "base_loot_table": "dungeons_world:chests/creeper_woods",
+      "chest_types": [
+        {
+          "chest_type": "common",
+          "weight": 11
+        },
+        {
+          "chest_type": "fancy",
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:deep_dirt_path",
+          "step_size": 0.1
+        },
+        {
+          "resource_location": "dungeons_world:deep_dirty_grass",
+          "step_size": 0.05
+        }
+      ],
+      "to_replace": "dungeons_world:deep_grassy_dirt"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "dungeons_world:deep_grassy_dirt",
+          "step_size": 0.1
+        }
+      ],
+      "to_replace": "dungeons_world:deep_dirty_grass"
+    },
+    {
+      "rules": [
+        {
+          "output_state": {
+            "Name": "dungeons_world:pebbled_deep_dirt"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_dirt_path",
+            "probability": 0.1,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "dungeons_world:pebbled_deep_dirt"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_grassy_dirt",
+            "probability": 0.1,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "dungeons_world:deep_dirt"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_dirt_path",
+            "probability": 0.03,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        }
+      ],
+      "processor_type": "minecraft:rule"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "minecraft:cobblestone",
+          "step_size": 0.05
+        },
+        {
+          "resource_location": "minecraft:cracked_stone_bricks",
+          "step_size": 0.15
+        }
+      ],
+      "to_replace": "minecraft:stone_bricks"
+    },
+    {
+      "processor_type": "structure_toolkit:gradient_replace",
+      "gradient_list": [
+        {
+          "resource_location": "minecraft:cobblestone_stairs",
+          "step_size": 0.05
+        }
+      ],
+      "to_replace": "minecraft:stone_brick_stairs"
+    },
+    {
+      "processor_type": "dungeons_world:creepmoss",
+      "rarity": 0.2,
+      "steps": 2
+    },
+    {
+      "processor_type": "dungeons_world:dirty",
+      "rarity": 0.3,
+      "steps": 2
+    }
+  ]
+}

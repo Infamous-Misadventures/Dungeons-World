@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "dungeons_world:dirty_polished_granite"
+  },
+  "result": "dungeons_world:dirty_polished_granite_slab",
+  "count": 2
+}

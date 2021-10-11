@@ -18,6 +18,7 @@
     "dungeons_world:high_dirty_stone_tiles_slab",
     "dungeons_world:detailed_stone_tiles_slab",
     "dungeons_world:dirty_detailed_stone_tiles_slab",
-    "dungeons_world:high_dirty_detailed_stone_tiles_slab"
+    "dungeons_world:high_dirty_detailed_stone_tiles_slab",
+    "dungeons_world:dirty_polished_granite_slab"
   ]
 }

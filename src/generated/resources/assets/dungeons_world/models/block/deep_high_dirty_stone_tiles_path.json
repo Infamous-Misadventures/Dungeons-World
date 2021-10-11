@@ -1,0 +1,7 @@
+{
+  "parent": "dungeons_world:block/abstract_path",
+  "textures": {
+    "top": "dungeons_world:block/high_dirty_stone_tiles",
+    "side": "dungeons_world:block/deep_dirt"
+  }
+}

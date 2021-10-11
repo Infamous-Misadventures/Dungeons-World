@@ -6,22 +6,16 @@ import com.google.common.collect.HashBiMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.Items;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import static com.infamous.dungeons_world.blocks.ModBlocks.*;
+import static net.minecraft.block.Blocks.POLISHED_GRANITE;
 import static net.minecraftforge.common.Tags.Blocks.DIRT;
 
 
@@ -32,11 +26,16 @@ public interface Dirty extends Degradable<Dirty.DirtLevel> {
         addBuildingBlockHelpersToBimap(biMap, ModBlocks.DIRTY_STONE_TILES, ModBlocks.HIGH_DIRTY_STONE_TILES);
         addBuildingBlockHelpersToBimap(biMap, ModBlocks.DETAILED_STONE_TILES, ModBlocks.DIRTY_DETAILED_STONE_TILES);
         addBuildingBlockHelpersToBimap(biMap, ModBlocks.DIRTY_DETAILED_STONE_TILES, ModBlocks.HIGH_DIRTY_DETAILED_STONE_TILES);
+        addBuildingBlockHelpersToBimap(biMap, POLISHED_GRANITE, Blocks.POLISHED_GRANITE_SLAB, Blocks.POLISHED_GRANITE_STAIRS, ModBlocks.DIRTY_POLISHED_GRANITE);
+        biMap.put(DEEP_STONE_TILES_PATH.get(), DEEP_DIRTY_STONE_TILES_PATH.get());
+        biMap.put(DEEP_DIRTY_STONE_TILES_PATH.get(), DEEP_HIGH_DIRTY_STONE_TILES_PATH.get());
+        biMap.put(DEEP_DETAILED_STONE_TILES_PATH.get(), DEEP_DIRTY_DETAILED_STONE_TILES_PATH.get());
+        biMap.put(DEEP_DIRTY_DETAILED_STONE_TILES_PATH.get(), DEEP_HIGH_DIRTY_DETAILED_STONE_TILES_PATH.get());
         return biMap;
     };
     Supplier<BiMap<Block, Block>> DIRTY_LEVEL_DECREASES = Suppliers.memoize(() -> DIRTY_LEVEL_INCREASES.get().inverse());
 
-    static Optional<Block> getDecreasedOxidationBlock(Block block) {
+    static Optional<Block> getDecreasedDirtyBlock(Block block) {
         return Optional.ofNullable(DIRTY_LEVEL_DECREASES.get().get(block));
     }
 
@@ -51,7 +50,11 @@ public interface Dirty extends Degradable<Dirty.DirtLevel> {
     }
 
     static Optional<BlockState> getDecreasedDirtyState(BlockState state) {
-        return getDecreasedOxidationBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
+        return getDecreasedDirtyBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
+    }
+
+    static Optional<BlockState> getIncreasedDirtyState(BlockState state) {
+        return getIncreasedDirtyBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
     }
 
     static Optional<Block> getIncreasedDirtyBlock(Block block) {

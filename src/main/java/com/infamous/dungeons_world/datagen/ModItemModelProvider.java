@@ -27,10 +27,13 @@ public class ModItemModelProvider extends ItemModelProvider {
     private void registerBlockItems() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockItems);
         SINGLE_BLOCKS.forEach(this::registerSingleBlockItems);
+        PATH_BLOCKS.forEach(this::registerSingleBlockItems);
         ROTTEN_BLOCKS.forEach(this::registerSingleBlockItems);
         blockItemModel(LINES_STONE_COLUMN.get());
         blockItemModel(GROOVED_POLISHED_GRANITE_COLUMN.get());
+        blockItemModel(SKELETON_CARVED_GRANITE_COLUMN.get());
         blockItemModel(SMOOTH_STONE_COLUMN.get());
+        blockItemModel(CHISELED_STONE_COLUMN.get());
         blockItemModel(SKELETON_CARVED_STONE_COLUMN.get());
         blockItemModel(GLOWING_MUSHROOM.get());
         blockItemModel(GRAVE.get());

@@ -1,6 +1,7 @@
 package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
+import com.infamous.dungeons_world.blocks.PathBlock;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.AttachFace;
@@ -26,11 +27,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         BUILDING_BLOCK_HELPERS.forEach(this::registerBuildingBlockHelper);
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
+        PATH_BLOCKS.forEach(this::registerPathBlock);
         ROTTEN_BLOCKS.forEach(this::registerRottenBlock);
         registerColumnBlock(LINES_STONE_COLUMN);
-        registerColumnBlock(GROOVED_POLISHED_GRANITE_COLUMN);
+        registerColumnBlock(GROOVED_POLISHED_GRANITE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/polished_granite_column_top"));
         registerColumnBlock(SMOOTH_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
+        registerColumnBlock(CHISELED_STONE_COLUMN);
         registerColumnBlock(SKELETON_CARVED_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
+        registerColumnBlock(SKELETON_CARVED_GRANITE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/polished_granite_column_top"));
         registerCrossBlock(GLOWING_MUSHROOM);
     }
 
@@ -45,6 +49,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void registerSingleBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlock(blockRegistryObject.get());
+    }
+
+    private void registerPathBlock(RegistryObject<Block> blockRegistryObject) {
+        PathBlock block = (PathBlock) blockRegistryObject.get();
+        ResourceLocation sideTexture = block.getSideBlock();
+        BlockModelBuilder models = models().singleTexture(block.getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/abstract_path"), "top", blockLoc(block.getUnshoveled().getRegistryName()))
+                .texture("side", blockLoc(sideTexture));
+        simpleBlock(block, models);
     }
 
     private void registerRottenBlock(RegistryObject<Block> blockRegistryObject) {
@@ -204,6 +216,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public ResourceLocation modBlockLoc(String name) {
         return modLoc(BLOCK_FOLDER + "/" + name);
+    }
+    public ResourceLocation blockLoc(ResourceLocation resourceLocation) {
+        return new ResourceLocation(resourceLocation.getNamespace(), BLOCK_FOLDER + "/" + resourceLocation.getPath());
     }
 
     private ResourceLocation extend(ResourceLocation rl, String suffix) {

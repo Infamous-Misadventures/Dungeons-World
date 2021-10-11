@@ -72,7 +72,8 @@
     "dungeons_world:configured_cw_ruined_tower",
     "dungeons_world:configured_cw_ancient_trunk",
     "dungeons_world:configured_cw_creeper_head",
-    "dungeons_world:configured_cw_enderman_head"
+    "dungeons_world:configured_cw_enderman_head",
+    "dungeons_world:configured_illager_caravan"
   ],
   "spawners": {
     "monster": [

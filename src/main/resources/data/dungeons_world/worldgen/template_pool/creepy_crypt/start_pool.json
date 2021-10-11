@@ -4,5 +4,14 @@
   "fallback": "minecraft:empty",
 
   "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:creepy_crypt/mainhall",
+        "processors": "dungeons_world:cw_ancient_trunk/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
   ]
 }

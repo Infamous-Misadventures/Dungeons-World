@@ -10,10 +10,14 @@ import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 
 public class ModProcessors {
     public static IStructureProcessorType<DungeonsChestProcessor> DUNGEONS_CHESTS;
+    public static IStructureProcessorType<CreepmossProcessor> CREEPMOSS;
+    public static IStructureProcessorType<DirtyProcessor> DIRTY;
 
 
     public static void init(){
         DUNGEONS_CHESTS = register("dungeons_chests", DungeonsChestProcessor.CODEC);
+        CREEPMOSS = register("creepmoss", CreepmossProcessor.CODEC);
+        DIRTY = register("dirty", DirtyProcessor.CODEC);
     }
 
     static <P extends StructureProcessor> IStructureProcessorType<P> register(String name, Codec<P> codec) {
