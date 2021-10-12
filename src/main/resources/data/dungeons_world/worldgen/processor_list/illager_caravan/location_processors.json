@@ -42,7 +42,7 @@
       "rules": [
         {
           "output_state": {
-            "Name": "dungeons_world:pebbled_deep_dirt"
+            "Name": "dungeons_world:grassy_coarse_deep_dirt_path"
           },
           "input_predicate": {
             "block": "dungeons_world:deep_dirt_path",
@@ -55,7 +55,46 @@
         },
         {
           "output_state": {
-            "Name": "dungeons_world:pebbled_deep_dirt"
+            "Name": "dungeons_world:grassy_coarse_deep_dirt_path"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_dirt",
+            "probability": 0.1,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "dungeons_world:deep_grassy_dirt"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_dirt",
+            "probability": 0.4,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "dungeons_world:deep_dirty_grass"
+          },
+          "input_predicate": {
+            "block": "dungeons_world:deep_grass_block",
+            "probability": 0.5,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "dungeons_world:grassy_coarse_deep_dirt_path"
           },
           "input_predicate": {
             "block": "dungeons_world:deep_grassy_dirt",

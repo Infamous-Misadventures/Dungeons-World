@@ -1,4 +1,5 @@
-{   "parent": "block/block",
+{
+    "parent": "block/block",
     "textures": {
         "particle": "dungeons_world:block/coarse_deep_dirt",
         "bottom": "dungeons_world:block/coarse_deep_dirt",
@@ -22,8 +23,8 @@
         {   "from": [ 0, 0, 0 ],
             "to": [ 16, 15, 16 ],
             "faces": {
-                "up": { "uv": [ 0, 0, 16, 16 ], "texture": "#overlay_top", "tintindex": 0, "cullface": "up" },
-                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "north" },
+                "up": { "uv": [ 0, 0, 16, 16 ], "texture": "#overlay_top", "tintindex": 0 },
+                "north": { "uv": [ 0, 1, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "north" },
                 "south": { "uv": [ 0, 1, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "south" },
                 "west":  { "uv": [ 0, 1, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "west" },
                 "east":  { "uv": [ 0, 1, 16, 16 ], "texture": "#overlay_side", "tintindex": 0, "cullface": "east" }

@@ -58,8 +58,8 @@ public class ModStructures {
     public static void setupStructures() {
         setupMapSpacingAndLand(
                 CW_RUINED_TOWER.get(), /* The instance of the structure */
-                new StructureSeparationSettings(10 /* average distance apart in chunks between spawn attempts */,
-                        5 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
+                new StructureSeparationSettings(12 /* average distance apart in chunks between spawn attempts */,
+                        6 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
                         37198423 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
         setupMapSpacingAndLand(
@@ -70,8 +70,8 @@ public class ModStructures {
                 true);
         setupMapSpacingAndLand(
                 CW_CREEPER_HEAD.get(), /* The instance of the structure */
-                new StructureSeparationSettings(10 /* average distance apart in chunks between spawn attempts */,
-                        5 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
+                new StructureSeparationSettings(11 /* average distance apart in chunks between spawn attempts */,
+                        6 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
                         9371452 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
         setupMapSpacingAndLand(
@@ -82,7 +82,7 @@ public class ModStructures {
                 true);
         setupMapSpacingAndLand(
                 ILLAGER_CARAVAN.get(), /* The instance of the structure */
-                new StructureSeparationSettings(30 /* average distance apart in chunks between spawn attempts */,
+                new StructureSeparationSettings(25 /* average distance apart in chunks between spawn attempts */,
                         15 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
                         5341413 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
