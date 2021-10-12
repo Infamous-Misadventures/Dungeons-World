@@ -25,7 +25,7 @@ public class StructureEvents {
         }
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void OnBreakEvent(BlockEvent.BreakEvent event){
         IWorld level = event.getWorld();
         if(!level.isClientSide() && level instanceof ServerWorld) {
@@ -34,5 +34,5 @@ public class StructureEvents {
                 event.setCanceled(true);
             }
         }
-    }
+    }*/
 }
