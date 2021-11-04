@@ -5,6 +5,15 @@
 
   "elements": [
     {
+      "weight": 200,
+      "element": {
+        "location": "dungeons_world:illager_caravan/locations/structure_test",
+        "processors": "dungeons_world:illager_caravan/location_processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
       "weight": 3,
       "element": {
         "location": "dungeons_world:illager_caravan/locations/campfire_and_barrels",

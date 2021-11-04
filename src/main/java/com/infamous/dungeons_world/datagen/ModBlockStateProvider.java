@@ -29,7 +29,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
         PATH_BLOCKS.forEach(this::registerPathBlock);
         ROTTEN_BLOCKS.forEach(this::registerRottenBlock);
-        registerColumnBlock(LINES_STONE_COLUMN);
+        registerColumnBlock(PILLAR_STONE_COLUMN);
+        registerColumnBlock(LINES_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
+        registerColumnBlock(SPIDER_EGG);
         registerColumnBlock(GROOVED_POLISHED_GRANITE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/polished_granite_column_top"));
         registerColumnBlock(SMOOTH_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
         registerColumnBlock(CHISELED_STONE_COLUMN);

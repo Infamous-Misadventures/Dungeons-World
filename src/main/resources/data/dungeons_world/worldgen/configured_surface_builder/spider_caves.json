@@ -1,0 +1,17 @@
+{
+  "type": "dungeons_world:spider_caves",
+  "config": {
+    "top_material": {
+      "Name": "dungeons_world:cobbled_deep_dirt",
+      "Properties": {
+        "snowy": "false"
+      }
+    },
+    "under_material": {
+      "Name": "dungeons_world:cobbled_deep_dirt"
+    },
+    "underwater_material": {
+      "Name": "dungeons_world:cobbled_deep_dirt"
+    }
+  }
+}

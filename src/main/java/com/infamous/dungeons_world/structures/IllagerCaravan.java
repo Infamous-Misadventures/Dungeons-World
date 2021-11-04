@@ -88,8 +88,8 @@ public class IllagerCaravan extends Structure<NoFeatureConfig> {
      */
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
             new MobSpawnInfo.Spawners(EntityType.ILLUSIONER, 1, 1, 1),
-            new MobSpawnInfo.Spawners(EntityType.VINDICATOR, 50, 2, 3),
-            new MobSpawnInfo.Spawners(EntityType.PILLAGER, 100, 3, 4),
+            new MobSpawnInfo.Spawners(EntityType.VINDICATOR, 50, 1, 2),
+            new MobSpawnInfo.Spawners(EntityType.PILLAGER, 100, 2, 3),
             new MobSpawnInfo.Spawners(EntityType.EVOKER, 20, 1, 1)
     );
 

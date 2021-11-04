@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "dungeons_world:block/pillar_stone_column",
+    "end": "dungeons_world:block/pillar_stone_column_top"
+  }
+}

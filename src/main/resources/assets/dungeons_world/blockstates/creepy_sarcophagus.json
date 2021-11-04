@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dungeons_world:block/creepy_sarcophagus"
+    },
+    "facing=east":
+    {
+      "model": "dungeons_world:block/creepy_sarcophagus",
+      "y": 90
+    },
+    "facing=south":
+    {
+      "model": "dungeons_world:block/creepy_sarcophagus",
+      "y": 180
+    },
+    "facing=west":
+    {
+      "model": "dungeons_world:block/creepy_sarcophagus",
+      "y": 270
+    }
+  }
+}

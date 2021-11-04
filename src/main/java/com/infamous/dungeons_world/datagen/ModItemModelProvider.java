@@ -30,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         PATH_BLOCKS.forEach(this::registerSingleBlockItems);
         ROTTEN_BLOCKS.forEach(this::registerSingleBlockItems);
         blockItemModel(LINES_STONE_COLUMN.get());
+        blockItemModel(PILLAR_STONE_COLUMN.get());
         blockItemModel(GROOVED_POLISHED_GRANITE_COLUMN.get());
         blockItemModel(SKELETON_CARVED_GRANITE_COLUMN.get());
         blockItemModel(SMOOTH_STONE_COLUMN.get());
@@ -38,6 +39,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItemModel(GLOWING_MUSHROOM.get());
         blockItemModel(GRAVE.get());
         blockItemModel(MOSSY_GRAVE.get());
+        blockItemModel(CREEPY_SARCOPHAGUS.get());
+        blockItemModel(SPIDER_EGG.get());
     }
 
     private void registerSingleBlockItems(RegistryObject<Block> blockRegistryObject) {

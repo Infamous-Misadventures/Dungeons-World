@@ -1,9 +1,6 @@
 package com.infamous.dungeons_world.datagen;
 
-import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
-import com.infamous.dungeons_world.blocks.GlowingMushroomBlock;
-import com.infamous.dungeons_world.blocks.ModBlocks;
-import com.infamous.dungeons_world.blocks.PathBlock;
+import com.infamous.dungeons_world.blocks.*;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
@@ -32,7 +29,7 @@ public class ModBlockLootTables extends BlockLootTables {
     private static final ILootCondition.IBuilder NO_SILK_TOUCH = SILK_TOUCH.invert();
     @Override
     protected void addTables() {
-        ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::registerDroppingSelfBuildingBlockHelper);
+        ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::buildBlockLootTables);
         ModBlocks.SINGLE_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
         ModBlocks.PATH_BLOCKS.forEach(pathBlock -> this.add(pathBlock.get(), block -> createSingleItemTableWithSilkTouch(block, ((PathBlock) block).getUnshoveled())));
         ModBlocks.ROTTEN_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
@@ -40,6 +37,7 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(FANCY_CHEST.get(), BlockLootTables::createSingleItemTable);
         this.add(OBSIDIAN_CHEST.get(), BlockLootTables::createSingleItemTable);
         this.add(LINES_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
+        this.add(PILLAR_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(GROOVED_POLISHED_GRANITE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(SMOOTH_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
         this.add(CHISELED_STONE_COLUMN.get(), BlockLootTables::createSingleItemTable);
@@ -55,12 +53,31 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(GRAVE.get(), BlockLootTables::createSingleItemTable);
         this.add(MOSSY_GRAVE.get(), BlockLootTables::createSingleItemTable);
         this.add(COMMON_URN.get(), BlockLootTables::createSingleItemTable);
+        this.add(CREEPY_SARCOPHAGUS.get(), BlockLootTables::createSingleItemTable);
+        this.add(SPIDER_EGG.get(), BlockLootTables::createSingleItemTable);
 
+    }
+
+    private void buildBlockLootTables(BuildingBlockHelper buildingBlockHelper) {
+        if(buildingBlockHelper.getBlock().get() instanceof Creepmoss) {
+            registerCreepmossBuildingBlockLootTable(buildingBlockHelper);
+        }else {
+            registerDroppingSelfBuildingBlockHelper(buildingBlockHelper);
+        }
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return BLOCKS.getEntries().stream().map(RegistryObject::get).collect(Collectors.toList());
+    }
+
+    protected void registerCreepmossBuildingBlockLootTable(BuildingBlockHelper blockHelper) {
+        this.add(blockHelper.getBlock().get(), BlockLootTables::createSingleItemTable);
+        this.add(blockHelper.getSlab().get(), createSlabItemTable(blockHelper.getSlab().get()));
+        this.add(blockHelper.getStairs().get(), createSingleItemTable(blockHelper.getStairs().get()));
+        this.add(blockHelper.getButton().get(), createSingleItemTable(blockHelper.getButton().get()));
+        this.add(blockHelper.getPressurePlate().get(), createSingleItemTable(blockHelper.getPressurePlate().get()));
+        this.add(blockHelper.getWall().get(), createSingleItemTable(blockHelper.getWall().get()));
     }
 
     protected void registerBuildingBlockLootTable(BuildingBlockHelper blockHelper, Function<Block, LootTable.Builder> baseFactory) {
