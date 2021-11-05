@@ -6,6 +6,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "dungeons_world:creepy_sarcophagus",
+              "properties": {
+                "part": "part_0"
+              }
+            }
+          ],
           "name": "dungeons_world:creepy_sarcophagus"
         }
       ],

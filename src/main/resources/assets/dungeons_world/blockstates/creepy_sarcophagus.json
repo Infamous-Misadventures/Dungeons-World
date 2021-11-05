@@ -1,22 +1,116 @@
 {
-  "variants": {
-    "facing=north": {
-      "model": "dungeons_world:block/creepy_sarcophagus"
-    },
-    "facing=east":
-    {
-      "model": "dungeons_world:block/creepy_sarcophagus",
-      "y": 90
-    },
-    "facing=south":
-    {
-      "model": "dungeons_world:block/creepy_sarcophagus",
-      "y": 180
-    },
-    "facing=west":
-    {
-      "model": "dungeons_world:block/creepy_sarcophagus",
-      "y": 270
-    }
-  }
+	"variants": {
+		"facing=east,part=part_0": {
+			"y": 0,
+			"model": "dungeons_world:block/creepy_sarcophagus_0"
+		},
+		"facing=south,part=part_0": {
+			"y": 90,
+			"model": "dungeons_world:block/creepy_sarcophagus_0"
+		},
+		"facing=west,part=part_0": {
+			"y": 180,
+			"model": "dungeons_world:block/creepy_sarcophagus_0"
+		},
+		"facing=north,part=part_0": {
+			"y": 270,
+			"model": "dungeons_world:block/creepy_sarcophagus_0"
+		},
+		"facing=east,part=part_1": {
+			"y": 0,
+			"model": "dungeons_world:block/creepy_sarcophagus_1"
+		},
+		"facing=south,part=part_1": {
+			"y": 90,
+			"model": "dungeons_world:block/creepy_sarcophagus_1"
+		},
+		"facing=west,part=part_1": {
+			"y": 180,
+			"model": "dungeons_world:block/creepy_sarcophagus_1"
+		},
+		"facing=north,part=part_1": {
+			"y": 270,
+			"model": "dungeons_world:block/creepy_sarcophagus_1"
+		},
+		"facing=east,part=part_2": {
+			"y": 0,
+			"model": "dungeons_world:block/creepy_sarcophagus_2"
+		},
+		"facing=south,part=part_2": {
+			"y": 90,
+			"model": "dungeons_world:block/creepy_sarcophagus_2"
+		},
+		"facing=west,part=part_2": {
+			"y": 180,
+			"model": "dungeons_world:block/creepy_sarcophagus_2"
+		},
+		"facing=north,part=part_2": {
+			"y": 270,
+			"model": "dungeons_world:block/creepy_sarcophagus_2"
+		},
+		"facing=east,part=part_3": {
+			"y": 0,
+			"model": "dungeons_world:block/creepy_sarcophagus_3"
+		},
+		"facing=south,part=part_3": {
+			"y": 90,
+			"model": "dungeons_world:block/creepy_sarcophagus_3"
+		},
+		"facing=west,part=part_3": {
+			"y": 180,
+			"model": "dungeons_world:block/creepy_sarcophagus_3"
+		},
+		"facing=north,part=part_3": {
+			"y": 270,
+			"model": "dungeons_world:block/creepy_sarcophagus_3"
+		},
+		"facing=east,part=part_4": {
+			"y": 0,
+			"model": "dungeons_world:block/creepy_sarcophagus_4"
+		},
+		"facing=south,part=part_4": {
+			"y": 90,
+			"model": "dungeons_world:block/creepy_sarcophagus_4"
+		},
+		"facing=west,part=part_4": {
+			"y": 180,
+			"model": "dungeons_world:block/creepy_sarcophagus_4"
+		},
+		"facing=north,part=part_4": {
+			"y": 270,
+			"model": "dungeons_world:block/creepy_sarcophagus_4"
+		},
+		"facing=east,part=part_5": {
+			"y": 0,
+			"model": "dungeons_world:block/creepy_sarcophagus_5"
+		},
+		"facing=south,part=part_5": {
+			"y": 90,
+			"model": "dungeons_world:block/creepy_sarcophagus_5"
+		},
+		"facing=west,part=part_5": {
+			"y": 180,
+			"model": "dungeons_world:block/creepy_sarcophagus_5"
+		},
+		"facing=north,part=part_5": {
+			"y": 270,
+			"model": "dungeons_world:block/creepy_sarcophagus_5"
+		},
+		"facing=east,part=complete": {
+			"y": 0,
+			"model": "dungeons_world:block/creepy_sarcophagus"
+		},
+		"facing=south,part=complete": {
+			"y": 90,
+			"model": "dungeons_world:block/creepy_sarcophagus"
+		},
+		"facing=west,part=complete": {
+			"y": 180,
+			"model": "dungeons_world:block/creepy_sarcophagus"
+		},
+		"facing=north,part=complete": {
+			"y": 270,
+			"model": "dungeons_world:block/creepy_sarcophagus"
+		}
+	}
 }

@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
@@ -111,7 +112,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MOSSY_GRAVE = registerBlock("mossy_grave", () -> new CreeperGraveBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
 
     // Creepy Crypt Deco
-    public static final RegistryObject<Block> CREEPY_SARCOPHAGUS = registerBlock("creepy_sarcophagus", () -> new CreepySarcophagusBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
+    public static final RegistryObject<Block> CREEPY_SARCOPHAGUS = registerBlock("creepy_sarcophagus", () -> new CreepySarcophagusBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion(), new BlockPos(2, 1, 3)));
 
     // Spider Caves
     public static final RegistryObject<Block> SPIDER_EGG = registerBlock("spider_egg", () -> new RotatedPillarBlock(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));

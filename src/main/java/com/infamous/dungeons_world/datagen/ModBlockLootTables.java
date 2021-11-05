@@ -1,6 +1,7 @@
 package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.blocks.*;
+import com.infamous.dungeons_world.state.BlockPart;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
@@ -16,6 +17,7 @@ import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.conditions.MatchTool;
 import net.minecraft.loot.functions.SetCount;
+import net.minecraft.util.IItemProvider;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Function;
@@ -53,7 +55,7 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(GRAVE.get(), BlockLootTables::createSingleItemTable);
         this.add(MOSSY_GRAVE.get(), BlockLootTables::createSingleItemTable);
         this.add(COMMON_URN.get(), BlockLootTables::createSingleItemTable);
-        this.add(CREEPY_SARCOPHAGUS.get(), BlockLootTables::createSingleItemTable);
+        this.add(CREEPY_SARCOPHAGUS.get(), ModBlockLootTables.createMultiPartSingleItemTable(CREEPY_SARCOPHAGUS.get()));
         this.add(SPIDER_EGG.get(), BlockLootTables::createSingleItemTable);
 
     }
@@ -91,5 +93,9 @@ public class ModBlockLootTables extends BlockLootTables {
 
     protected void registerDroppingSelfBuildingBlockHelper(BuildingBlockHelper buildingBlockHelper){
         this.registerBuildingBlockLootTable(buildingBlockHelper, BlockLootTables::createSingleItemTable);
+    }
+
+    protected static LootTable.Builder createMultiPartSingleItemTable(Block block) {
+        return BlockLootTables.createSinglePropConditionTable(block, MultiPartBlock.PARTS, BlockPart.PART_0);
     }
 }
