@@ -9,13 +9,13 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "dungeons_world:creepy_sarcophagus",
+              "block": "dungeons_world:chandelier",
               "properties": {
-                "part": "part_112"
+                "part": "part_111"
               }
             }
           ],
-          "name": "dungeons_world:creepy_sarcophagus"
+          "name": "dungeons_world:chandelier"
         }
       ],
       "conditions": [

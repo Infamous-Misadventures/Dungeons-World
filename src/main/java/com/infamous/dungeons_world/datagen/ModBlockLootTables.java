@@ -56,6 +56,7 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(MOSSY_GRAVE.get(), BlockLootTables::createSingleItemTable);
         this.add(COMMON_URN.get(), BlockLootTables::createSingleItemTable);
         this.add(CREEPY_SARCOPHAGUS.get(), ModBlockLootTables.createMultiPartSingleItemTable(CREEPY_SARCOPHAGUS.get()));
+        this.add(CHANDELIER.get(), ModBlockLootTables.createMultiPartSingleItemTable(CHANDELIER.get()));
         this.add(SPIDER_EGG.get(), BlockLootTables::createSingleItemTable);
 
     }
@@ -96,6 +97,11 @@ public class ModBlockLootTables extends BlockLootTables {
     }
 
     protected static LootTable.Builder createMultiPartSingleItemTable(Block block) {
-        return BlockLootTables.createSinglePropConditionTable(block, MultiPartBlock.PARTS, BlockPart.PART_0);
+        if(block instanceof MultiPartBlock) {
+            MultiPartBlock multiPartBlock = (MultiPartBlock) block;
+            return BlockLootTables.createSinglePropConditionTable(block, multiPartBlock.getBlockPartProperty(), multiPartBlock.getPlacementBlockPart());
+        }else{
+            throw new RuntimeException("Creating MultiPartLootTable on a non MultiPart block");
+        }
     }
 }

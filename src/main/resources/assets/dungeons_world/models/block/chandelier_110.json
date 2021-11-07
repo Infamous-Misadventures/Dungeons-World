@@ -1,0 +1,110 @@
+{
+	"blockPos": [1, 1, 0],
+	"credit": "Made with Blockbench",
+	"texture_size": [120, 120],
+	"textures": {
+		"0": "dungeons_world:block/chandelier"
+	},
+	"elements": [
+		{
+			"name": "bottom_attachment",
+			"from": [7, 13, 12],
+			"to": [9, 15, 16],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [0.0003, 29.06452, 2.75]},
+			"faces": {
+				"north": {"uv": [12.26667, 3.86667, 12, 4.13333], "texture": "#0"},
+				"east": {"uv": [11.73333, 3.86667, 12.26667, 4.13333], "texture": "#0"},
+				"south": {"uv": [15.73333, 3.86667, 15.46667, 4.13333], "texture": "#0"},
+				"west": {"uv": [12, 3.86667, 12.53333, 4.13333], "texture": "#0"},
+				"up": {"uv": [12, 0.66667, 12.26667, 0.93333], "texture": "#0"},
+				"down": {"uv": [12.26667, 0.66667, 12.53333, 0.93333], "texture": "#0"}
+			}
+		},
+		{
+			"name": "bottom_north",
+			"from": [0, 12, 8],
+			"to": [16, 16, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0.0003, 29.06452, 2.75]},
+			"faces": {
+				"north": {"uv": [11.73333, 5.6, 13.86667, 6.13333], "texture": "#0"},
+				"east": {"uv": [6.4, 5.6, 6.93333, 6.13333], "texture": "#0"},
+				"south": {"uv": [8, 5.6, 10.13333, 6.13333], "texture": "#0"},
+				"west": {"uv": [11.2, 5.6, 11.73333, 6.13333], "texture": "#0"},
+				"up": {"uv": [11.2, 5.06667, 13.33333, 7.2], "texture": "#0"},
+				"down": {"uv": [15.46667, 5.6, 17.6, 7.73333], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 1.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_righthand": {
+			"rotation": [-4.5, 5.5, 4.5],
+			"translation": [0, 1, -0.25],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-4.5, 5.5, 4.5],
+			"translation": [0, 1, -0.25],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"gui": {
+			"rotation": [25, -35, 0],
+			"translation": [0, -1.5, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"head": {
+			"translation": [0, 9.25, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"fixed": {
+			"rotation": [-5.5, -45, -2.5],
+			"translation": [0, -1.5, -1.25],
+			"scale": [0.4, 0.4, 0.4]
+		}
+	},
+	"groups": [
+		{
+			"name": "chandelier",
+			"origin": [0, 39, 0],
+			"color": 0,
+			"shade": false,
+			"children": [
+				{
+					"name": "chandelier_body",
+					"origin": [0, 0, 0],
+					"color": 0,
+					"shade": false,
+					"children": [
+						0,
+						0,
+						0,
+						{
+							"name": "chandelier_top",
+							"origin": [0, 0, 0],
+							"color": 0,
+							"shade": false,
+							"children": [0, 0, 0, 0, 0, 0]
+						},
+						{
+							"name": "chandelier_bottom",
+							"origin": [0, 17, 0],
+							"color": 0,
+							"shade": false,
+							"children": [0, 0, 1, 2, 2, 2]
+						}
+					]
+				}
+			]
+		}
+	]
+}

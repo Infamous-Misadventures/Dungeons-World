@@ -40,6 +40,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItemModel(GRAVE.get());
         blockItemModel(MOSSY_GRAVE.get());
         blockItemModel(CREEPY_SARCOPHAGUS.get());
+        blockItemModel(CHANDELIER.get());
         blockItemModel(SPIDER_EGG.get());
     }
 

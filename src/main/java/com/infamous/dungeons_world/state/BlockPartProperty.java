@@ -3,6 +3,7 @@ package com.infamous.dungeons_world.state;
 import com.google.common.collect.Lists;
 import net.minecraft.state.EnumProperty;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.function.Predicate;
@@ -22,6 +23,8 @@ public class BlockPartProperty extends EnumProperty<BlockPart> {
     }
 
     public static BlockPartProperty create(String propertyName, Collection<BlockPart> blockParts) {
-        return new BlockPartProperty(propertyName, blockParts);
+        ArrayList<BlockPart> blockParts1 = Lists.newArrayList(blockParts);
+        blockParts1.add(BlockPart.COMPLETE);
+        return new BlockPartProperty(propertyName, blockParts1);
     }
 }

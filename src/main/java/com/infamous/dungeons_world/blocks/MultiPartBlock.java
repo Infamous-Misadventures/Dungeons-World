@@ -6,109 +6,133 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Rotation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
-public class MultiPartBlock extends Block {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final BlockPartProperty PARTS = BlockPartProperty.create("part", (BlockPart blockPart) -> blockPart.getPartNumber() < 6);
-    protected final BlockPos size;
+import java.util.Collection;
 
-    public MultiPartBlock(Properties properties, BlockPos size) {
+public abstract class MultiPartBlock extends Block {
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
+    protected MultiPartBlock(Properties properties) {
         super(properties);
-        this.size = size;
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(PARTS, BlockPart.COMPLETE));
-//        this.PARTS = BlockPartProperty.create("part", (BlockPart blockPart) -> blockPart.getPartNumber() < size.getX()*size.getY()*size.getZZ();
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext blockItemUseContext) {
         if (allBlocksPlaceAble(blockItemUseContext)) {
-            return this.defaultBlockState().setValue(FACING, blockItemUseContext.getHorizontalDirection()).setValue(PARTS, BlockPart.PART_0);
+            return this.defaultBlockState().setValue(FACING, blockItemUseContext.getHorizontalDirection()).setValue(getBlockPartProperty(), getPlacementBlockPart());
         } else {
             return null;
         }
     }
 
     private boolean allBlocksPlaceAble(BlockItemUseContext blockItemUseContext) {
-        BlockPos blockPos = blockItemUseContext.getClickedPos();
+        BlockPos placementBlockPos = blockItemUseContext.getClickedPos();
         World level = blockItemUseContext.getLevel();
-        AxisAlignedBB rotatedDimensions = getRotatedDimensions(blockItemUseContext.getHorizontalDirection());
-        return blockPos.getY()+size.getY() < 256 && level.getBlockStates(rotatedDimensions.move(blockPos)).allMatch(blockState -> blockState.canBeReplaced(blockItemUseContext));
+        boolean result = true;
+        Rotation rotation = getRotation(blockItemUseContext.getHorizontalDirection());
+        BlockPos center = getPlacementBlockPart().getBlockPos();
+        for (BlockPart blockPart : this.getBlockParts()) {
+            BlockPos.Mutable newBlockPos = centerBlockPart(placementBlockPos, rotation, center, blockPart);
+            result = result && newBlockPos.getY() < 256 && level.getBlockState(newBlockPos).canBeReplaced(blockItemUseContext);
+        }
+        return result;
     }
 
 
-    public void setPlacedBy(World level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
-        int counter = 0;
+    public void setPlacedBy(World level, BlockPos placementBlockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
         Rotation rotation = getRotation(blockState.getValue(FACING));
-
-        for (int x = 0; x < size.getX(); x++) {
-            for (int y = 0; y < size.getY(); y++) {
-                for (int z = 0; z < size.getZ(); z++) {
-                    BlockPos.Mutable newBlockPos = new BlockPos(x, y, z).rotate(rotation).mutable().move(blockPos);
-                    level.setBlock(newBlockPos, blockState.setValue(PARTS, BlockPart.getByPartNumber(counter)), 3);
-                    counter++;
-                }
-            }
-        }
+        BlockPos center = getPlacementBlockPart().getBlockPos();
+        this.getBlockParts().forEach(blockPart -> {
+            BlockPos.Mutable newBlockPos = centerBlockPart(placementBlockPos, rotation, center, blockPart);
+            level.setBlock(newBlockPos, blockState.setValue(getBlockPartProperty(), blockPart), 3);
+        });
     }
 
     public boolean canSurvive(BlockState blockState1, IWorldReader level, BlockPos blockPos) {
-            return blockPos.getY() + size.getY() < 256;
-//            return blockPos.getY() + dimensions.maxY + 1 < 256 && level.getBlockStates(dimensions.move(blockPos)).allMatch(blockState -> blockState.is(this));
+        boolean result = true;
+        for (BlockPart blockPart : this.getBlockParts()) {
+            result = result && blockPos.getY() + blockPart.getBlockPos().getY() - getPlacementBlockPart().getBlockPos().getY() < 256;
+        }
+        return result;
     }
 
     public BlockState updateShape(BlockState stateToUpdate, Direction direction, BlockState originState, IWorld level, BlockPos toUpdateBlockPos, BlockPos originBlockPos) {
-        if(sameMultiBlock(stateToUpdate, toUpdateBlockPos, originBlockPos) && !originState.is(this)){
+        if (sameMultiBlock(stateToUpdate, toUpdateBlockPos, originBlockPos) && !originState.is(this)) {
             return Blocks.AIR.defaultBlockState();
-        }else{
+        } else {
             return stateToUpdate;
         }
     }
 
-    protected boolean sameMultiBlock(BlockState blockState1, BlockPos blockPos1, BlockPos blockPos2){
-        AxisAlignedBB rotatedDimensions = getRotatedDimensions(blockState1.getValue(FACING));
-        BlockPos origin1 = getOriginBlockPos(blockState1, blockPos1);
-        AxisAlignedBB multiBlockPositions = rotatedDimensions.move(origin1);
-        return multiBlockPositions.contains(blockPos2.getX(), blockPos2.getY(), blockPos2.getZ());
+    protected boolean sameMultiBlock(BlockState blockState1, BlockPos blockPos1, BlockPos blockPos2) {
+        Rotation rotation = getRotation(blockState1.getValue(FACING));
+        BlockPos center = getPlacementBlockPart().getBlockPos();
+        BlockPos.Mutable centerBlockPos = centerBlockPos(center, rotation, blockState1, blockPos1);
+        for (BlockPart blockPart : this.getBlockParts()) {
+            BlockPos.Mutable newBlockPos = centerBlockPart(centerBlockPos, rotation, center, blockPart);
+            if (newBlockPos.equals(blockPos2)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    protected BlockPos getOriginBlockPos(BlockState blockState, BlockPos blockPos) {
-        BlockPart blockPart = blockState.getValue(PARTS);
-        int partNumber = blockPart.getPartNumber();
-        int x = size.getX();
-        int y = size.getY();
-        int z = size.getZ();
-        return new BlockPos(-(partNumber / (z * y)) % x, -(partNumber / z) % y, -partNumber % z).rotate(getRotation(blockState.getValue(FACING))).mutable().move(blockPos);
+    private BlockPos.Mutable centerBlockPos(BlockPos center, Rotation rotation, BlockState blockState1, BlockPos blockPos1) {
+        BlockPos.Mutable centeredBlockPartPos = centerBlockPart(center, rotation, center, blockState1.getValue(this.getBlockPartProperty())).move(-center.getX(), -center.getY(), -center.getZ());
+        return blockPos1.mutable().move(-centeredBlockPartPos.getX(), -centeredBlockPartPos.getY(), -centeredBlockPartPos.getZ());
     }
 
-    private AxisAlignedBB getRotatedDimensions(Direction facing) {
-        BlockPos rotatedSize = size.rotate(getRotation(facing));
-        BlockPos.Mutable sizeMutable = rotatedSize.mutable();
-        BlockPos.Mutable zeroMutable = BlockPos.ZERO.mutable();
-        return new AxisAlignedBB(zeroMutable.move(rotatedSize.getX() < 0 ? 1 : 0, rotatedSize.getY() < 0 ? 1 : 0, rotatedSize.getZ() < 0 ? 1 : 0), sizeMutable.move(rotatedSize.getX() < 0 ? 1 : 0, rotatedSize.getY() < 0 ? 1 : 0, rotatedSize.getZ() < 0 ? 1 : 0));
+    private BlockPos.Mutable centerBlockPart(BlockPos centerBlockPos, Rotation rotation, BlockPos centerBlockPartPos, BlockPart blockPart) {
+        return blockPart.getBlockPos().mutable().move(new BlockPos(-centerBlockPartPos.getX(), -centerBlockPartPos.getY(), -centerBlockPartPos.getZ())).rotate(rotation).mutable().move(centerBlockPos);
     }
 
     private Rotation getRotation(Direction facing) {
-        switch(facing) {
-            case NORTH://counter clockwise
+        switch (facing) {
+            case WEST://counter clockwise
                 return Rotation.COUNTERCLOCKWISE_90;
-            case SOUTH://clockwise
+            case EAST://clockwise
                 return Rotation.CLOCKWISE_90;
-            case WEST://opposite
+            case SOUTH://opposite
                 return Rotation.CLOCKWISE_180;
             default:
                 return Rotation.NONE;
         }
     }
+
+    public void playerWillDestroy(World level, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
+        if (!level.isClientSide && playerEntity.isCreative()) {
+            BlockPart blockPart = blockState.getValue(getBlockPartProperty());
+            if (blockPart != getPlacementBlockPart()) {
+                Rotation rotation = getRotation(blockState.getValue(FACING));
+                BlockPos center = getPlacementBlockPart().getBlockPos();
+                BlockPos centerBlockPos = centerBlockPos(center, rotation, blockState, blockPos);
+                BlockState centerBlockState = level.getBlockState(centerBlockPos);
+                if (centerBlockState.getBlock() == blockState.getBlock() && centerBlockState.getValue(getBlockPartProperty()) == getPlacementBlockPart()) {
+                    level.setBlock(centerBlockPos, Blocks.AIR.defaultBlockState(), 35);
+                    level.levelEvent(playerEntity, 2001, centerBlockPos, Block.getId(centerBlockState));
+                }
+            }
+
+        }
+
+        super.playerWillDestroy(level, blockPos, blockState, playerEntity);
+    }
+
+    abstract public Collection<BlockPart> getBlockParts();
+
+    abstract public BlockPartProperty getBlockPartProperty();
+
+    abstract public BlockPart getPlacementBlockPart();
 
 }

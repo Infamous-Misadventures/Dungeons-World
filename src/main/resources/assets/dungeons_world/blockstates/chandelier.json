@@ -1,0 +1,180 @@
+{
+	"variants": {
+		"facing=north,part=part_121": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_121"
+		},
+		"facing=east,part=part_121": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_121"
+		},
+		"facing=south,part=part_121": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_121"
+		},
+		"facing=west,part=part_121": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_121"
+		},
+		"facing=north,part=part_111": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_111"
+		},
+		"facing=east,part=part_111": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_111"
+		},
+		"facing=south,part=part_111": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_111"
+		},
+		"facing=west,part=part_111": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_111"
+		},
+		"facing=north,part=part_011": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_011"
+		},
+		"facing=east,part=part_011": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_011"
+		},
+		"facing=south,part=part_011": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_011"
+		},
+		"facing=west,part=part_011": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_011"
+		},
+		"facing=north,part=part_211": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_211"
+		},
+		"facing=east,part=part_211": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_211"
+		},
+		"facing=south,part=part_211": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_211"
+		},
+		"facing=west,part=part_211": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_211"
+		},
+		"facing=north,part=part_110": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_110"
+		},
+		"facing=east,part=part_110": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_110"
+		},
+		"facing=south,part=part_110": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_110"
+		},
+		"facing=west,part=part_110": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_110"
+		},
+		"facing=north,part=part_112": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_112"
+		},
+		"facing=east,part=part_112": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_112"
+		},
+		"facing=south,part=part_112": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_112"
+		},
+		"facing=west,part=part_112": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_112"
+		},
+		"facing=north,part=part_010": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_010"
+		},
+		"facing=east,part=part_010": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_010"
+		},
+		"facing=south,part=part_010": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_010"
+		},
+		"facing=west,part=part_010": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_010"
+		},
+		"facing=north,part=part_210": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_210"
+		},
+		"facing=east,part=part_210": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_210"
+		},
+		"facing=south,part=part_210": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_210"
+		},
+		"facing=west,part=part_210": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_210"
+		},
+		"facing=north,part=part_012": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_012"
+		},
+		"facing=east,part=part_012": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_012"
+		},
+		"facing=south,part=part_012": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_012"
+		},
+		"facing=west,part=part_012": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_012"
+		},
+		"facing=north,part=part_212": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier_212"
+		},
+		"facing=east,part=part_212": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier_212"
+		},
+		"facing=south,part=part_212": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier_212"
+		},
+		"facing=west,part=part_212": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier_212"
+		},
+		"facing=north,part=complete": {
+			"y": 0,
+			"model": "dungeons_world:block/chandelier"
+		},
+		"facing=east,part=complete": {
+			"y": 90,
+			"model": "dungeons_world:block/chandelier"
+		},
+		"facing=south,part=complete": {
+			"y": 180,
+			"model": "dungeons_world:block/chandelier"
+		},
+		"facing=west,part=complete": {
+			"y": 270,
+			"model": "dungeons_world:block/chandelier"
+		}
+	}
+}
