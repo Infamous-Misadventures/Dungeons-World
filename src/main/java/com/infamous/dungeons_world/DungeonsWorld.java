@@ -3,6 +3,7 @@ package com.infamous.dungeons_world;
 import com.infamous.dungeons_world.biomes.ModBiomes;
 import com.infamous.dungeons_world.blocks.ModBlocks;
 import com.infamous.dungeons_world.client.renderer.tileentity.DungeonsChestTileEntityRenderer;
+import com.infamous.dungeons_world.entity.ModEntityTypes;
 import com.infamous.dungeons_world.items.ModItems;
 import com.infamous.dungeons_world.particles.ModParticleTypes;
 import com.infamous.dungeons_world.structures.ModConfiguredStructures;
@@ -56,6 +57,7 @@ public class DungeonsWorld {
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModEntityTypes.ENTITY_TYPES.register(modEventBus);
         ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBlockstateProviders.BLOCK_STATE_PROVIDERS.register(modEventBus);

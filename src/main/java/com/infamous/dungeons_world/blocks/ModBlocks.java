@@ -209,6 +209,7 @@ public class ModBlocks {
         RenderTypeLookup.setRenderLayer(GRASSY_COARSE_DEEP_DIRT.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(GRASSY_COARSE_DEEP_DIRT_PATH.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(GLOWING_MUSHROOM.get(), RenderType.cutout());
+        //RenderTypeLookup.setRenderLayer(CHANDELIER.get(), RenderType.translucent());
     }
 
     private static boolean always(BlockState p_235426_0_, IBlockReader p_235426_1_, BlockPos p_235426_2_) {

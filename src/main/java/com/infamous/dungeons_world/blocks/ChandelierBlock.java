@@ -72,8 +72,8 @@ public class ChandelierBlock extends MultiPartBlock {
         shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0.375, 0, 0.375, 0.625, 0.875, 0.625), IBooleanFunction.OR);
         shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0.125, 0.375, 0.4375, 0.875, 0.5, 0.5625), IBooleanFunction.OR);
         shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0.4375, 0.375, 0.125, 0.5625, 0.5, 0.875), IBooleanFunction.OR);
-        shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0, 0.375, 0, 1, 0.5, 0.125), IBooleanFunction.OR);
-        shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0, 0.375, 0.875, 1, 0.5, 1), IBooleanFunction.OR);
+        shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0.125, 0.375, 0, 0.875, 0.5, 0.125), IBooleanFunction.OR);
+        shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0.125, 0.375, 0.875, 0.875, 0.5, 1), IBooleanFunction.OR);
         shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0.875, 0.375, 0, 1, 0.5, 1), IBooleanFunction.OR);
         shape121 = VoxelShapes.join(shape121, VoxelShapes.box(0, 0.375, 0, 0.125, 0.5, 1), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions121 = new HashMap<>();
@@ -94,8 +94,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions111.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape111));
         shapes.put("111", directions111);
         VoxelShape shape011 = VoxelShapes.empty();
-        shape011 = VoxelShapes.join(shape011, VoxelShapes.box(0.75, 0.8125, 0.4375, 1, 0.9375, 0.5625), IBooleanFunction.OR);
-        shape011 = VoxelShapes.join(shape011, VoxelShapes.box(0.5000000000000002, 0.75, 0, 0.7500000000000002, 1, 1), IBooleanFunction.OR);
+        shape011 = VoxelShapes.join(shape011, VoxelShapes.box(0.625, 0.8125, 0.4375, 1, 0.9375, 0.5625), IBooleanFunction.OR);
+        shape011 = VoxelShapes.join(shape011, VoxelShapes.box(0.375, 0.75, 0, 0.625, 1, 1), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions011 = new HashMap<>();
         directions011.put(NORTH, shape011);
         directions011.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape011));
@@ -103,8 +103,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions011.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape011));
         shapes.put("011", directions011);
         VoxelShape shape211 = VoxelShapes.empty();
-        shape211 = VoxelShapes.join(shape211, VoxelShapes.box(0, 0.8125, 0.4375, 0.25, 0.9375, 0.5625), IBooleanFunction.OR);
-        shape211 = VoxelShapes.join(shape211, VoxelShapes.box(0.2500000000000002, 0.75, 0, 0.5000000000000002, 1, 1), IBooleanFunction.OR);
+        shape211 = VoxelShapes.join(shape211, VoxelShapes.box(0, 0.8125, 0.4375, 0.375, 0.9375, 0.5625), IBooleanFunction.OR);
+        shape211 = VoxelShapes.join(shape211, VoxelShapes.box(0.375, 0.75, 0, 0.625, 1, 1), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions211 = new HashMap<>();
         directions211.put(NORTH, shape211);
         directions211.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape211));
@@ -112,8 +112,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions211.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape211));
         shapes.put("211", directions211);
         VoxelShape shape110 = VoxelShapes.empty();
-        shape110 = VoxelShapes.join(shape110, VoxelShapes.box(0.4375, 0.8125, 0.75, 0.5625, 0.9375, 1), IBooleanFunction.OR);
-        shape110 = VoxelShapes.join(shape110, VoxelShapes.box(0, 0.75, 0.5, 1, 1, 0.75), IBooleanFunction.OR);
+        shape110 = VoxelShapes.join(shape110, VoxelShapes.box(0.4375, 0.8125, 0.625, 0.5625, 0.9375, 1), IBooleanFunction.OR);
+        shape110 = VoxelShapes.join(shape110, VoxelShapes.box(0, 0.75, 0.375, 1, 1, 0.625), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions110 = new HashMap<>();
         directions110.put(NORTH, shape110);
         directions110.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape110));
@@ -121,8 +121,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions110.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape110));
         shapes.put("110", directions110);
         VoxelShape shape112 = VoxelShapes.empty();
-        shape112 = VoxelShapes.join(shape112, VoxelShapes.box(0.4375, 0.8125, 0, 0.5625, 0.9375, 0.25), IBooleanFunction.OR);
-        shape112 = VoxelShapes.join(shape112, VoxelShapes.box(0, 0.75, 0.2500000000000002, 1, 1, 0.5000000000000002), IBooleanFunction.OR);
+        shape112 = VoxelShapes.join(shape112, VoxelShapes.box(0.4375, 0.8125, 0, 0.5625, 0.9375, 0.375), IBooleanFunction.OR);
+        shape112 = VoxelShapes.join(shape112, VoxelShapes.box(0, 0.75, 0.375, 1, 1, 0.625), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions112 = new HashMap<>();
         directions112.put(NORTH, shape112);
         directions112.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape112));
@@ -130,8 +130,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions112.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape112));
         shapes.put("112", directions112);
         VoxelShape shape010 = VoxelShapes.empty();
-        shape010 = VoxelShapes.join(shape010, VoxelShapes.box(0.5, 0.75, 0.5, 1, 1, 0.75), IBooleanFunction.OR);
-        shape010 = VoxelShapes.join(shape010, VoxelShapes.box(0.5000000000000002, 0.75, 0.5, 0.7500000000000002, 1, 1), IBooleanFunction.OR);
+        shape010 = VoxelShapes.join(shape010, VoxelShapes.box(0.625, 0.75, 0.375, 1, 1, 0.625), IBooleanFunction.OR);
+        shape010 = VoxelShapes.join(shape010, VoxelShapes.box(0.375, 0.75, 0.375, 0.625, 1, 1), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions010 = new HashMap<>();
         directions010.put(NORTH, shape010);
         directions010.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape010));
@@ -139,8 +139,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions010.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape010));
         shapes.put("010", directions010);
         VoxelShape shape210 = VoxelShapes.empty();
-        shape210 = VoxelShapes.join(shape210, VoxelShapes.box(0, 0.75, 0.5, 0.5, 1, 0.75), IBooleanFunction.OR);
-        shape210 = VoxelShapes.join(shape210, VoxelShapes.box(0.2500000000000002, 0.75, 0.5, 0.5000000000000002, 1, 1), IBooleanFunction.OR);
+        shape210 = VoxelShapes.join(shape210, VoxelShapes.box(0, 0.75, 0.375, 0.375, 1, 0.625), IBooleanFunction.OR);
+        shape210 = VoxelShapes.join(shape210, VoxelShapes.box(0.375, 0.75, 0.375, 0.625, 1, 1), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions210 = new HashMap<>();
         directions210.put(NORTH, shape210);
         directions210.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape210));
@@ -148,8 +148,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions210.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape210));
         shapes.put("210", directions210);
         VoxelShape shape012 = VoxelShapes.empty();
-        shape012 = VoxelShapes.join(shape012, VoxelShapes.box(0.5000000000000004, 0.75, 0.2500000000000002, 1, 1, 0.5000000000000002), IBooleanFunction.OR);
-        shape012 = VoxelShapes.join(shape012, VoxelShapes.box(0.5000000000000002, 0.75, 0, 0.7500000000000002, 1, 0.5), IBooleanFunction.OR);
+        shape012 = VoxelShapes.join(shape012, VoxelShapes.box(0.625, 0.75, 0.375, 1, 1, 0.625), IBooleanFunction.OR);
+        shape012 = VoxelShapes.join(shape012, VoxelShapes.box(0.375, 0.75, 0, 0.625, 1, 0.625), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions012 = new HashMap<>();
         directions012.put(NORTH, shape012);
         directions012.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape012));
@@ -157,8 +157,8 @@ public class ChandelierBlock extends MultiPartBlock {
         directions012.put(SOUTH, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.SOUTH, shape012));
         shapes.put("012", directions012);
         VoxelShape shape212 = VoxelShapes.empty();
-        shape212 = VoxelShapes.join(shape212, VoxelShapes.box(0, 0.75, 0.2500000000000002, 0.5000000000000002, 1, 0.5000000000000002), IBooleanFunction.OR);
-        shape212 = VoxelShapes.join(shape212, VoxelShapes.box(0.2500000000000002, 0.75, 0, 0.5000000000000002, 1, 0.5), IBooleanFunction.OR);
+        shape212 = VoxelShapes.join(shape212, VoxelShapes.box(0, 0.75, 0.375, 0.375, 1, 0.625), IBooleanFunction.OR);
+        shape212 = VoxelShapes.join(shape212, VoxelShapes.box(0.375, 0.75, 0, 0.625, 1, 0.625), IBooleanFunction.OR);
         Map<Direction, VoxelShape> directions212 = new HashMap<>();
         directions212.put(NORTH, shape212);
         directions212.put(EAST, VoxelShapeUtil.rotateShape(Direction.NORTH, Direction.EAST, shape212));

@@ -156,10 +156,11 @@ dependencies {
 //    runtimeOnly fg.deobf("curse.maven:dungeons-gear-401247:3377033")
 
     //compat
+//    implementation fg.deobf("curse.maven:cavesandcliffs-417430:3518155")
     implementation fg.deobf("curse.maven:cavebiomeapi-441706:3489595")
 
     //Compat tests
-    implementation fg.deobf("curse.maven:enderlinginvaders-514791:3433192")
+//    implementation fg.deobf("curse.maven:enderlinginvaders-514791:3433192")
 //    implementation fg.deobf("curse.maven:dungeons_content-423533:3506109")
 
     // For more info...
