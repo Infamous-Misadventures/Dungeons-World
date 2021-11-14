@@ -38,11 +38,11 @@ public class ShieldItemFrameEntity extends HangingEntity {
     private float dropChance = 1.0F;
     private boolean fixed;
 
-    protected ShieldItemFrameEntity(EntityType<? extends HangingEntity> p_i48561_1_, World p_i48561_2_) {
+    public ShieldItemFrameEntity(EntityType<? extends HangingEntity> p_i48561_1_, World p_i48561_2_) {
         super(p_i48561_1_, p_i48561_2_);
     }
 
-    protected ShieldItemFrameEntity(EntityType<? extends HangingEntity> p_i48562_1_, World p_i48562_2_, BlockPos p_i48562_3_) {
+    public ShieldItemFrameEntity(EntityType<? extends HangingEntity> p_i48562_1_, World p_i48562_2_, BlockPos p_i48562_3_) {
         super(p_i48562_1_, p_i48562_2_, p_i48562_3_);
     }
 
