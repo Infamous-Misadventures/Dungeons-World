@@ -82,13 +82,12 @@ public class DungeonsChestProcessor extends StructureProcessor {
                 lockableLootTileEntity.setLevelAndPosition(serverWorld, blockInfo.pos);
                 CompoundNBT nbt = blockInfo.nbt;
                 if(!blockInfo.state.getValue(TYPE).equals(ChestType.LEFT)) {
-                    nbt.putString("LootTable", this.baseLootTable.toString() + "/" + chestType.name().toLowerCase());
-                    nbt.putLong("LootTableSeed", serverWorld.random.nextLong());
+                    ((LockableLootTileEntity) tileEntity).setLootTable(new ResourceLocation(this.baseLootTable.getNamespace(), this.baseLootTable.getPath() + "/" + chestType.name().toLowerCase()), serverWorld.random.nextLong());
                 }
                 return new Template.BlockInfo(
                         blockInfo.pos,
                         blockState,
-                        nbt);
+                        tileEntity.save(nbt));
             } else {
                 Block newBlock = BLOCKS.getValue(replacer);
                 if (newBlock == null) {

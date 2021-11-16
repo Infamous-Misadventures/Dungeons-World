@@ -10,6 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -18,9 +19,15 @@ import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ChestAtlas {
-    public static final Map<DungeonsChestType, RenderMaterial> CHEST_MATERIALS = Arrays.stream(DungeonsChestType.values()).collect(Collectors.toMap(Function.identity(), chestType -> chestTexture(chestType, "")));
-    public static final Map<DungeonsChestType, RenderMaterial> CHEST_LEFT_MATERIALS = Arrays.stream(DungeonsChestType.values()).collect(Collectors.toMap(Function.identity(),  chestType -> chestTexture(chestType, "_left")));
-    public static final Map<DungeonsChestType, RenderMaterial> CHEST_RIGHT_MATERIALS = Arrays.stream(DungeonsChestType.values()).collect(Collectors.toMap(Function.identity(),  chestType -> chestTexture(chestType, "_right")));
+    public static final Map<DungeonsChestType, RenderMaterial> CHEST_MATERIALS = new HashMap<>();
+    public static final Map<DungeonsChestType, RenderMaterial> CHEST_LEFT_MATERIALS = new HashMap<>();
+    public static final Map<DungeonsChestType, RenderMaterial> CHEST_RIGHT_MATERIALS = new HashMap<>();
+
+    private static void prepareMaterials(){
+        CHEST_MATERIALS.putAll(Arrays.stream(DungeonsChestType.values()).collect(Collectors.toMap(Function.identity(), chestType -> chestTexture(chestType, ""))));
+        CHEST_LEFT_MATERIALS.putAll(Arrays.stream(DungeonsChestType.values()).collect(Collectors.toMap(Function.identity(),  chestType -> chestTexture(chestType, "_left"))));
+        CHEST_RIGHT_MATERIALS.putAll(Arrays.stream(DungeonsChestType.values()).collect(Collectors.toMap(Function.identity(),  chestType -> chestTexture(chestType, "_right"))));
+    }
 
     public static RenderMaterial chestTexture(DungeonsChestType chestType, String suffix) {
         ResourceLocation location = new ResourceLocation(MODID, chestType.name().toLowerCase());
@@ -30,6 +37,7 @@ public class ChestAtlas {
     @SubscribeEvent
     public static void onTextureStitchedPre(TextureStitchEvent.Pre event) {
         if (event.getMap().location().equals(Atlases.CHEST_SHEET)) {
+            prepareMaterials();
             CHEST_MATERIALS.values().forEach(m -> event.addSprite(m.texture()));
             CHEST_LEFT_MATERIALS.values().forEach(m -> event.addSprite(m.texture()));
             CHEST_RIGHT_MATERIALS.values().forEach(m -> event.addSprite(m.texture()));
