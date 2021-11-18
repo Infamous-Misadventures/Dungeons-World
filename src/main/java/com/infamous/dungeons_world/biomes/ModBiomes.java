@@ -28,14 +28,14 @@ public class ModBiomes {
 
     public static final List<String> BIOME_NAMES = new ArrayList<>();
 
-    public static final RegistryObject<Biome> SPIDER_CAVES;
+//    public static final RegistryObject<Biome> SPIDER_CAVES;
 
     // Dummy biomes to reserve the numeric ID safely for the json biomes to overwrite.
     // No static variable to hold as these dummy biomes should NOT be held and referenced elsewhere.
     static {
         RegistryObject<Biome> creeper_woods = createBiome("creeper_woods", BiomeMaker::theVoidBiome);
         RegistryObject<Biome> soggy_swamp = createBiome("soggy_swamp", BiomeMaker::theVoidBiome);
-        SPIDER_CAVES = createBiome("spider_caves", BiomeMaker::theVoidBiome);
+//        SPIDER_CAVES = createBiome("spider_caves", BiomeMaker::theVoidBiome);
     }
 
     public static RegistryObject<Biome> createBiome(String name, Supplier<Biome> biomeSupplier) {
@@ -46,7 +46,7 @@ public class ModBiomes {
     public static void initBiomes() {
         addBiomeTypesCreeperWoods("creeper_woods");
         addBiomeTypesSoggySwamp("soggy_swamp");
-        addBiomeTypesSpiderCave("spider_caves");
+//        addBiomeTypesSpiderCave("spider_caves");
     }
 
     public static void addBiomeTypesSpiderCave(String biomeName) {

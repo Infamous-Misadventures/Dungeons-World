@@ -16,12 +16,14 @@ public class DungeonsMobsCompat {
     public static final String DUNGEONS_MOBS_MOD_ID = "dungeons_mobs";
     private static boolean IS_LOADED = false;
     private static Supplier<EntityType<?>> ENCHANTER = () -> EntityType.ZOMBIE;
+    private static Supplier<EntityType<?>> NECROMANCER = () -> EntityType.ZOMBIE;
 
     @SubscribeEvent
     public static void onInterMod(InterModProcessEvent event){
         if(ModList.get().isLoaded(DUNGEONS_MOBS_MOD_ID)){
             IS_LOADED = true;
             ENCHANTER = () -> getRegisteredEntity("enchanter");
+            NECROMANCER = () -> getRegisteredEntity("necromancer");
         }
     }
 
@@ -35,6 +37,10 @@ public class DungeonsMobsCompat {
 
     public static Supplier<EntityType<?>> getEnchanter() {
         return ENCHANTER;
+    }
+
+    public static Supplier<EntityType<?>> getNecromancer() {
+        return NECROMANCER;
     }
 
     private static ResourceLocation getDungeonsMobsResource(String resourceId) {

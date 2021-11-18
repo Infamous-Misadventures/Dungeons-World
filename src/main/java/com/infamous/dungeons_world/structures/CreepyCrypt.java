@@ -2,8 +2,11 @@ package com.infamous.dungeons_world.structures;
 
 import com.google.common.collect.ImmutableList;
 import com.infamous.dungeons_world.DungeonsWorld;
+import com.infamous.dungeons_world.compat.DungeonsMobsCompat;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
@@ -26,6 +29,9 @@ import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class CreepyCrypt extends Structure<NoFeatureConfig> {
@@ -77,10 +83,27 @@ public class CreepyCrypt extends Structure<NoFeatureConfig> {
      *         as it is easier to use that.
      */
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
+            new MobSpawnInfo.Spawners(EntityType.ZOMBIE, 80, 4, 4),
+            new MobSpawnInfo.Spawners(EntityType.SKELETON, 80, 4, 4),
+            new MobSpawnInfo.Spawners(EntityType.CREEPER, 120, 4, 4),
+            new MobSpawnInfo.Spawners(EntityType.SPIDER, 80, 3, 4)
     );
+
     @Override
     public List<MobSpawnInfo.Spawners> getDefaultSpawnList() {
-        return STRUCTURE_MONSTERS;
+        ArrayList<MobSpawnInfo.Spawners> spawners = new ArrayList<>(STRUCTURE_MONSTERS);
+        spawners.addAll(getDungeonsMobsSpawnList());
+        return spawners;
+    }
+
+    private Collection<? extends MobSpawnInfo.Spawners> getDungeonsMobsSpawnList() {
+        if(DungeonsMobsCompat.isLoaded()){
+            return ImmutableList.of(
+                    new MobSpawnInfo.Spawners(DungeonsMobsCompat.getNecromancer().get(), 20, 1, 2)
+            );
+        }else{
+            return Collections.emptyList();
+        }
     }
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_CREATURES = ImmutableList.of(
@@ -159,7 +182,9 @@ public class CreepyCrypt extends Structure<NoFeatureConfig> {
              * structure will spawn at terrain height instead. Set that parameter to false to
              * force the structure to spawn at blockpos's Y value instead. You got options here!
              */
-            BlockPos blockpos = new BlockPos(x, 0, z);
+            int heightY = Math.min(65, chunkGenerator.getBaseHeight(x, z, Heightmap.Type.WORLD_SURFACE_WG));
+            int randY = random.nextInt(heightY - 20) + 10;
+            BlockPos blockpos = new BlockPos(x, randY, z);
 
             /*
              * If you are doing Nether structures, you'll probably want to spawn your structure on top of ledges.
@@ -196,7 +221,7 @@ public class CreepyCrypt extends Structure<NoFeatureConfig> {
                     this.random,
                     false, // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
                     // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
-                    true);  // Place at heightmap (top land). Set this to false for structure to be place at the passed in blockpos's Y value instead.
+                    false);  // Place at heightmap (top land). Set this to false for structure to be place at the passed in blockpos's Y value instead.
             // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
 
 

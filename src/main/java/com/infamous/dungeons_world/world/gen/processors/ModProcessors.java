@@ -12,12 +12,14 @@ public class ModProcessors {
     public static IStructureProcessorType<DungeonsChestProcessor> DUNGEONS_CHESTS;
     public static IStructureProcessorType<CreepmossProcessor> CREEPMOSS;
     public static IStructureProcessorType<DirtyProcessor> DIRTY;
+    public static IStructureProcessorType<CandlesProcessor> CANDLES;
 
 
     public static void init(){
         DUNGEONS_CHESTS = register("dungeons_chests", DungeonsChestProcessor.CODEC);
         CREEPMOSS = register("creepmoss", CreepmossProcessor.CODEC);
         DIRTY = register("dirty", DirtyProcessor.CODEC);
+        CANDLES = register("candles", CandlesProcessor.CODEC);
     }
 
     static <P extends StructureProcessor> IStructureProcessorType<P> register(String name, Codec<P> codec) {

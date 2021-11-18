@@ -7,7 +7,7 @@
       "block_search_extent": 8,
       "offset": 2.0
     },
-    "sky_color": 7972607,
+    "sky_color": 605772,
     "fog_color": 12638463,
     "water_color": 4159204,
     "water_fog_color": 329011,
@@ -71,7 +71,8 @@
     "dungeons_world:configured_cw_ancient_trunk",
     "dungeons_world:configured_cw_creeper_head",
     "dungeons_world:configured_cw_enderman_head",
-    "dungeons_world:configured_illager_caravan"
+    "dungeons_world:configured_illager_caravan",
+    "dungeons_world:configured_creepy_crypt"
   ],
   "spawners": {
     "monster": [

@@ -1,0 +1,53 @@
+{
+  "name": "dungeons_world:creepy_crypt/terminators",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:creepy_crypt/terminator1",
+        "processors": "dungeons_world:creepy_crypt/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:creepy_crypt/terminator2",
+        "processors": "dungeons_world:creepy_crypt/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:creepy_crypt/terminator3",
+        "processors": "dungeons_world:creepy_crypt/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:creepy_crypt/terminator4",
+        "processors": "dungeons_world:creepy_crypt/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:creepy_crypt/terminator5",
+        "processors": "dungeons_world:creepy_crypt/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
