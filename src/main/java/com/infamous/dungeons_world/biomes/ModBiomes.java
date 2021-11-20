@@ -28,7 +28,7 @@ public class ModBiomes {
 
     public static final List<String> BIOME_NAMES = new ArrayList<>();
 
-//    public static final RegistryObject<Biome> SPIDER_CAVES;
+    public static final RegistryObject<Biome> SPIDER_CAVES = null;
 
     // Dummy biomes to reserve the numeric ID safely for the json biomes to overwrite.
     // No static variable to hold as these dummy biomes should NOT be held and referenced elsewhere.

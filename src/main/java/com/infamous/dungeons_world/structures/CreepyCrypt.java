@@ -58,7 +58,7 @@ public class CreepyCrypt extends Structure<NoFeatureConfig> {
      */
     @Override
     public GenerationStage.Decoration step() {
-        return GenerationStage.Decoration.SURFACE_STRUCTURES;
+        return GenerationStage.Decoration.UNDERGROUND_STRUCTURES;
     }
 
 
