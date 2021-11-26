@@ -15,28 +15,6 @@
       "processor_type": "structure_toolkit:gradient_replace",
       "gradient_list": [
         {
-          "resource_location": "minecraft:cracked_stone_brick_stairs",
-          "step_size": 0.15
-        }
-      ],
-      "seed_adjustment": 37845136251,
-      "to_replace": "minecraft:stone_brick_stairs"
-    },
-    {
-      "processor_type": "structure_toolkit:gradient_replace",
-      "gradient_list": [
-        {
-          "resource_location": "minecraft:cracked_stone_brick_slab",
-          "step_size": 0.15
-        }
-      ],
-      "seed_adjustment": 37845136251,
-      "to_replace": "minecraft:stone_brick_slab"
-    },
-    {
-      "processor_type": "structure_toolkit:gradient_replace",
-      "gradient_list": [
-        {
           "resource_location": "dungeons_world:medium_creepmoss_stone_bricks",
           "step_size": 0.06
         },
@@ -186,6 +164,11 @@
           "weight": 50
         }
       ]
+    },
+    {
+      "processor_type": "dungeons_world:dirty",
+      "rarity": 0.8,
+      "steps": 2
     }
   ]
 }

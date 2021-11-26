@@ -1,5 +1,6 @@
 package com.infamous.dungeons_world.world.gen.processors;
 
+import com.infamous.dungeons_world.blocks.Dirty;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.patrigan.structure_toolkit.util.RandomType;
@@ -41,19 +42,28 @@ public class DirtyProcessor extends StructureProcessor {
 
     @Override
     public Template.BlockInfo process(IWorldReader world, BlockPos piecePos, BlockPos structurePos, Template.BlockInfo rawBlockInfo, Template.BlockInfo blockInfo, PlacementSettings settings, Template template) {
-        if(getIncreasedDirtyState(blockInfo.state).isPresent()){
-            BlockState blockState = getIncreasedDirtyState(blockInfo.state).get();
-            Random random;
-            random = ProcessorUtil.getRandom(randomType, blockInfo.pos, piecePos, structurePos, world, SEED);
-            if (random.nextFloat() < rarity) {
-                return new Template.BlockInfo(
-                        blockInfo.pos,
-                        blockState,
-                        null
-                );
+        Random random;
+        random = ProcessorUtil.getRandom(randomType, blockInfo.pos, piecePos, structurePos, world, SEED);
+        BlockState blockState = blockInfo.state;
+        if (random.nextFloat() < rarity) {
+            blockState = getIncreasedBlockState(blockState);
+            if(steps > 1) {
+                for (int i = 2; i <= steps; i++) {
+                    if(random.nextFloat() < Dirty.INCREASE_CHANCE) {
+                        blockState = getIncreasedBlockState(blockState);
+                    }
+                }
             }
         }
-        return blockInfo;
+        return new Template.BlockInfo(
+                blockInfo.pos,
+                blockState,
+                blockInfo.nbt
+        );
+    }
+
+    private BlockState getIncreasedBlockState(BlockState blockState) {
+        return getIncreasedDirtyState(blockState).orElse(blockState);
     }
 
     @Override

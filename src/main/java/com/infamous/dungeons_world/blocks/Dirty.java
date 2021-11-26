@@ -20,6 +20,7 @@ import static net.minecraftforge.common.Tags.Blocks.DIRT;
 
 
 public interface Dirty extends Degradable<Dirty.DirtLevel> {
+    float INCREASE_CHANCE = 0.25f;
     Supplier<BiMap<Block, Block>> DIRTY_LEVEL_INCREASES = () -> {
         BiMap<Block, Block> biMap = HashBiMap.create();
         addBuildingBlockHelpersToBimap(biMap, ModBlocks.STONE_TILES, ModBlocks.DIRTY_STONE_TILES);
@@ -74,7 +75,7 @@ public interface Dirty extends Degradable<Dirty.DirtLevel> {
     }
 
     default void tickDegradation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        float f = 0.25f;
+        float f = INCREASE_CHANCE;
         AxisAlignedBB area = new AxisAlignedBB(pos).inflate(1, 0, 1).expandTowards(0, 1, 0);
         if (random.nextFloat() < f && world.getBlockStates(area).anyMatch(blockState -> blockState.is(DIRT) || blockState.getBlock() instanceof Dirty)) {
             this.tryDegrade(state, world, pos, random);

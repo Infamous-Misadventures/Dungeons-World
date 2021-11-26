@@ -1,0 +1,14 @@
+{
+  "name": "dungeons_world:illager_caravan/decorations",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 13,
+      "element": {
+        "element_type": "minecraft:empty_pool_element"
+      }
+    }
+  ]
+}

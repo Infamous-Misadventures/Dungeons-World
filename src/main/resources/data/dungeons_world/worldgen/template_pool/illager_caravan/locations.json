@@ -5,15 +5,6 @@
 
   "elements": [
     {
-      "weight": 200,
-      "element": {
-        "location": "dungeons_world:illager_caravan/locations/structure_test",
-        "processors": "dungeons_world:illager_caravan/location_processors",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
       "weight": 3,
       "element": {
         "location": "dungeons_world:illager_caravan/locations/campfire_and_barrels",
@@ -26,15 +17,6 @@
       "weight": 3,
       "element": {
         "location": "dungeons_world:illager_caravan/locations/graveyard",
-        "processors": "dungeons_world:illager_caravan/location_processors",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
-        "location": "dungeons_world:illager_caravan/locations/illager_cage",
         "processors": "dungeons_world:illager_caravan/location_processors",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -61,15 +43,6 @@
     {
       "weight": 1,
       "element": {
-        "location": "dungeons_world:illager_caravan/locations/tables",
-        "processors": "dungeons_world:illager_caravan/location_processors",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
         "location": "dungeons_world:illager_caravan/locations/lumber",
         "processors": "dungeons_world:illager_caravan/location_processors",
         "projection": "rigid",
@@ -86,16 +59,7 @@
       }
     },
     {
-      "weight": 2,
-      "element": {
-        "location": "dungeons_world:illager_caravan/locations/ruins",
-        "processors": "dungeons_world:illager_caravan/location_processors",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 2,
+      "weight": 5,
       "element": {
         "location": "dungeons_world:illager_caravan/locations/ruins_01",
         "processors": "dungeons_world:illager_caravan/location_processors",
@@ -104,7 +68,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 5,
       "element": {
         "location": "dungeons_world:illager_caravan/locations/ruins_03",
         "processors": "dungeons_world:illager_caravan/location_processors",

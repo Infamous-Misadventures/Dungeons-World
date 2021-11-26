@@ -3,6 +3,7 @@ package com.infamous.dungeons_world.items;
 import com.infamous.dungeons_world.DungeonsWorld;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,6 +17,14 @@ import java.util.function.Supplier;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DungeonsWorld.MODID);
     public static final List<String> ITEM_IDS = new ArrayList<>();
+    private static RegistryObject<Item> CREEPMOSS = registerItem("creepmoss", () -> new Item(new Item.Properties().tab(DungeonsWorld.TAB)));
+
+
+    private static RegistryObject<Item> registerItem(String itemId, Supplier<Item> itemSupplier){
+        ITEM_IDS.add(itemId);
+        return ITEMS.register(itemId, itemSupplier);
+    }
+
 
     public static RegistryObject<BlockItem> registerBlockItem(String id, RegistryObject<Block> block, Function<Supplier<Block>, BlockItem> itemCreatorFunction){
         return ITEMS.register(id,  () -> itemCreatorFunction.apply(block));
