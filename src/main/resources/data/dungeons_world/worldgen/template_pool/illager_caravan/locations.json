@@ -95,6 +95,24 @@
       }
     },
     {
+      "weight": 2,
+      "element": {
+        "location": "dungeons_world:illager_caravan/locations/ruins_01",
+        "processors": "dungeons_world:illager_caravan/location_processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "dungeons_world:illager_caravan/locations/ruins_03",
+        "processors": "dungeons_world:illager_caravan/location_processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
       "weight": 13,
       "element": {
         "element_type": "minecraft:empty_pool_element"

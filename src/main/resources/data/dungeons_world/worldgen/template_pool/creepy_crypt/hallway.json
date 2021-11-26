@@ -156,6 +156,15 @@
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "dungeons_world:creepy_crypt/8xbigroom1_half2terminator",
+        "processors": "dungeons_world:creepy_crypt/processors",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
     }
   ]
 }

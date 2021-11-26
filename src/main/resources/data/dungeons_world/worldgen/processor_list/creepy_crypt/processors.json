@@ -79,7 +79,7 @@
       "processor_type": "structure_toolkit:gradient_replace",
       "gradient_list": [
         {
-          "resource_location": "minecraft:medium_creepmoss_cracked_stone_bricks",
+          "resource_location": "dungeons_world:medium_creepmoss_cracked_stone_bricks",
           "step_size": 0.15
         }
       ],
@@ -120,6 +120,37 @@
       "vanilla": "minecraft:torch",
       "processor_type": "dungeons_world:candles",
       "rarity": 0.05
+    },
+    {
+      "rules": [
+        {
+          "output_state": {
+            "Name": "minecraft:air"
+          },
+          "input_predicate": {
+            "block": "minecraft:spawner",
+            "probability": 0.50,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        },
+        {
+          "output_state": {
+            "Name": "minecraft:air"
+          },
+          "input_predicate": {
+            "block": "minecraft:chest",
+            "probability": 0.60,
+            "predicate_type": "minecraft:random_block_match"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          }
+        }
+      ],
+      "processor_type": "minecraft:rule"
     },
     {
       "processor_type": "dungeons_world:dungeons_chests",
