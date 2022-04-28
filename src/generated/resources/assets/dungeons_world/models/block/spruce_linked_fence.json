@@ -1,0 +1,7 @@
+{
+  "parent": "dungeons_world:block/abstract_linked_fence",
+  "textures": {
+    "texture": "minecraft:block/spruce_log",
+    "texture_top": "minecraft:block/spruce_log_top"
+  }
+}

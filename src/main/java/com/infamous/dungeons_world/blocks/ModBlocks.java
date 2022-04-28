@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
@@ -37,6 +36,7 @@ public class ModBlocks {
     public static final List<RegistryObject<Block>> SINGLE_BLOCKS = new ArrayList();
     public static final List<RegistryObject<Block>> PATH_BLOCKS = new ArrayList();
     public static final List<RegistryObject<Block>> ROTTEN_BLOCKS = new ArrayList();
+    public static final List<RegistryObject<Block>> SPECIAL_CLASS_BLOCKS = new ArrayList();
     public static final Map<DungeonsChestType, RegistryObject<Block>> CHEST_TYPES = new HashMap<>();
 
     //All
@@ -53,6 +53,14 @@ public class ModBlocks {
     public static final RegistryObject<Block> ROTTEN_CRIMSON_PLANKS =  registerRottenBlock("rotten_crimson_planks", () -> new Block(AbstractBlock.Properties.copy(CRIMSON_PLANKS)));
     public static final RegistryObject<Block> ROTTEN_WARPED_PLANKS =  registerRottenBlock("rotten_warped_planks", () -> new Block(AbstractBlock.Properties.copy(WARPED_PLANKS)));
 
+    public static final RegistryObject<Block> OAK_LINKED_FENCE = registerSpecialClassBlock("oak_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(OAK_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> SPRUCE_LINKED_FENCE = registerSpecialClassBlock("spruce_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(SPRUCE_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> BIRCH_LINKED_FENCE = registerSpecialClassBlock("birch_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(BIRCH_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> JUNGLE_LINKED_FENCE = registerSpecialClassBlock("jungle_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(JUNGLE_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> ACACIA_LINKED_FENCE = registerSpecialClassBlock("acacia_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(ACACIA_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> DARK_OAK_LINKED_FENCE = registerSpecialClassBlock("dark_oak_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(DARK_OAK_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> CRIMSON_LINKED_FENCE = registerSpecialClassBlock("crimson_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(CRIMSON_HYPHAE).noOcclusion()));
+    public static final RegistryObject<Block> WARPED_LINKED_FENCE = registerSpecialClassBlock("warped_linked_fence", () -> new LinkedFenceBlock(AbstractBlock.Properties.copy(WARPED_HYPHAE).noOcclusion()));
 
     //Creeper Woods && Creepy Crypts
     public static final BuildingBlockHelper LOW_CREEPMOSS_STONE = registerCreepmossBuildingBlock("low_creepmoss_stone", () -> new CreepmossBlock(Creepmoss.CreepmossLevel.LOW, AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), Creepmoss.CreepmossLevel.LOW);
@@ -159,6 +167,12 @@ public class ModBlocks {
         RegistryObject<Block> rottenBlock = registerBlock(id, sup);
         ROTTEN_BLOCKS.add(rottenBlock);
         return rottenBlock;
+    }
+
+    private static RegistryObject<Block> registerSpecialClassBlock(String id, Supplier<Block> sup) {
+        RegistryObject<Block> specialClassBlock = registerBlock(id, sup);
+        SPECIAL_CLASS_BLOCKS.add(specialClassBlock);
+        return specialClassBlock;
     }
 
     private static BuildingBlockHelper registerBuildingBlock(String id, Supplier<Block> sup) {

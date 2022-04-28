@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,open=false": {
+      "model": "dungeons_world:block/spruce_linked_fence",
+      "y": 180
+    },
+    "facing=south,open=false": {
+      "model": "dungeons_world:block/spruce_linked_fence"
+    },
+    "facing=west,open=false": {
+      "model": "dungeons_world:block/spruce_linked_fence",
+      "y": 90
+    },
+    "facing=east,open=false": {
+      "model": "dungeons_world:block/spruce_linked_fence",
+      "y": 270
+    },
+    "facing=north,open=true": {
+      "model": "dungeons_world:block/spruce_linked_fence",
+      "y": 180
+    },
+    "facing=south,open=true": {
+      "model": "dungeons_world:block/spruce_linked_fence"
+    },
+    "facing=west,open=true": {
+      "model": "dungeons_world:block/spruce_linked_fence",
+      "y": 90
+    },
+    "facing=east,open=true": {
+      "model": "dungeons_world:block/spruce_linked_fence",
+      "y": 270
+    }
+  }
+}

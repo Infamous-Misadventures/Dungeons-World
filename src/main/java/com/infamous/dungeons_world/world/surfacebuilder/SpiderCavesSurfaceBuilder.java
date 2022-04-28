@@ -12,10 +12,6 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import java.util.Random;
 
-import static com.infamous.dungeons_world.biomes.ModBiomes.SPIDER_CAVES;
-import static com.infamous.dungeons_world.blocks.ModBlocks.*;
-import static net.minecraft.block.Blocks.AIR;
-
 public class SpiderCavesSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
     public SpiderCavesSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) {
         super(codec);
@@ -38,13 +34,13 @@ public class SpiderCavesSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConf
 
         BlockPos.Mutable mutable = new BlockPos.Mutable(x, 0, z);
         mutable.move(Direction.UP, startHeight);
-        for (int yPos = startHeight; yPos >= 0; --yPos) {
-            if(chunkIn.getWorldForge().getBiome(mutable) == SPIDER_CAVES.get()) {
-                if(!chunkIn.getBlockState(mutable).isAir()) {
-                    chunkIn.setBlockState(mutable, config.getTopMaterial(), false);
-                }
-            }
-            mutable.move(Direction.DOWN);
-        }
+//        for (int yPos = startHeight; yPos >= 0; --yPos) {
+//            if(chunkIn.getWorldForge().getBiome(mutable) == SPIDER_CAVES.get()) {
+//                if(!chunkIn.getBlockState(mutable).isAir()) {
+//                    chunkIn.setBlockState(mutable, config.getTopMaterial(), false);
+//                }
+//            }
+//            mutable.move(Direction.DOWN);
+//        }
     }
 }

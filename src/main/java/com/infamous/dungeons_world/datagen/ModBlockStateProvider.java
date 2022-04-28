@@ -1,10 +1,14 @@
 package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
+import com.infamous.dungeons_world.blocks.LinkedFenceBlock;
 import com.infamous.dungeons_world.blocks.PathBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.state.properties.AttachFace;
+import net.minecraft.state.properties.Half;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.*;
@@ -29,6 +33,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         SINGLE_BLOCKS.forEach(this::registerSingleBlock);
         PATH_BLOCKS.forEach(this::registerPathBlock);
         ROTTEN_BLOCKS.forEach(this::registerRottenBlock);
+        handleSpecialClassBlocks();
         registerColumnBlock(PILLAR_STONE_COLUMN);
         registerColumnBlock(LINES_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
         registerColumnBlock(SPIDER_EGG);
@@ -38,6 +43,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         registerColumnBlock(SKELETON_CARVED_STONE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/stone_column_top"));
         registerColumnBlock(SKELETON_CARVED_GRANITE_COLUMN, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/polished_granite_column_top"));
         registerCrossBlock(GLOWING_MUSHROOM);
+    }
+
+    private void handleSpecialClassBlocks() {
+        SPECIAL_CLASS_BLOCKS.forEach(block -> {
+            if(block.get() instanceof LinkedFenceBlock){
+                this.registerLinkedFenceBlock(block.get());
+            }
+        });
     }
 
     private void registerBuildingBlockHelper(BuildingBlockHelper buildingBlockHelper){
@@ -65,6 +78,28 @@ public class ModBlockStateProvider extends BlockStateProvider {
         Block block = blockRegistryObject.get();
         ResourceLocation planksTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + block.getRegistryName().getPath().replaceFirst("rotten_", ""));
         simpleBlock(block, models().singleTexture(block.getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/rotten_abstract_planks"), "planks", planksTexture));
+    }
+
+    private void registerLinkedFenceBlock(Block block) {
+        String suffix = "log";
+        if(block.defaultBlockState().getMaterial().equals(Material.NETHER_WOOD)){
+            suffix = "stem";
+        }
+        ResourceLocation logTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + block.getRegistryName().getPath().replaceFirst("linked_fence", suffix));
+        ResourceLocation logTopTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + block.getRegistryName().getPath().replaceFirst("linked_fence", suffix + "_top"));
+        BlockModelBuilder model = models().withExistingParent(block.getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/abstract_linked_fence"))
+                .texture("texture", logTexture)
+                .texture("texture_top", logTopTexture);
+        getVariantBuilder(block).forAllStatesExcept(state -> {
+            int xRot = 0;
+            int yRot = ((int) state.getValue(LinkedFenceBlock.FACING).toYRot());
+            boolean isOpen = state.getValue(LinkedFenceBlock.OPEN);
+            yRot %= 360;
+            return ConfiguredModel.builder().modelFile(isOpen ? model : model)
+                    .rotationX(xRot)
+                    .rotationY(yRot)
+                    .build();
+        });
     }
 
     private void registerColumnBlock(RegistryObject<Block> blockRegistryObject) {

@@ -2,6 +2,7 @@ package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
+import com.infamous.dungeons_world.blocks.LinkedFenceBlock;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
@@ -29,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         SINGLE_BLOCKS.forEach(this::registerSingleBlockItems);
         PATH_BLOCKS.forEach(this::registerSingleBlockItems);
         ROTTEN_BLOCKS.forEach(this::registerSingleBlockItems);
+        handleSpecialClassBlocks();
         blockItemModel(LINES_STONE_COLUMN.get());
         blockItemModel(PILLAR_STONE_COLUMN.get());
         blockItemModel(GROOVED_POLISHED_GRANITE_COLUMN.get());
@@ -42,6 +44,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItemModel(CREEPY_SARCOPHAGUS.get());
         blockItemModel(CHANDELIER.get());
         blockItemModel(SPIDER_EGG.get());
+    }
+
+    private void handleSpecialClassBlocks() {
+        SPECIAL_CLASS_BLOCKS.forEach(block -> {
+            if(block.get() instanceof LinkedFenceBlock){
+                blockItemModel(block.get());
+            }
+        });
     }
 
     private void registerSingleBlockItems(RegistryObject<Block> blockRegistryObject) {

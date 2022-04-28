@@ -138,13 +138,9 @@ dependencies {
 
     //Tools
     runtimeOnly fg.deobf("loadnbtblock:loadnbtblock:1.0")
-    //runtimeOnly fg.deobf("blame:blame:1.16.5-3.0.2-forge")
     implementation fg.deobf("structure_toolkit:structure_toolkit:1.16.5-1.0.3")
-    runtimeOnly fg.deobf("structure_toolkit:structure_toolkit:1.16.5-1.0.3")
-//    implementation fg.deobf("curse.maven:structure-toolkit-484907:3419956")
-//    runtimeOnly fg.deobf("curse.maven:structure-toolkit-484907:3419956")
     //runtimeOnly fg.deobf("curse.maven:terraforged-363820:3414123")
-    runtimeOnly fg.deobf("curse.maven:natures-compass-252848:3382150")
+//    runtimeOnly fg.deobf("curse.maven:natures-compass-252848:3382150")
     runtimeOnly fg.deobf("curse.maven:blame-406201:3440093")
 //    runtimeOnly fg.deobf("curse.maven:cyanide-541676:3511740")
 
@@ -154,13 +150,13 @@ dependencies {
     runtimeOnly fg.deobf("dungeons_libraries:dungeons_libraries:1.16.5-0.0.1")
     runtimeOnly fg.deobf("curse.maven:blame-406201:3440093")
     implementation fg.deobf("curse.maven:dungeons-gear-401247:3377033")
-//    runtimeOnly fg.deobf("curse.maven:dungeons-gear-401247:3377033")
 
     //compat
     compileOnly fg.deobf("curse.maven:cavesandcliffs-417430:3518155")
-    implementation fg.deobf("curse.maven:cavebiomeapi-441706:3489595")
+//    implementation fg.deobf("curse.maven:cavebiomeapi-441706:3489595")
 
     //Compat tests
+//    implementation fg.deobf("curse.maven:arsnouveau-401955:3539097")
 //    implementation fg.deobf("curse.maven:enderlinginvaders-514791:3433192")
 //    implementation fg.deobf("curse.maven:dungeons_content-423533:3506109")
 

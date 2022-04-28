@@ -1,0 +1,7 @@
+{
+  "parent": "dungeons_world:block/abstract_linked_fence",
+  "textures": {
+    "texture": "minecraft:block/crimson_stem",
+    "texture_top": "minecraft:block/crimson_stem_top"
+  }
+}

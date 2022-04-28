@@ -1,7 +1,6 @@
 package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.blocks.*;
-import com.infamous.dungeons_world.state.BlockPart;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
@@ -17,7 +16,6 @@ import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.conditions.MatchTool;
 import net.minecraft.loot.functions.SetCount;
-import net.minecraft.util.IItemProvider;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Function;
@@ -35,6 +33,7 @@ public class ModBlockLootTables extends BlockLootTables {
         ModBlocks.SINGLE_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
         ModBlocks.PATH_BLOCKS.forEach(pathBlock -> this.add(pathBlock.get(), block -> createSingleItemTableWithSilkTouch(block, ((PathBlock) block).getUnshoveled())));
         ModBlocks.ROTTEN_BLOCKS.forEach(block -> this.add(block.get(), BlockLootTables::createSingleItemTable));
+        handleSpecialClassBlocks();
         this.add(COMMON_CHEST.get(), BlockLootTables::createSingleItemTable);
         this.add(FANCY_CHEST.get(), BlockLootTables::createSingleItemTable);
         this.add(OBSIDIAN_CHEST.get(), BlockLootTables::createSingleItemTable);
@@ -59,6 +58,14 @@ public class ModBlockLootTables extends BlockLootTables {
         this.add(CHANDELIER.get(), ModBlockLootTables.createMultiPartSingleItemTable(CHANDELIER.get()));
         this.add(SPIDER_EGG.get(), BlockLootTables::createSingleItemTable);
 
+    }
+
+    private void handleSpecialClassBlocks() {
+        SPECIAL_CLASS_BLOCKS.forEach(block -> {
+            if(block.get() instanceof LinkedFenceBlock){
+                this.add(block.get(), BlockLootTables::createSingleItemTable);
+            }
+        });
     }
 
     private void buildBlockLootTables(BuildingBlockHelper buildingBlockHelper) {
