@@ -1,9 +1,9 @@
 package com.infamous.dungeons_world.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Iterator;
 import java.util.Optional;
@@ -14,7 +14,7 @@ public interface Degradable<T extends Enum<T>> {
 
     float getDegradationChanceMultiplier();
 
-    default void tickDegradation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    default void tickDegradation(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         float f = 0.05688889F;
         if (random.nextFloat() < f) {
             this.tryDegrade(state, world, pos, random);
@@ -24,7 +24,7 @@ public interface Degradable<T extends Enum<T>> {
 
     T getDegradationLevel();
 
-    default void tryDegrade(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    default void tryDegrade(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         int i = this.getDegradationLevel().ordinal();
         int j = 0;
         int k = 0;

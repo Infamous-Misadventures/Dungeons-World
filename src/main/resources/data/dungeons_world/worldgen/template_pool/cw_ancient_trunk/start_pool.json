@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:cw_ancient_trunk/start_pool",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,

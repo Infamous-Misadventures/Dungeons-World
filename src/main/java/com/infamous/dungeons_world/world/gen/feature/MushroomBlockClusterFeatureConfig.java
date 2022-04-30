@@ -4,20 +4,18 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.block.BlockState;
-import net.minecraft.world.gen.blockplacer.BlockPlacer;
-import net.minecraft.world.gen.blockstateprovider.BlockStateProvider;
-import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MushroomBlockClusterFeatureConfig implements IFeatureConfig {
+public class MushroomBlockClusterFeatureConfig implements FeatureConfiguration {
    public static final Codec<MushroomBlockClusterFeatureConfig> CODEC = RecordCodecBuilder.create(builder -> builder.group(
            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(config -> config.stateProvider),
-           BlockPlacer.CODEC.fieldOf("block_placer").forGetter(config -> config.blockPlacer),
            BlockStateProvider.CODEC.fieldOf("log_state_provider").forGetter(config -> config.logStateProvider),
            BlockStateProvider.CODEC.listOf().fieldOf("whitelist").forGetter(config -> new ArrayList<>(config.whitelist)),
            BlockState.CODEC.listOf().fieldOf("blacklist").forGetter(config -> ImmutableList.copyOf(config.blacklist)),
@@ -30,7 +28,6 @@ public class MushroomBlockClusterFeatureConfig implements IFeatureConfig {
            Codec.BOOL.fieldOf("need_water").orElse(false).forGetter(config -> config.needWater))
            .apply(builder, MushroomBlockClusterFeatureConfig::new));
    public final BlockStateProvider stateProvider;
-   public final BlockPlacer blockPlacer;
    public final BlockStateProvider logStateProvider;
    public final Set<BlockStateProvider> whitelist;
    public final Set<BlockState> blacklist;
@@ -42,13 +39,12 @@ public class MushroomBlockClusterFeatureConfig implements IFeatureConfig {
    public final boolean project;
    public final boolean needWater;
 
-   private MushroomBlockClusterFeatureConfig(BlockStateProvider p_i232014_1_, BlockPlacer p_i232014_2_, BlockStateProvider logStateProvider, List<BlockStateProvider> p_i232014_3_, List<BlockState> p_i232014_4_, int p_i232014_5_, int p_i232014_6_, int p_i232014_7_, int p_i232014_8_, boolean p_i232014_9_, boolean p_i232014_10_, boolean p_i232014_11_) {
-      this(p_i232014_1_, p_i232014_2_, logStateProvider, new HashSet<>(p_i232014_3_), ImmutableSet.copyOf(p_i232014_4_), p_i232014_5_, p_i232014_6_, p_i232014_7_, p_i232014_8_, p_i232014_9_, p_i232014_10_, p_i232014_11_);
+   private MushroomBlockClusterFeatureConfig(BlockStateProvider p_i232014_1_, BlockStateProvider logStateProvider, List<BlockStateProvider> p_i232014_3_, List<BlockState> p_i232014_4_, int p_i232014_5_, int p_i232014_6_, int p_i232014_7_, int p_i232014_8_, boolean p_i232014_9_, boolean p_i232014_10_, boolean p_i232014_11_) {
+      this(p_i232014_1_, logStateProvider, new HashSet<>(p_i232014_3_), ImmutableSet.copyOf(p_i232014_4_), p_i232014_5_, p_i232014_6_, p_i232014_7_, p_i232014_8_, p_i232014_9_, p_i232014_10_, p_i232014_11_);
    }
 
-   public MushroomBlockClusterFeatureConfig(BlockStateProvider stateProvider, BlockPlacer blockPlacer, BlockStateProvider logStateProvider, Set<BlockStateProvider> whitelist, Set<BlockState> blacklist, int tries, int xspread, int yspread, int zspread, boolean canReplace, boolean project, boolean needWater) {
+   public MushroomBlockClusterFeatureConfig(BlockStateProvider stateProvider, BlockStateProvider logStateProvider, Set<BlockStateProvider> whitelist, Set<BlockState> blacklist, int tries, int xspread, int yspread, int zspread, boolean canReplace, boolean project, boolean needWater) {
       this.stateProvider = stateProvider;
-      this.blockPlacer = blockPlacer;
       this.logStateProvider = logStateProvider;
       this.whitelist = whitelist;
       this.blacklist = blacklist;
@@ -63,7 +59,6 @@ public class MushroomBlockClusterFeatureConfig implements IFeatureConfig {
 
    public static class Builder {
       private final BlockStateProvider stateProvider;
-      private final BlockPlacer blockPlacer;
       private BlockStateProvider logStateProvider;
       private Set<BlockStateProvider> whitelist = ImmutableSet.of();
       private Set<BlockState> blacklist = ImmutableSet.of();
@@ -75,9 +70,8 @@ public class MushroomBlockClusterFeatureConfig implements IFeatureConfig {
       private boolean project = true;
       private boolean needWater = false;
 
-      public Builder(BlockStateProvider p_i225838_1_, BlockPlacer p_i225838_2_) {
+      public Builder(BlockStateProvider p_i225838_1_) {
          this.stateProvider = p_i225838_1_;
-         this.blockPlacer = p_i225838_2_;
       }
 
       public MushroomBlockClusterFeatureConfig.Builder logStateProvider(BlockStateProvider p_i225838_1_) {
@@ -131,7 +125,7 @@ public class MushroomBlockClusterFeatureConfig implements IFeatureConfig {
       }
 
       public MushroomBlockClusterFeatureConfig build() {
-         return new MushroomBlockClusterFeatureConfig(this.stateProvider, this.blockPlacer, this.logStateProvider, this.whitelist, this.blacklist, this.tries, this.xspread, this.yspread, this.zspread, this.canReplace, this.project, this.needWater);
+         return new MushroomBlockClusterFeatureConfig(this.stateProvider, this.logStateProvider, this.whitelist, this.blacklist, this.tries, this.xspread, this.yspread, this.zspread, this.canReplace, this.project, this.needWater);
       }
    }
 }

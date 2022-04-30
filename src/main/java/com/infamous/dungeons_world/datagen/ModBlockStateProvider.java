@@ -3,23 +3,28 @@ package com.infamous.dungeons_world.datagen;
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
 import com.infamous.dungeons_world.blocks.LinkedFenceBlock;
 import com.infamous.dungeons_world.blocks.PathBlock;
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.state.properties.AttachFace;
-import net.minecraft.state.properties.Half;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 import static com.infamous.dungeons_world.blocks.ModBlocks.*;
-import static net.minecraft.block.HorizontalBlock.FACING;
-import static net.minecraft.block.HorizontalFaceBlock.FACE;
+import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
+import static net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock.FACE;
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
+
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockStateProvider extends BlockStateProvider {
 
@@ -127,7 +132,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         BlockModelBuilder model = models().withExistingParent(blockHelper.getId(), "cube_all").texture("particle", texture).texture("all", texture);
         simpleBlock(blockHelper.getBlock().get(), model);
         slabBlock((SlabBlock) blockHelper.getSlab().get(), blockHelper.getBlock().get().getRegistryName(), texture);
-        stairsBlock((StairsBlock)  blockHelper.getStairs().get(), texture);
+        stairsBlock((StairBlock)  blockHelper.getStairs().get(), texture);
         wallBlock((WallBlock) blockHelper.getWall().get(), texture);
         models().wallInventory(blockHelper.getWall().get().getRegistryName().getPath() + "_inventory", texture);
         buttonBlock(blockHelper);
@@ -136,7 +141,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void buttonBlock(BuildingBlockHelper blockHelper) {
         getVariantBuilder(blockHelper.getButton().get()).forAllStates(state -> {
-            ModelFile buttonModel = buttonModel(blockHelper, state.getValue(AbstractButtonBlock.POWERED));
+            ModelFile buttonModel = buttonModel(blockHelper, state.getValue(ButtonBlock.POWERED));
             AttachFace face = state.getValue(FACE);
             Direction dir = state.getValue(FACING);
             int xrot = 0;
@@ -180,7 +185,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         BlockModelBuilder model = models().withExistingParent(blockHelper.getId(), modBlockLoc("slime_block")).texture("particle", texture).texture("texture", texture);
         simpleBlock(blockHelper.getBlock().get(), model);
         modSlabBlock((SlabBlock) blockHelper.getSlab().get(), blockHelper.getBlock().get().getRegistryName(), texture, "colored_slab");
-        modStairsBlock((StairsBlock)  blockHelper.getStairs().get(), texture, "colored_stairs");
+        modStairsBlock((StairBlock)  blockHelper.getStairs().get(), texture, "colored_stairs");
         modWallBlock((WallBlock) blockHelper.getWall().get(), texture, "colored_wall");
         modButtonBlock(blockHelper, "colored_button", texture);
         modPressurePlateBlock(blockHelper, "colored_pressure_plate", texture);
@@ -193,7 +198,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock(block, bottomModel, topModel, models().getExistingFile(doubleslab));
     }
 
-    private void modStairsBlock(StairsBlock block, ResourceLocation texture, String parent) {
+    private void modStairsBlock(StairBlock block, ResourceLocation texture, String parent) {
         String name = block.getRegistryName().getPath();
         BlockModelBuilder standardModel = models().withExistingParent(name, modBlockLoc(parent)).texture("texture", texture);
         BlockModelBuilder innerModel = models().withExistingParent(name + "_inner", modBlockLoc(parent + "_inner")).texture("texture", texture);
@@ -212,7 +217,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void modButtonBlock(BuildingBlockHelper blockHelper, String parent, ResourceLocation texture) {
         getVariantBuilder(blockHelper.getButton().get()).forAllStates(state -> {
-            ModelFile buttonModel = modButtonModel(blockHelper, state.getValue(AbstractButtonBlock.POWERED), parent, texture);
+            ModelFile buttonModel = modButtonModel(blockHelper, state.getValue(ButtonBlock.POWERED), parent, texture);
             AttachFace face = state.getValue(FACE);
             Direction dir = state.getValue(FACING);
             int xrot = 0;

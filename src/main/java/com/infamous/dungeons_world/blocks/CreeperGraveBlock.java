@@ -1,20 +1,22 @@
 package com.infamous.dungeons_world.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.BlockGetter;
+
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class CreeperGraveBlock  extends Block {
-    public static final DirectionProperty FACING = HorizontalBlock.FACING;
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     protected static final VoxelShape SOUTH_AABB = Block.box(2.0D, 0.0D, 12.0D, 14.0D, 14.0D, 16.0D);
     protected static final VoxelShape NORTH_AABB = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 14.0D, 4.0D);
     protected static final VoxelShape WEST_AABB = Block.box(0.0D, 0.0D, 2.0D, 4.0D, 14.0D, 14.0D);
@@ -24,7 +26,7 @@ public class CreeperGraveBlock  extends Block {
         super(p_i48440_1_);
     }
 
-    public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+    public VoxelShape getShape(BlockState p_220053_1_, BlockGetter p_220053_2_, BlockPos p_220053_3_, CollisionContext p_220053_4_) {
         Direction direction = p_220053_1_.getValue(FACING);
         switch(direction) {
             case EAST:
@@ -39,11 +41,11 @@ public class CreeperGraveBlock  extends Block {
         }
     }
 
-    public BlockState getStateForPlacement(BlockItemUseContext useContext) {
+    public BlockState getStateForPlacement(BlockPlaceContext useContext) {
         return this.defaultBlockState().setValue(FACING, useContext.getHorizontalDirection());
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_206840_1_) {
         p_206840_1_.add(FACING);
     }
 

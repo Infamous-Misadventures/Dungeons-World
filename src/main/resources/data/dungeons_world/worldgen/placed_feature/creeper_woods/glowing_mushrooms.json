@@ -1,0 +1,22 @@
+{
+    "feature": "dungeons_world:glowing_mushrooms",
+    "placement": [
+        {
+            "type": "count",
+            "count": {
+                "type": "minecraft:uniform",
+                "value": {
+                    "min_inclusive": 15,
+                    "max_inclusive": 19
+                }
+            }
+        },
+        {
+            "type": "minecraft:in_square"
+        },
+        {
+            "type": "heightmap",
+            "heightmap": "MOTION_BLOCKING"
+        }
+    ]
+}

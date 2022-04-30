@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:cw_creeper_head/staircase",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,

@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "dungeons_world:detailed_stone_tiles"
+            "items": [
+              "dungeons_world:detailed_stone_tiles"
+            ]
           }
         ]
       }

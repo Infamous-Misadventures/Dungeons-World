@@ -1,0 +1,22 @@
+{
+    "feature": "dungeons_world:creeper_woods_rock",
+    "placement": [
+        {
+            "type": "count",
+            "count": {
+                "type": "minecraft:uniform",
+                "value": {
+                    "min_inclusive": 0,
+                    "max_inclusive": 2
+                }
+            }
+        },
+        {
+            "type": "minecraft:in_square"
+        },
+        {
+            "type": "heightmap",
+            "heightmap": "MOTION_BLOCKING"
+        }
+    ]
+}

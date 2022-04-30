@@ -1,22 +1,22 @@
 package com.infamous.dungeons_world.blocks;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Random;
 
 public class CreepmossSlabBlock extends SlabBlock implements Creepmoss {
     private final Creepmoss.CreepmossLevel creepmossLevel;
 
-    public CreepmossSlabBlock(Creepmoss.CreepmossLevel creepmossLevel, AbstractBlock.Properties settings) {
+    public CreepmossSlabBlock(Creepmoss.CreepmossLevel creepmossLevel, BlockBehaviour.Properties settings) {
         super(settings);
         this.creepmossLevel = creepmossLevel;
     }
 
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         this.tickDegradation(state, world, pos, random);
     }
 

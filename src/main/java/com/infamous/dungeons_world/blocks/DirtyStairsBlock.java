@@ -1,14 +1,16 @@
 package com.infamous.dungeons_world.blocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class DirtyStairsBlock extends StairsBlock implements Dirty {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class DirtyStairsBlock extends StairBlock implements Dirty {
     private final DirtLevel dirtLevel;
 
     public DirtyStairsBlock(DirtLevel dirtLevel, Supplier<BlockState> baseBlockState, Properties settings) {
@@ -16,7 +18,7 @@ public class DirtyStairsBlock extends StairsBlock implements Dirty {
         this.dirtLevel = dirtLevel;
     }
 
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         this.tickDegradation(state, world, pos, random);
     }
 

@@ -2,12 +2,12 @@ package com.infamous.dungeons_world.loot;
 
 import com.google.gson.JsonObject;
 import com.infamous.dungeons_world.mixin.LootContextAccessor;
-import com.infamous.dungeons_world.tileentity.DungeonsChestType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameterSets;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.util.ResourceLocation;
+import com.infamous.dungeons_world.blockentity.DungeonsChestType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.fml.ModList;
@@ -31,7 +31,7 @@ public class DungeonsChestLootModifier extends LootModifier {
         return tableList;
     }
 
-    public DungeonsChestLootModifier(final ILootCondition[] conditionsIn) {
+    public DungeonsChestLootModifier(final LootItemCondition[] conditionsIn) {
         super(conditionsIn);
     }
 
@@ -55,7 +55,7 @@ public class DungeonsChestLootModifier extends LootModifier {
 
     public static class Serializer extends GlobalLootModifierSerializer<DungeonsChestLootModifier> {
         @Override
-        public DungeonsChestLootModifier read(ResourceLocation location, JsonObject object, ILootCondition[] conditions) {
+        public DungeonsChestLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] conditions) {
             return new DungeonsChestLootModifier(conditions);
         }
 
@@ -66,7 +66,7 @@ public class DungeonsChestLootModifier extends LootModifier {
     }
 
     protected static LootContext copyLootContextWithNewQueryID(LootContext oldLootContext, ResourceLocation newQueryID){
-        LootContext newContext = new LootContext.Builder(oldLootContext).create(LootParameterSets.CHEST);
+        LootContext newContext = new LootContext.Builder(oldLootContext).create(LootContextParamSets.CHEST);
         ((LootContextAccessor)newContext).dungeonsgear_setQueriedLootTableId(newQueryID);
         return newContext;
     }

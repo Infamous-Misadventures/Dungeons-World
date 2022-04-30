@@ -107,7 +107,7 @@
           },
           "input_predicate": {
             "block": "minecraft:spawner",
-            "probability": 0.50,
+            "probability": 0.5,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {
@@ -120,7 +120,7 @@
           },
           "input_predicate": {
             "block": "minecraft:chest",
-            "probability": 0.60,
+            "probability": 0.6,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {

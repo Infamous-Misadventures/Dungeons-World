@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:cw_creeper_head/ambush",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,

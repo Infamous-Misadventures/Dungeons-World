@@ -1,0 +1,12 @@
+{
+    "feature": "dungeons_world:spider_eggs",
+    "placement": [
+        {
+            "type": "minecraft:in_square"
+        },
+        {
+            "type": "heightmap",
+            "heightmap": "MOTION_BLOCKING"
+        }
+    ]
+}

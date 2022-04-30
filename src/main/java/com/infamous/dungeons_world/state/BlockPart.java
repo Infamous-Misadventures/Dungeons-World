@@ -1,11 +1,11 @@
 package com.infamous.dungeons_world.state;
 
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.core.BlockPos;
 
 import java.util.Arrays;
 
-public enum BlockPart  implements IStringSerializable  {
+public enum BlockPart  implements StringRepresentable  {
     COMPLETE("complete", "complete", new BlockPos(-1, -1, -1)),
     PART_000("000", "part_000", new BlockPos(0, 0, 0)),
     PART_001("001", "part_001", new BlockPos(0, 0, 1)),

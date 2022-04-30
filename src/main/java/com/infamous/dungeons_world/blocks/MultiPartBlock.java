@@ -2,23 +2,25 @@ package com.infamous.dungeons_world.blocks;
 
 import com.infamous.dungeons_world.state.BlockPart;
 import com.infamous.dungeons_world.state.BlockPartProperty;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Level;
 
 import java.util.Collection;
+
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public abstract class MultiPartBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -28,7 +30,7 @@ public abstract class MultiPartBlock extends Block {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext blockItemUseContext) {
+    public BlockState getStateForPlacement(BlockPlaceContext blockItemUseContext) {
         if (allBlocksPlaceAble(blockItemUseContext)) {
             return this.defaultBlockState().setValue(FACING, blockItemUseContext.getHorizontalDirection()).setValue(getBlockPartProperty(), getPlacementBlockPart());
         } else {
@@ -36,30 +38,30 @@ public abstract class MultiPartBlock extends Block {
         }
     }
 
-    private boolean allBlocksPlaceAble(BlockItemUseContext blockItemUseContext) {
+    private boolean allBlocksPlaceAble(BlockPlaceContext blockItemUseContext) {
         BlockPos placementBlockPos = blockItemUseContext.getClickedPos();
-        World level = blockItemUseContext.getLevel();
+        Level level = blockItemUseContext.getLevel();
         boolean result = true;
         Rotation rotation = getRotation(blockItemUseContext.getHorizontalDirection());
         BlockPos center = getPlacementBlockPart().getBlockPos();
         for (BlockPart blockPart : this.getBlockParts()) {
-            BlockPos.Mutable newBlockPos = centerBlockPart(placementBlockPos, rotation, center, blockPart);
+            BlockPos.MutableBlockPos newBlockPos = centerBlockPart(placementBlockPos, rotation, center, blockPart);
             result = result && newBlockPos.getY() < 256 && level.getBlockState(newBlockPos).canBeReplaced(blockItemUseContext);
         }
         return result;
     }
 
 
-    public void setPlacedBy(World level, BlockPos placementBlockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
+    public void setPlacedBy(Level level, BlockPos placementBlockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
         Rotation rotation = getRotation(blockState.getValue(FACING));
         BlockPos center = getPlacementBlockPart().getBlockPos();
         this.getBlockParts().forEach(blockPart -> {
-            BlockPos.Mutable newBlockPos = centerBlockPart(placementBlockPos, rotation, center, blockPart);
+            BlockPos.MutableBlockPos newBlockPos = centerBlockPart(placementBlockPos, rotation, center, blockPart);
             level.setBlock(newBlockPos, blockState.setValue(getBlockPartProperty(), blockPart), 3);
         });
     }
 
-    public boolean canSurvive(BlockState blockState1, IWorldReader level, BlockPos blockPos) {
+    public boolean canSurvive(BlockState blockState1, LevelReader level, BlockPos blockPos) {
         boolean result = true;
         for (BlockPart blockPart : this.getBlockParts()) {
             result = result && blockPos.getY() + blockPart.getBlockPos().getY() - getPlacementBlockPart().getBlockPos().getY() < 256;
@@ -67,7 +69,7 @@ public abstract class MultiPartBlock extends Block {
         return result;
     }
 
-    public BlockState updateShape(BlockState stateToUpdate, Direction direction, BlockState originState, IWorld level, BlockPos toUpdateBlockPos, BlockPos originBlockPos) {
+    public BlockState updateShape(BlockState stateToUpdate, Direction direction, BlockState originState, LevelAccessor level, BlockPos toUpdateBlockPos, BlockPos originBlockPos) {
         if (sameMultiBlock(stateToUpdate, toUpdateBlockPos, originBlockPos) && !originState.is(this)) {
             return Blocks.AIR.defaultBlockState();
         } else {
@@ -78,9 +80,9 @@ public abstract class MultiPartBlock extends Block {
     protected boolean sameMultiBlock(BlockState blockState1, BlockPos blockPos1, BlockPos blockPos2) {
         Rotation rotation = getRotation(blockState1.getValue(FACING));
         BlockPos center = getPlacementBlockPart().getBlockPos();
-        BlockPos.Mutable centerBlockPos = centerBlockPos(center, rotation, blockState1, blockPos1);
+        BlockPos.MutableBlockPos centerBlockPos = centerBlockPos(center, rotation, blockState1, blockPos1);
         for (BlockPart blockPart : this.getBlockParts()) {
-            BlockPos.Mutable newBlockPos = centerBlockPart(centerBlockPos, rotation, center, blockPart);
+            BlockPos.MutableBlockPos newBlockPos = centerBlockPart(centerBlockPos, rotation, center, blockPart);
             if (newBlockPos.equals(blockPos2)) {
                 return true;
             }
@@ -88,12 +90,12 @@ public abstract class MultiPartBlock extends Block {
         return false;
     }
 
-    private BlockPos.Mutable centerBlockPos(BlockPos center, Rotation rotation, BlockState blockState1, BlockPos blockPos1) {
-        BlockPos.Mutable centeredBlockPartPos = centerBlockPart(center, rotation, center, blockState1.getValue(this.getBlockPartProperty())).move(-center.getX(), -center.getY(), -center.getZ());
+    private BlockPos.MutableBlockPos centerBlockPos(BlockPos center, Rotation rotation, BlockState blockState1, BlockPos blockPos1) {
+        BlockPos.MutableBlockPos centeredBlockPartPos = centerBlockPart(center, rotation, center, blockState1.getValue(this.getBlockPartProperty())).move(-center.getX(), -center.getY(), -center.getZ());
         return blockPos1.mutable().move(-centeredBlockPartPos.getX(), -centeredBlockPartPos.getY(), -centeredBlockPartPos.getZ());
     }
 
-    private BlockPos.Mutable centerBlockPart(BlockPos centerBlockPos, Rotation rotation, BlockPos centerBlockPartPos, BlockPart blockPart) {
+    private BlockPos.MutableBlockPos centerBlockPart(BlockPos centerBlockPos, Rotation rotation, BlockPos centerBlockPartPos, BlockPart blockPart) {
         return blockPart.getBlockPos().mutable().move(new BlockPos(-centerBlockPartPos.getX(), -centerBlockPartPos.getY(), -centerBlockPartPos.getZ())).rotate(rotation).mutable().move(centerBlockPos);
     }
 
@@ -110,7 +112,7 @@ public abstract class MultiPartBlock extends Block {
         }
     }
 
-    public void playerWillDestroy(World level, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
+    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player playerEntity) {
         if (!level.isClientSide && playerEntity.isCreative()) {
             BlockPart blockPart = blockState.getValue(getBlockPartProperty());
             if (blockPart != getPlacementBlockPart()) {

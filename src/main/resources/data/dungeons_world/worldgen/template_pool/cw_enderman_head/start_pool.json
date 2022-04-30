@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:cw_enderman_head/start_pool",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,

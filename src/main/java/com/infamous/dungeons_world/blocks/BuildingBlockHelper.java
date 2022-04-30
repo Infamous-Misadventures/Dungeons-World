@@ -1,8 +1,8 @@
 package com.infamous.dungeons_world.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.registries.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 

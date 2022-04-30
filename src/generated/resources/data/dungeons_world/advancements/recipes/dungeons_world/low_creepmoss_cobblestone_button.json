@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "dungeons_world:low_creepmoss_cobblestone"
+            "items": [
+              "dungeons_world:low_creepmoss_cobblestone"
+            ]
           }
         ]
       }

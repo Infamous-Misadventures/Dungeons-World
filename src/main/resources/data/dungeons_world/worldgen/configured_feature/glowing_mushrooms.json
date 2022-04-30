@@ -1,4 +1,5 @@
 {
+  "type": "dungeons_world:full_glowing_mushrooms",
   "config": {
     "can_replace": false,
     "project": false,
@@ -6,7 +7,20 @@
     "xspread": 2,
     "yspread": 1,
     "zspread": 2,
-    "whitelist": [{"key":"dungeons_world:deep_grass_block", "type": "dungeons_world:key_supplier"}, {"key":"dungeons_world:deep_dirt_block", "type": "dungeons_world:key_supplier"}, {"key":"minecraft:dark_oak_log", "type": "dungeons_world:key_supplier"}],
+    "whitelist": [
+      {
+        "key": "dungeons_world:deep_grass_block",
+        "type": "dungeons_world:key_supplier"
+      },
+      {
+        "key": "dungeons_world:deep_dirt_block",
+        "type": "dungeons_world:key_supplier"
+      },
+      {
+        "key": "minecraft:dark_oak_log",
+        "type": "dungeons_world:key_supplier"
+      }
+    ],
     "blacklist": [],
     "tries": 64,
     "state_provider": {
@@ -26,6 +40,5 @@
     "block_placer": {
       "type": "minecraft:simple_block_placer"
     }
-  },
-  "type": "dungeons_world:full_glowing_mushrooms"
+  }
 }

@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:creepy_crypt/hallway",
-
   "fallback": "dungeons_world:creepy_crypt/terminators",
-
   "elements": [
     {
       "weight": 12,

@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:dungeons_blacksmith/start_pool",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,

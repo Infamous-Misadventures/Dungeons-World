@@ -1,7 +1,7 @@
 package com.infamous.dungeons_world.state;
 
 import com.google.common.collect.Lists;
-import net.minecraft.state.EnumProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 import java.util.ArrayList;
 import java.util.Arrays;

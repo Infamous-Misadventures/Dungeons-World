@@ -2,13 +2,19 @@ package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
 import net.minecraft.data.*;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 import static com.infamous.dungeons_world.blocks.ModBlocks.BUILDING_BLOCK_HELPERS;
+
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 
 public class ModRecipeProvider extends RecipeProvider {
 
@@ -21,11 +27,11 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
         BUILDING_BLOCK_HELPERS.forEach(buildingBlockHelper -> buildingBlockRecipes(buildingBlockHelper, consumer));
     }
 
-    private void buildingBlockRecipes(BuildingBlockHelper blockHelper, Consumer<IFinishedRecipe> consumer){
+    private void buildingBlockRecipes(BuildingBlockHelper blockHelper, Consumer<FinishedRecipe> consumer){
         ShapedRecipeBuilder.shaped(blockHelper.getSlab().get(), 6).define('#', blockHelper.getBlock().get())
                 .pattern("###")
                 .unlockedBy("has_" + blockHelper.getId(), has(blockHelper.getBlock().get())).save(consumer);
@@ -47,12 +53,12 @@ public class ModRecipeProvider extends RecipeProvider {
         stoneCutterRecipes(blockHelper, consumer);
     }
 
-    private void stoneCutterRecipes(BuildingBlockHelper blockHelper, Consumer<IFinishedRecipe> consumer) {
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(blockHelper.getBlock().get()), blockHelper.getStairs().get()).unlocks("has_" + blockHelper.getId(), has(blockHelper.getBlock().get()))
+    private void stoneCutterRecipes(BuildingBlockHelper blockHelper, Consumer<FinishedRecipe> consumer) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(blockHelper.getBlock().get()), blockHelper.getStairs().get()).unlockedBy("has_" + blockHelper.getId(), has(blockHelper.getBlock().get()))
                 .save(consumer, modRecipe(blockHelper.getId() + "_stairs_from_" + blockHelper.getId() + "_stonecutting"));
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(blockHelper.getBlock().get()), blockHelper.getSlab().get(), 2).unlocks("has_" + blockHelper.getId(), has(blockHelper.getBlock().get()))
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(blockHelper.getBlock().get()), blockHelper.getSlab().get(), 2).unlockedBy("has_" + blockHelper.getId(), has(blockHelper.getBlock().get()))
                 .save(consumer, modRecipe(blockHelper.getId() + "_slab_from_" + blockHelper.getId() + "_stonecutting"));
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(blockHelper.getBlock().get()), blockHelper.getWall().get()).unlocks("has_" + blockHelper.getId(), has(blockHelper.getBlock().get()))
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(blockHelper.getBlock().get()), blockHelper.getWall().get()).unlockedBy("has_" + blockHelper.getId(), has(blockHelper.getBlock().get()))
                 .save(consumer, modRecipe(blockHelper.getId() + "_wall_from_" + blockHelper.getId() + "_stonecutting"));
     }
 

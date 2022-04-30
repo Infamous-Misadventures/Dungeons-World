@@ -1,0 +1,22 @@
+{
+    "feature": "dungeons_world:mega_dark_oak_pine",
+    "placement": [
+        {
+            "type": "count",
+            "count": {
+                "type": "minecraft:uniform",
+                "value": {
+                    "min_inclusive": 0,
+                    "max_inclusive": 1
+                }
+            }
+        },
+        {
+            "type": "minecraft:in_square"
+        },
+        {
+            "type": "heightmap",
+            "heightmap": "MOTION_BLOCKING"
+        }
+    ]
+}

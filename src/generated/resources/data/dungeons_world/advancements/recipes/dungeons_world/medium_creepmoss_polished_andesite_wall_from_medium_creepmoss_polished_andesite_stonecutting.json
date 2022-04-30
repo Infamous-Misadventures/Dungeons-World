@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "dungeons_world:medium_creepmoss_polished_andesite"
+            "items": [
+              "dungeons_world:medium_creepmoss_polished_andesite"
+            ]
           }
         ]
       }

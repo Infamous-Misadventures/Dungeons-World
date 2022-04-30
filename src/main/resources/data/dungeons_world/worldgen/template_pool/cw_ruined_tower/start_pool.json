@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:cw_ruined_tower/start_pool",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,

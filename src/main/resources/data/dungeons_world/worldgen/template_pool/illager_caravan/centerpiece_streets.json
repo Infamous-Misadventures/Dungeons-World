@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:illager_caravan/centerpiece_streets",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,

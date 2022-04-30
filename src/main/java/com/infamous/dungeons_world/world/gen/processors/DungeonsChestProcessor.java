@@ -1,29 +1,30 @@
 package com.infamous.dungeons_world.world.gen.processors;
 
-import com.infamous.dungeons_world.tileentity.DungeonsChestType;
+import com.infamous.dungeons_world.blockentity.DungeonsChestType;
+import com.infamous.dungeons_world.blocks.DungeonsChestBlock;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.patrigan.structure_toolkit.util.GeneralUtils;
 import mod.patrigan.structure_toolkit.util.RandomType;
 import mod.patrigan.structure_toolkit.world.gen.processors.ProcessorUtil;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.properties.ChestType;
-import net.minecraft.tileentity.LockableLootTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.gen.feature.template.IStructureProcessorType;
-import net.minecraft.world.gen.feature.template.PlacementSettings;
-import net.minecraft.world.gen.feature.template.StructureProcessor;
-import net.minecraft.world.gen.feature.template.Template;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.List;
 import java.util.Random;
@@ -32,9 +33,9 @@ import static com.infamous.dungeons_world.blocks.ModBlocks.CHEST_TYPES;
 import static com.infamous.dungeons_world.blocks.ModBlocks.COMMON_CHEST;
 import static com.infamous.dungeons_world.world.gen.processors.ModProcessors.DUNGEONS_CHESTS;
 import static mod.patrigan.structure_toolkit.util.RandomType.RANDOM_TYPE_CODEC;
-import static net.minecraft.block.Blocks.AIR;
-import static net.minecraft.block.Blocks.CHEST;
-import static net.minecraft.block.ChestBlock.*;
+import static net.minecraft.world.level.block.Blocks.AIR;
+import static net.minecraft.world.level.block.Blocks.CHEST;
+import static net.minecraft.world.level.block.ChestBlock.*;
 import static net.minecraftforge.registries.ForgeRegistries.BLOCKS;
 
 public class DungeonsChestProcessor extends StructureProcessor {
@@ -63,11 +64,11 @@ public class DungeonsChestProcessor extends StructureProcessor {
     }
 
     @Override
-    public Template.BlockInfo process(IWorldReader world, BlockPos piecePos, BlockPos structurePos, Template.BlockInfo rawBlockInfo, Template.BlockInfo blockInfo, PlacementSettings settings, Template template) {
-        if ((blockInfo.state.is(COMMON_CHEST.get()) || blockInfo.state.is(CHEST)) && blockInfo.state.hasTileEntity()) {
+    public StructureTemplate.StructureBlockInfo process(LevelReader world, BlockPos piecePos, BlockPos structurePos, StructureTemplate.StructureBlockInfo rawBlockInfo, StructureTemplate.StructureBlockInfo blockInfo, StructurePlaceSettings settings, StructureTemplate template) {
+        if ((blockInfo.state.is(COMMON_CHEST.get()) || blockInfo.state.is(CHEST)) && blockInfo.state.hasBlockEntity()) {
             Random random;
             if(blockInfo.state.getValue(TYPE).equals(ChestType.LEFT)) {
-                Direction connectedDirection = getConnectedDirection(blockInfo.state.rotate((IWorld)world, blockInfo.pos, settings.getRotation()));
+                Direction connectedDirection = getConnectedDirection(blockInfo.state.rotate((LevelAccessor)world, blockInfo.pos, settings.getRotation()));
                 random = ProcessorUtil.getRandom(randomType, blockInfo.pos.relative(connectedDirection), piecePos, structurePos, world, SEED);
             }else {
                 random = ProcessorUtil.getRandom(randomType, blockInfo.pos, piecePos, structurePos, world, SEED);
@@ -76,24 +77,22 @@ public class DungeonsChestProcessor extends StructureProcessor {
                 DungeonsChestType chestType = GeneralUtils.getRandomEntry(chestTypes, random);
                 BlockState blockState = CHEST_TYPES.get(chestType).get().defaultBlockState();
                 blockState = copyProperties(blockState, blockInfo.state);
-                TileEntity tileEntity = blockState.createTileEntity(world);
-                ServerWorld serverWorld = ((IServerWorld) world).getLevel();
-                LockableLootTileEntity lockableLootTileEntity = (LockableLootTileEntity) tileEntity;
-                lockableLootTileEntity.setLevelAndPosition(serverWorld, blockInfo.pos);
-                CompoundNBT nbt = blockInfo.nbt;
+                BlockEntity tileEntity = ((DungeonsChestBlock) blockState.getBlock()).newBlockEntity(blockInfo.pos, blockState);
+                tileEntity.load(blockInfo.nbt);
+                ServerLevel serverWorld = ((ServerLevelAccessor) world).getLevel();
                 if(!blockInfo.state.getValue(TYPE).equals(ChestType.LEFT)) {
-                    ((LockableLootTileEntity) tileEntity).setLootTable(new ResourceLocation(this.baseLootTable.getNamespace(), this.baseLootTable.getPath() + "/" + chestType.name().toLowerCase()), serverWorld.random.nextLong());
+                    ((RandomizableContainerBlockEntity) tileEntity).setLootTable(new ResourceLocation(this.baseLootTable.getNamespace(), this.baseLootTable.getPath() + "/" + chestType.name().toLowerCase()), serverWorld.random.nextLong());
                 }
-                return new Template.BlockInfo(
+                return new StructureTemplate.StructureBlockInfo(
                         blockInfo.pos,
                         blockState,
-                        tileEntity.save(nbt));
+                        tileEntity.saveWithId());
             } else {
                 Block newBlock = BLOCKS.getValue(replacer);
                 if (newBlock == null) {
                     newBlock = AIR;
                 }
-                return new Template.BlockInfo(
+                return new StructureTemplate.StructureBlockInfo(
                         blockInfo.pos,
                         newBlock.defaultBlockState(),
                         null
@@ -108,7 +107,7 @@ public class DungeonsChestProcessor extends StructureProcessor {
     }
 
     @Override
-    protected IStructureProcessorType<?> getType() {
+    protected StructureProcessorType<?> getType() {
         return DUNGEONS_CHESTS;
     }
 }

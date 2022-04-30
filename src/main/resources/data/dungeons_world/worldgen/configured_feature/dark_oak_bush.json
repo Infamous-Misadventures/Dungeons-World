@@ -1,8 +1,7 @@
 {
+  "type": "minecraft:tree",
   "config": {
-    "max_water_depth": 0,
     "ignore_vines": true,
-    "heightmap": "OCEAN_FLOOR",
     "minimum_size": {
       "limit": 1,
       "lower_size": 1,
@@ -19,16 +18,6 @@
       },
       "type": "minecraft:simple_state_provider"
     },
-    "leaves_provider": {
-      "state": {
-        "Properties": {
-          "persistent": "false",
-          "distance": "2"
-        },
-        "Name": "minecraft:dark_oak_leaves"
-      },
-      "type": "minecraft:simple_state_provider"
-    },
     "foliage_placer": {
       "radius": 1,
       "offset": 0,
@@ -40,7 +29,32 @@
       "height_rand_a": 0,
       "height_rand_b": 0,
       "type": "minecraft:straight_trunk_placer"
+    },
+    "foliage_provider": {
+      "state": {
+        "Properties": {
+          "persistent": "false",
+          "distance": "2"
+        },
+        "Name": "minecraft:dark_oak_leaves"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "force_dirt": false,
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "sapling_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dark_oak_sapling",
+        "Properties": {
+          "stage": "0"
+        }
+      }
     }
-  },
-  "type": "minecraft:tree"
+  }
 }

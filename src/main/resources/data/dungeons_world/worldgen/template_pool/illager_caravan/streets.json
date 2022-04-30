@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:illager_caravan/streets",
-
   "fallback": "dungeons_world:illager_caravan/terminators",
-
   "elements": [
     {
       "weight": 20,
@@ -32,7 +30,7 @@
       }
     },
     {
-      "weight":2,
+      "weight": 2,
       "element": {
         "location": "dungeons_world:illager_caravan/terminators/flat_01",
         "processors": "dungeons_world:illager_caravan/street_processors",

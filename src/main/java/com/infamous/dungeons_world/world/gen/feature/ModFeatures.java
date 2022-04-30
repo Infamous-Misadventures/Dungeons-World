@@ -1,9 +1,9 @@
 package com.infamous.dungeons_world.world.gen.feature;
 
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 

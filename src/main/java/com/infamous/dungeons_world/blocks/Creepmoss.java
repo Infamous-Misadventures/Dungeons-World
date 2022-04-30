@@ -3,11 +3,11 @@ package com.infamous.dungeons_world.blocks;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Optional;
 import java.util.Random;
@@ -70,7 +70,7 @@ public interface Creepmoss extends Degradable<Creepmoss.CreepmossLevel> {
         return this.getDegradationLevel() == Creepmoss.CreepmossLevel.UNAFFECTED ? 0.75F : 1.0F;
     }
 
-    default void tickDegradation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    default void tickDegradation(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         float f = 1;
         if (random.nextFloat() < f) {
             this.tryDegrade(state, world, pos, random);

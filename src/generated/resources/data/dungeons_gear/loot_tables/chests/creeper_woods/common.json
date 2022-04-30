@@ -2,122 +2,13 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": 1.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:sword"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:hawkbrand"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:diamond_sword"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:axe"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:firebrand"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:highland_axe"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:spear"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:fortune_spear"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:whispering_spear"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:bonebow"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:haunted_bow"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:twin_bow"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:soul_bow"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:nocturnal_bow"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:bow_of_lost_souls"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:hunters_vest"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:archers_vest"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:archers_hood"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:soul_robe"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:soul_hood"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:souldancer_robe"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:souldancer_hood"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:wolf_vest"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 100,
-          "name": "dungeons_gear:wolf_hood"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:fox_vest"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "dungeons_gear:fox_hood"
-        }
-      ]
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 1.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": []
     }
   ]
 }

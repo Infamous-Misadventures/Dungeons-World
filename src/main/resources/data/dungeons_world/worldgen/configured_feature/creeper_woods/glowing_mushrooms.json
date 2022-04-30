@@ -1,33 +1,7 @@
 {
+  "type": "minecraft:random_selector",
   "config": {
-    "feature": {
-      "config": {
-        "feature": "dungeons_world:glowing_mushrooms",
-        "decorator": {
-          "config": {
-            "outer": {
-              "config": {},
-              "type": "minecraft:square"
-            },
-            "inner": {
-              "config": {},
-              "type": "minecraft:heightmap_spread_double"
-            }
-          },
-          "type": "minecraft:decorated"
-        }
-      },
-      "type": "minecraft:decorated"
-    },
-    "decorator": {
-      "config": {
-        "count": {
-          "base": 15,
-          "spread": 4
-        }
-      },
-      "type": "minecraft:count"
-    }
-  },
-  "type": "minecraft:decorated"
+    "features": [],
+    "default": "dungeons_world:glowing_mushrooms"
+  }
 }

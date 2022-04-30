@@ -3,26 +3,16 @@
   "pools": [
     {
       "rolls": {
+        "type": "minecraft:uniform",
         "min": 5.0,
-        "max": 10.0,
-        "type": "minecraft:uniform"
+        "max": 10.0
       },
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:loot_table",
           "weight": 100,
           "name": "dungeons_world:chests/obsidian"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 20,
-          "functions": [
-            {
-              "function": "minecraft:exploration_map",
-              "destination": "dungeons_world:cw_ruined_tower"
-            }
-          ],
-          "name": "minecraft:map"
         }
       ]
     }

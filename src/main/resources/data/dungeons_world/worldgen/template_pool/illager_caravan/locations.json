@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:illager_caravan/locations",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 3,

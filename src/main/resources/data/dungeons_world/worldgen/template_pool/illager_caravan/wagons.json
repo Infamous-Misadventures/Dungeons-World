@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:illager_caravan/wagons",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 2,

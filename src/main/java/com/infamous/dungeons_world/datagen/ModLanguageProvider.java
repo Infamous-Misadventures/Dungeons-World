@@ -2,10 +2,10 @@ package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.biomes.ModBiomes;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 
 import static com.infamous.dungeons_world.biomes.ModBiomes.BIOME_NAMES;

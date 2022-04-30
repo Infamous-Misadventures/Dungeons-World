@@ -3,29 +3,16 @@
   "pools": [
     {
       "rolls": {
+        "type": "minecraft:uniform",
         "min": 5.0,
-        "max": 8.0,
-        "type": "minecraft:uniform"
+        "max": 8.0
       },
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:loot_table",
           "weight": 130,
           "name": "dungeons_world:chests/fancy"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:exploration_map",
-              "destination": "dungeons_world:cw_ruined_tower",
-              "decoration": "red_x",
-              "zoom": 1,
-              "skip_existing_chunks": false
-            }
-          ],
-          "name": "minecraft:map"
         }
       ]
     }

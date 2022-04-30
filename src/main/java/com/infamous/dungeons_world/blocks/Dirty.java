@@ -3,20 +3,20 @@ package com.infamous.dungeons_world.blocks;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Supplier;
 
 import static com.infamous.dungeons_world.blocks.ModBlocks.*;
-import static net.minecraft.block.Blocks.POLISHED_GRANITE;
-import static net.minecraftforge.common.Tags.Blocks.DIRT;
+import static net.minecraft.tags.BlockTags.DIRT;
+import static net.minecraft.world.level.block.Blocks.POLISHED_GRANITE;
 
 
 public interface Dirty extends Degradable<Dirty.DirtLevel> {
@@ -74,9 +74,9 @@ public interface Dirty extends Degradable<Dirty.DirtLevel> {
         return this.getDegradationLevel() == DirtLevel.UNAFFECTED ? 0.75F : 0.50F;
     }
 
-    default void tickDegradation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    default void tickDegradation(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         float f = INCREASE_CHANCE;
-        AxisAlignedBB area = new AxisAlignedBB(pos).inflate(1, 0, 1).expandTowards(0, 1, 0);
+        AABB area = new AABB(pos).inflate(1, 0, 1).expandTowards(0, 1, 0);
         if (random.nextFloat() < f && world.getBlockStates(area).anyMatch(blockState -> blockState.is(DIRT) || blockState.getBlock() instanceof Dirty)) {
             this.tryDegrade(state, world, pos, random);
         }

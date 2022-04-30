@@ -1,11 +1,11 @@
 package com.infamous.dungeons_world.client.particles;
 
 import net.minecraft.client.particle.*;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particles.BasicParticleType;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.particles.SimpleParticleType;
 
-public class GlowingMushroomParticle  extends SpriteTexturedParticle {
-    private GlowingMushroomParticle(ClientWorld p_i232403_1_, double p_i232403_2_, double p_i232403_4_, double p_i232403_6_) {
+public class GlowingMushroomParticle  extends TextureSheetParticle {
+    private GlowingMushroomParticle(ClientLevel p_i232403_1_, double p_i232403_2_, double p_i232403_4_, double p_i232403_6_) {
         super(p_i232403_1_, p_i232403_2_, p_i232403_4_, p_i232403_6_, 0.0D, 0.0D, 0.0D);
         this.xd *= 0.2F;
         this.yd *= 0.2F;
@@ -15,8 +15,8 @@ public class GlowingMushroomParticle  extends SpriteTexturedParticle {
         this.lifetime = (int)(50.0D / (Math.random() * 0.8D + 0.2D));
     }
 
-    public IParticleRenderType getRenderType() {
-        return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
+    public ParticleRenderType getRenderType() {
+        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 
     public int getLightColor(float p_189214_1_) {
@@ -48,14 +48,14 @@ public class GlowingMushroomParticle  extends SpriteTexturedParticle {
         }
     }
 
-    public static class Factory implements IParticleFactory<BasicParticleType> {
-        private final IAnimatedSprite sprite;
+    public static class Factory implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet sprite;
 
-        public Factory(IAnimatedSprite p_i50495_1_) {
+        public Factory(SpriteSet p_i50495_1_) {
             this.sprite = p_i50495_1_;
         }
 
-        public Particle createParticle(BasicParticleType p_199234_1_, ClientWorld p_199234_2_, double p_199234_3_, double p_199234_5_, double p_199234_7_, double p_199234_9_, double p_199234_11_, double p_199234_13_) {
+        public Particle createParticle(SimpleParticleType p_199234_1_, ClientLevel p_199234_2_, double p_199234_3_, double p_199234_5_, double p_199234_7_, double p_199234_9_, double p_199234_11_, double p_199234_13_) {
             GlowingMushroomParticle glowingMushroomParticle = new GlowingMushroomParticle(p_199234_2_, p_199234_3_, p_199234_5_, p_199234_7_);
             glowingMushroomParticle.pickSprite(this.sprite);
             glowingMushroomParticle.setColor(238/256F, 193/256F, 86/256F);

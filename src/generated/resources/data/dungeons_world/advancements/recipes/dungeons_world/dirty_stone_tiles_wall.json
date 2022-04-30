@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "dungeons_world:dirty_stone_tiles"
+            "items": [
+              "dungeons_world:dirty_stone_tiles"
+            ]
           }
         ]
       }

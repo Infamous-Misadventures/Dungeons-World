@@ -1,8 +1,6 @@
 {
   "name": "dungeons_world:creepy_crypt/terminators",
-
   "fallback": "minecraft:empty",
-
   "elements": [
     {
       "weight": 1,
