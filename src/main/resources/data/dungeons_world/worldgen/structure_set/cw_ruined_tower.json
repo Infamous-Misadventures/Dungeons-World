@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "dungeons_world:cw_ruined_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 184213669,
+    "spacing": 14,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

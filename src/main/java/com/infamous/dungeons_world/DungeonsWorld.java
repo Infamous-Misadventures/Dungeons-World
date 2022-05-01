@@ -1,6 +1,6 @@
 package com.infamous.dungeons_world;
 
-import com.infamous.dungeons_world.biomes.ModBiomes;
+import com.infamous.dungeons_world.world.biomes.ModBiomes;
 import com.infamous.dungeons_world.blocks.ModBlocks;
 import com.infamous.dungeons_world.client.renderer.tileentity.DungeonsChestBlockEntityRenderer;
 import com.infamous.dungeons_world.entity.ModEntityTypes;
@@ -11,6 +11,7 @@ import com.infamous.dungeons_world.world.gen.feature.ModConfiguredFeatures;
 import com.infamous.dungeons_world.world.gen.feature.ModFeatures;
 import com.infamous.dungeons_world.world.gen.processors.ModProcessors;
 import com.infamous.dungeons_world.world.gen.provider.ModBlockstateProviders;
+import com.infamous.dungeons_world.world.surfacerules.ModSurfaceRules;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -59,6 +60,7 @@ public class DungeonsWorld {
             ModConfiguredFeatures.registerConfiguredFeatures();
             ModProcessors.init();
             ModBiomes.initBiomes();
+            ModSurfaceRules.init();
         });
     }
 

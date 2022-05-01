@@ -1,23 +1,60 @@
 package com.infamous.dungeons_world.world.surfacerules;
 
+import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.blocks.ModBlocks;
-import com.infamous.dungeons_world.world.ModBiomes;
-import net.minecraft.world.level.levelgen.Noises;
+import com.mojang.serialization.Codec;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
+import static com.infamous.dungeons_world.DungeonsWorld.MODID;
+import static com.infamous.dungeons_world.world.biomes.ModBiomes.CREEPER_WOODS;
+
 public class ModSurfaceRules {
+
+    public static Codec<? extends SurfaceRules.ConditionSource> SIMPLEX_TRESHOLD;
 
     public static final SurfaceRules.ConditionSource WATER_CHECK = SurfaceRules.waterBlockCheck(-1, 0);
 
     public static final SurfaceRules.RuleSource DEEP_GRASS_BLOCK_SURFACE = SurfaceRules.sequence(SurfaceRules.ifTrue(WATER_CHECK, SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(ModBlocks.DEEP_GRASS_BLOCK.get().defaultBlockState()))), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, SurfaceRules.state(ModBlocks.DEEP_DIRT.get().defaultBlockState())));
 
-    public static final SurfaceRules.RuleSource CREEPER_WOODS_SURFACE = SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.CREEPER_WOODS),
+    public static final SurfaceRules.RuleSource CREEPER_WOODS_SURFACE = SurfaceRules.ifTrue(SurfaceRules.isBiome(CREEPER_WOODS),
             SurfaceRules.sequence(
-                    SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, 0.12121212121212122F, 1.7976931348623157F),//Todo create own condition
-                            SurfaceRules.state(ModBlocks.COARSE_DEEP_DIRT.get().defaultBlockState())),
+                    getPathRuleSource(),
                     DEEP_GRASS_BLOCK_SURFACE
             )
     );
+
+    public static SurfaceRules.RuleSource getPathRuleSource(){
+        return SurfaceRules.sequence(
+                SurfaceRules.ifTrue(ModSurfaceRules.simplexCondition(0.015D, 0.015D, -0.09D, 0.09D), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(ModBlocks.DEEP_DIRT_PATH.get().defaultBlockState()))),
+                SurfaceRules.ifTrue(ModSurfaceRules.simplexCondition(0.015D, 0.015D, -0.13D, 0.13D), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,  SurfaceRules.state(ModBlocks.DEEP_GRASSY_DIRT.get().defaultBlockState()))),
+                SurfaceRules.ifTrue(ModSurfaceRules.simplexCondition(0.015D, 0.015D, -0.22D, 0.22D), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(ModBlocks.DEEP_DIRTY_GRASS.get().defaultBlockState())))
+
+        );
+    }
+
+    private static SurfaceRules.ConditionSource simplexCondition(double xMultiplier, double zMultiplier, double minThreshold, double maxThreshold) {
+        return new SimplexTresholdConditionSource(xMultiplier, zMultiplier, minThreshold, maxThreshold);
+    }
+
+    public static void init(){
+        SIMPLEX_TRESHOLD = register("simplex_threshold", SimplexTresholdConditionSource.CODEC);
+    }
+
+    static <P extends SurfaceRules.ConditionSource> Codec<? extends SurfaceRules.ConditionSource> register(String name, Codec<P> codec) {
+        return Registry.register(Registry.CONDITION, new ResourceLocation(MODID, name), codec);
+    }
+
+    public static void bootStrap() {
+    }
+
+    static {
+        Registry.register(Registry.CONDITION, new ResourceLocation(MODID, "simplex_threshold"), SimplexTresholdConditionSource.CODEC);
+
+        DungeonsWorld.LOGGER.info("Dungeons World Rule Sources class loaded.");
+
+    }
 
 
 }

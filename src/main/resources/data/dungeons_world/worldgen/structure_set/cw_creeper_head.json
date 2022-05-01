@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "dungeons_world:cw_creeper_head",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 317681461,
+    "spacing": 15,
+    "separation": 7,
+    "type": "minecraft:random_spread"
+  }
+}

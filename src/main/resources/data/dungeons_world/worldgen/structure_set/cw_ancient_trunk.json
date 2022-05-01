@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "dungeons_world:cw_ancient_trunk",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 156453444,
+    "spacing": 14,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

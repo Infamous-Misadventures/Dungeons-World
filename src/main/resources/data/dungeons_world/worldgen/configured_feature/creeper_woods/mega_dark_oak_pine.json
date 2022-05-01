@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:random_selector",
-  "config": {
-    "features": [],
-    "default": "dungeons_world:mega_dark_oak_pine"
-  }
-}

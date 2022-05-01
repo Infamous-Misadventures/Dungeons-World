@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "dungeons_world:illager_caravan",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 53854187,
+    "spacing": 18,
+    "separation": 13,
+    "type": "minecraft:random_spread"
+  }
+}

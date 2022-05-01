@@ -2,21 +2,28 @@
     "feature": "dungeons_world:glowing_mushrooms",
     "placement": [
         {
-            "type": "count",
             "count": {
                 "type": "minecraft:uniform",
                 "value": {
-                    "min_inclusive": 15,
-                    "max_inclusive": 19
+                    "min_inclusive": 0,
+                    "max_inclusive": 2
                 }
-            }
+            },
+            "type": "minecraft:count"
         },
         {
             "type": "minecraft:in_square"
         },
         {
-            "type": "heightmap",
-            "heightmap": "MOTION_BLOCKING"
+            "max_water_depth": 0,
+            "type": "minecraft:surface_water_depth_filter"
+        },
+        {
+            "heightmap": "OCEAN_FLOOR",
+            "type": "minecraft:heightmap"
+        },
+        {
+            "type": "minecraft:biome"
         }
     ]
 }
