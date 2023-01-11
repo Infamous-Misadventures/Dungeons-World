@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "dungeons_world:creepy_crypt",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 3511814,
+    "spacing": 18,
+    "separation": 13,
+    "type": "minecraft:random_spread"
+  }
+}
