@@ -3,6 +3,10 @@
     {
       "structure": "dungeons_world:illager_caravan",
       "weight": 1
+    },
+    {
+      "structure": "dungeons_world:creepy_crypt",
+      "weight": 1
     }
   ],
   "placement": {

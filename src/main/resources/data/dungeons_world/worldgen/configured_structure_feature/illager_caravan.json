@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:village",
+  "type": "dungeons_world:toolkit_jigsaw",
   "config": {
     "start_pool": "dungeons_world:illager_caravan/start_pool",
     "size": 7

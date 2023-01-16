@@ -1,9 +1,11 @@
 package com.infamous.dungeons_world.world.biomes;
 
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.StructureFeatureManager;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -17,7 +19,7 @@ public class BiomeClientEvents {
     public static void onRenderFogEvent(EntityViewRenderEvent.RenderFogEvent event) {
         if(event.getMode() == FOG_TERRAIN){
             Entity entity = event.getRenderer().getMainCamera().getEntity();
-            if(entity != null){
+            if(entity != null && entity instanceof Player player && !player.isSpectator() && !player.isCreative()){
                 if(entity.getLevel().getBiome(entity.blockPosition()).is(ModBiomes.CREEPER_WOODS)){
                     event.setNearPlaneDistance(5F);
                     event.setFarPlaneDistance(30.0F);
