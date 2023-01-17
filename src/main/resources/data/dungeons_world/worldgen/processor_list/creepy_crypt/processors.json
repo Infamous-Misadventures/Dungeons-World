@@ -1,6 +1,9 @@
 {
   "processors": [
     {
+      "processor_type": "structure_toolkit:waterlogging_fix"
+    },
+    {
       "processor_type": "structure_toolkit:gradient_replace",
       "gradient_list": [
         {
@@ -95,7 +98,7 @@
       "block": "minecraft:cobweb"
     },
     {
-      "vanilla": "minecraft:torch",
+      "vanilla": "minecraft:candle",
       "processor_type": "dungeons_world:candles",
       "rarity": 0.05
     },
@@ -116,11 +119,11 @@
         },
         {
           "output_state": {
-            "Name": "minecraft:air"
+            "Name": "dungeons_world:cobbled_deep_dirt"
           },
           "input_predicate": {
-            "block": "minecraft:chest",
-            "probability": 0.6,
+            "block": "dungeons_world:deep_dirt",
+            "probability": 0.8,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {
@@ -133,6 +136,7 @@
     {
       "processor_type": "dungeons_world:dungeons_chests",
       "base_loot_table": "dungeons_world:chests/creeper_woods",
+      "rarity": 0.6,
       "chest_types": [
         {
           "chest_type": "common",
