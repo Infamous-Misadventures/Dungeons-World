@@ -1,5 +1,6 @@
 package com.infamous.dungeons_world.blocks;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrassBlock;
@@ -39,7 +40,7 @@ public class DeepGrassBlock extends GrassBlock {
     }
 
     @Override
-    public void randomTick(BlockState p_225542_1_, ServerLevel p_225542_2_, BlockPos p_225542_3_, Random p_225542_4_) {
+    public void randomTick(BlockState p_225542_1_, ServerLevel p_225542_2_, BlockPos p_225542_3_, RandomSource p_225542_4_) {
         if (!canBeGrass(p_225542_1_, p_225542_2_, p_225542_3_)) {
             if (!p_225542_2_.isAreaLoaded(p_225542_3_, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             p_225542_2_.setBlockAndUpdate(p_225542_3_, ModBlocks.DEEP_DIRT.get().defaultBlockState());

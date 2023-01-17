@@ -1,18 +1,17 @@
 package com.infamous.dungeons_world;
 
-import com.infamous.dungeons_world.world.biomes.ModBiomes;
+import com.infamous.dungeons_world.blockentity.ModBlockEntityTypes;
 import com.infamous.dungeons_world.blocks.ModBlocks;
 import com.infamous.dungeons_world.client.renderer.tileentity.DungeonsChestBlockEntityRenderer;
 import com.infamous.dungeons_world.entity.ModEntityTypes;
+import com.infamous.dungeons_world.init.ConditionSourceInit;
+import com.infamous.dungeons_world.init.GlobalLootModifierInit;
 import com.infamous.dungeons_world.items.ModItems;
 import com.infamous.dungeons_world.particles.ModParticleTypes;
-import com.infamous.dungeons_world.blockentity.ModBlockEntityTypes;
-import com.infamous.dungeons_world.world.configuration.ModStructureFeatures;
-import com.infamous.dungeons_world.world.gen.feature.ModConfiguredFeatures;
+import com.infamous.dungeons_world.world.biomes.ModBiomes;
 import com.infamous.dungeons_world.world.gen.feature.ModFeatures;
 import com.infamous.dungeons_world.world.gen.processors.ModProcessors;
 import com.infamous.dungeons_world.world.gen.provider.ModBlockstateProviders;
-import com.infamous.dungeons_world.world.surfacerules.ModSurfaceRules;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -44,7 +43,8 @@ public class DungeonsWorld {
         ModBiomes.BIOMES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModParticleTypes.PARTICLES.register((modEventBus));
-        ModStructureFeatures.STRUCTURE_FEATURES.register(modEventBus);
+        GlobalLootModifierInit.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
+        ConditionSourceInit.CONDITION_SOURCES.register(modEventBus);
 
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
     }
@@ -59,10 +59,8 @@ public class DungeonsWorld {
     private void setup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(() -> {
-            ModConfiguredFeatures.registerConfiguredFeatures();
             ModProcessors.init();
             ModBiomes.initBiomes();
-            ModSurfaceRules.init();
         });
     }
 

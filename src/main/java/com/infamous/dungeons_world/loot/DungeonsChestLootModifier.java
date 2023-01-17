@@ -1,22 +1,32 @@
 package com.infamous.dungeons_world.loot;
 
-import com.google.gson.JsonObject;
-import com.infamous.dungeons_world.mixin.LootContextAccessor;
+import com.google.common.base.Suppliers;
 import com.infamous.dungeons_world.blockentity.DungeonsChestType;
+import com.infamous.dungeons_world.mixin.LootContextAccessor;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.fml.ModList;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Supplier;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 
 public class DungeonsChestLootModifier extends LootModifier {
+
+    public static final Supplier<Codec<DungeonsChestLootModifier>> CODEC = Suppliers.memoize(()
+            -> RecordCodecBuilder.create(instance -> codecStart(instance).apply(instance, DungeonsChestLootModifier::new)));
 
     private static String DGMODID = "dungeons_gear";
 
@@ -36,7 +46,7 @@ public class DungeonsChestLootModifier extends LootModifier {
     }
 
     @Override
-    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+    protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         if(!ModList.get().isLoaded("dungeons_gear"))
            return generatedLoot; // easier blacklist for users
 
@@ -53,21 +63,14 @@ public class DungeonsChestLootModifier extends LootModifier {
         return generatedLoot;
     }
 
-    public static class Serializer extends GlobalLootModifierSerializer<DungeonsChestLootModifier> {
-        @Override
-        public DungeonsChestLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] conditions) {
-            return new DungeonsChestLootModifier(conditions);
-        }
-
-        @Override
-        public JsonObject write(DungeonsChestLootModifier instance) {
-            return this.makeConditions(instance.conditions);
-        }
-    }
-
     protected static LootContext copyLootContextWithNewQueryID(LootContext oldLootContext, ResourceLocation newQueryID){
         LootContext newContext = new LootContext.Builder(oldLootContext).create(LootContextParamSets.CHEST);
         ((LootContextAccessor)newContext).dungeonsgear_setQueriedLootTableId(newQueryID);
         return newContext;
+    }
+
+    @Override
+    public Codec<? extends IGlobalLootModifier> codec() {
+        return CODEC.get();
     }
 }

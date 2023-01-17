@@ -10,7 +10,7 @@ import static com.infamous.dungeons_world.blocks.ModBlocks.*;
 
 public class ModBlockEntityTypes {
 
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
 
 
     public static final RegistryObject<BlockEntityType<DungeonsChestBlockEntity>> CHEST = BLOCK_ENTITY_TYPES.register("chest",

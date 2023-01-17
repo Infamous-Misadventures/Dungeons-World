@@ -18,6 +18,8 @@ import java.util.Random;
 import static net.minecraft.world.InteractionHand.OFF_HAND;
 
 
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
 public class DirtyPathBlock extends PathBlock implements Dirty {
     private final DirtLevel dirtLevel;
 

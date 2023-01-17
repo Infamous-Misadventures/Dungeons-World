@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.patrigan.structure_toolkit.util.RandomType;
 import mod.patrigan.structure_toolkit.world.gen.processors.ProcessorUtil;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelReader;
@@ -42,7 +43,7 @@ public class DirtyProcessor extends StructureProcessor {
 
     @Override
     public StructureTemplate.StructureBlockInfo process(LevelReader world, BlockPos piecePos, BlockPos structurePos, StructureTemplate.StructureBlockInfo rawBlockInfo, StructureTemplate.StructureBlockInfo blockInfo, StructurePlaceSettings settings, StructureTemplate template) {
-        Random random;
+        RandomSource random;
         random = ProcessorUtil.getRandom(randomType, blockInfo.pos, piecePos, structurePos, world, SEED);
         BlockState blockState = blockInfo.state;
         if (random.nextFloat() < rarity) {

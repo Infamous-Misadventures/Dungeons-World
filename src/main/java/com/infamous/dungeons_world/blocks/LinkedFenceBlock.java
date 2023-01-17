@@ -17,6 +17,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import static net.minecraft.core.Direction.NORTH;
 
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
 public class LinkedFenceBlock extends HorizontalDirectionalBlock {
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     protected final VoxelShape[] collisionShapeByIndex;

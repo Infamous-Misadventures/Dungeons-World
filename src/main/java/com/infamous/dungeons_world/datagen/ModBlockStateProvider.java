@@ -3,28 +3,22 @@ package com.infamous.dungeons_world.datagen;
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
 import com.infamous.dungeons_world.blocks.LinkedFenceBlock;
 import com.infamous.dungeons_world.blocks.PathBlock;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.core.Direction;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 import static com.infamous.dungeons_world.blocks.ModBlocks.*;
-import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 import static net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock.FACE;
+import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
-
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.PressurePlateBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
-import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockStateProvider extends BlockStateProvider {
 
@@ -74,15 +68,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void registerPathBlock(RegistryObject<Block> blockRegistryObject) {
         PathBlock block = (PathBlock) blockRegistryObject.get();
         ResourceLocation sideTexture = block.getSideBlock();
-        BlockModelBuilder models = models().singleTexture(block.getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/abstract_path"), "top", blockLoc(block.getUnshoveled().getRegistryName()))
+        BlockModelBuilder models = models().singleTexture(getBlockRegistryName(block).getPath(), modLoc(BLOCK_FOLDER + "/abstract_path"), "top", blockLoc(getBlockRegistryName(block.getUnshoveled())))
                 .texture("side", blockLoc(sideTexture));
         simpleBlock(block, models);
     }
 
     private void registerRottenBlock(RegistryObject<Block> blockRegistryObject) {
         Block block = blockRegistryObject.get();
-        ResourceLocation planksTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + block.getRegistryName().getPath().replaceFirst("rotten_", ""));
-        simpleBlock(block, models().singleTexture(block.getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/rotten_abstract_planks"), "planks", planksTexture));
+        ResourceLocation planksTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + getBlockRegistryName(block).getPath().replaceFirst("rotten_", ""));
+        simpleBlock(block, models().singleTexture(getBlockRegistryName(block).getPath(), modLoc(BLOCK_FOLDER + "/rotten_abstract_planks"), "planks", planksTexture));
     }
 
     private void registerLinkedFenceBlock(Block block) {
@@ -90,9 +84,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         if(block.defaultBlockState().getMaterial().equals(Material.NETHER_WOOD)){
             suffix = "stem";
         }
-        ResourceLocation logTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + block.getRegistryName().getPath().replaceFirst("linked_fence", suffix));
-        ResourceLocation logTopTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + block.getRegistryName().getPath().replaceFirst("linked_fence", suffix + "_top"));
-        BlockModelBuilder model = models().withExistingParent(block.getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/abstract_linked_fence"))
+        ResourceLocation logTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + getBlockRegistryName(block).getPath().replaceFirst("linked_fence", suffix));
+        ResourceLocation logTopTexture = new ResourceLocation("minecraft", BLOCK_FOLDER + "/" + getBlockRegistryName(block).getPath().replaceFirst("linked_fence", suffix + "_top"));
+        BlockModelBuilder model = models().withExistingParent(getBlockRegistryName(block).getPath(), modLoc(BLOCK_FOLDER + "/abstract_linked_fence"))
                 .texture("texture", logTexture)
                 .texture("texture_top", logTopTexture);
         getVariantBuilder(block).forAllStatesExcept(state -> {
@@ -131,10 +125,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation texture = modBlockLoc(blockHelper.getBlockId());
         BlockModelBuilder model = models().withExistingParent(blockHelper.getId(), "cube_all").texture("particle", texture).texture("all", texture);
         simpleBlock(blockHelper.getBlock().get(), model);
-        slabBlock((SlabBlock) blockHelper.getSlab().get(), blockHelper.getBlock().get().getRegistryName(), texture);
+        slabBlock((SlabBlock) blockHelper.getSlab().get(), getBlockRegistryName(blockHelper.getBlock().get()), texture);
         stairsBlock((StairBlock)  blockHelper.getStairs().get(), texture);
         wallBlock((WallBlock) blockHelper.getWall().get(), texture);
-        models().wallInventory(blockHelper.getWall().get().getRegistryName().getPath() + "_inventory", texture);
+        models().wallInventory(getBlockRegistryName(blockHelper.getWall().get()).getPath() + "_inventory", texture);
         buttonBlock(blockHelper);
         pressurePlateBlock(blockHelper);
     }
@@ -161,7 +155,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private ModelFile buttonModel(BuildingBlockHelper blockId, boolean powered) {
         String suffix = "button" + (powered ? "_pressed" : "");
-        return models().singleTexture(blockId.getButton().get().getRegistryName().getPath() + "_" + suffix, mcLoc("block/" + suffix), "texture", modLoc("block/" + blockId.getBlockId()));
+        return models().singleTexture(getBlockRegistryName(blockId.getButton().get()).getPath() + "_" + suffix, mcLoc("block/" + suffix), "texture", modLoc("block/" + blockId.getBlockId()));
     }
 
     private void buttonInventory(BuildingBlockHelper blockHelper) {
@@ -184,7 +178,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation texture = modBlockLoc(blockHelper.getBlockId());
         BlockModelBuilder model = models().withExistingParent(blockHelper.getId(), modBlockLoc("slime_block")).texture("particle", texture).texture("texture", texture);
         simpleBlock(blockHelper.getBlock().get(), model);
-        modSlabBlock((SlabBlock) blockHelper.getSlab().get(), blockHelper.getBlock().get().getRegistryName(), texture, "colored_slab");
+        modSlabBlock((SlabBlock) blockHelper.getSlab().get(), getBlockRegistryName(blockHelper.getBlock().get()), texture, "colored_slab");
         modStairsBlock((StairBlock)  blockHelper.getStairs().get(), texture, "colored_stairs");
         modWallBlock((WallBlock) blockHelper.getWall().get(), texture, "colored_wall");
         modButtonBlock(blockHelper, "colored_button", texture);
@@ -192,14 +186,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void modSlabBlock(SlabBlock block, ResourceLocation doubleslab, ResourceLocation texture, String parent) {
-        String name = block.getRegistryName().getPath();
+        String name = getBlockRegistryName(block).getPath();
         BlockModelBuilder bottomModel = models().withExistingParent(name, modBlockLoc(parent)).texture("texture", texture);
         BlockModelBuilder topModel = models().withExistingParent(name + "_top", modBlockLoc(parent + "_top")).texture("texture", texture);
         slabBlock(block, bottomModel, topModel, models().getExistingFile(doubleslab));
     }
 
     private void modStairsBlock(StairBlock block, ResourceLocation texture, String parent) {
-        String name = block.getRegistryName().getPath();
+        String name = getBlockRegistryName(block).getPath();
         BlockModelBuilder standardModel = models().withExistingParent(name, modBlockLoc(parent)).texture("texture", texture);
         BlockModelBuilder innerModel = models().withExistingParent(name + "_inner", modBlockLoc(parent + "_inner")).texture("texture", texture);
         BlockModelBuilder outerModel = models().withExistingParent(name + "_outer", modBlockLoc(parent + "_outer")).texture("texture", texture);
@@ -207,7 +201,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void modWallBlock(WallBlock block, ResourceLocation texture, String parent) {
-        String name = block.getRegistryName().getPath();
+        String name = getBlockRegistryName(block).getPath();
         BlockModelBuilder post = models().withExistingParent(name, modBlockLoc(parent + "_post")).texture("wall", texture);
         BlockModelBuilder side = models().withExistingParent(name + "_inner", modBlockLoc(parent + "_side")).texture("wall", texture);
         BlockModelBuilder sideTall = models().withExistingParent(name + "_outer", modBlockLoc(parent + "_side_tall")).texture("wall", texture);
@@ -237,12 +231,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private ModelFile modButtonModel(BuildingBlockHelper blockHelper, boolean powered, String parent, ResourceLocation texture) {
         String suffix = powered ? "_pressed" : "";
-        return models().singleTexture(blockHelper.getButton().get().getRegistryName().getPath() + suffix, modBlockLoc(parent + suffix), "texture", texture);
+        return models().singleTexture(getBlockRegistryName(blockHelper.getButton().get()).getPath() + suffix, modBlockLoc(parent + suffix), "texture", texture);
     }
 
     private void modButtonInventory(BuildingBlockHelper blockHelper, String parent) {
         String suffix = "_inventory";
-        models().singleTexture(blockHelper.getButton().get().getRegistryName().getPath() + suffix, modBlockLoc(parent + suffix), "texture", modBlockLoc(blockHelper.getBlockId()));
+        models().singleTexture(getBlockRegistryName(blockHelper.getButton().get()).getPath() + suffix, modBlockLoc(parent + suffix), "texture", modBlockLoc(blockHelper.getBlockId()));
     }
 
     private void modPressurePlateBlock(BuildingBlockHelper blockHelper, String parent, ResourceLocation texture) {
@@ -252,7 +246,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private ModelFile modPressurePlateModel(BuildingBlockHelper blockHelper, boolean powered, String parent, ResourceLocation texture) {
         String suffix = powered ? "_down" : "";
         String parentName = parent + suffix + (powered ? "" : "_up");
-        return models().withExistingParent(blockHelper.getPressurePlate().get().getRegistryName().getPath() + suffix, modBlockLoc(parentName))
+        return models().withExistingParent(getBlockRegistryName(blockHelper.getPressurePlate().get()).getPath() + suffix, modBlockLoc(parentName))
                 .texture("texture", texture);
     }
 
@@ -265,5 +259,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private ResourceLocation extend(ResourceLocation rl, String suffix) {
         return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
+    }
+
+    public ResourceLocation getBlockRegistryName(Block block) {
+        return ForgeRegistries.BLOCKS.getKey(block);
     }
 }

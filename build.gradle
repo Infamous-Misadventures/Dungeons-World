@@ -31,7 +31,6 @@ apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
-apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
 version = "${mc_version}-${mod_version}"
 group = 'com.infamous.dungeons_world' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -139,14 +138,12 @@ dependencies {
 
     //Tools
 //    runtimeOnly fg.deobf("loadnbtblock:loadnbtblock:1.0")
-    implementation fg.deobf("structure_toolkit:structure_toolkit:1.18.2-2.0.0")
-    //runtimeOnly fg.deobf("curse.maven:terraforged-363820:3414123")
-//    runtimeOnly fg.deobf("curse.maven:natures-compass-252848:3382150")
-    runtimeOnly fg.deobf("curse.maven:cyanide-541676:3757522")
-    implementation fg.deobf("curse.maven:terrablender-563928:3725996")
-    runtimeOnly fg.deobf("curse.maven:commandstructures-565119:3733096")
-    runtimeOnly fg.deobf("curse.maven:structuregel-378802:4018606")
-    runtimeOnly fg.deobf("curse.maven:worldedit-225608:3697298")
+    implementation fg.deobf("structure_toolkit:structure_toolkit:1.19.2-2.0.0")
+    runtimeOnly fg.deobf("curse.maven:cyanide-541676:4126944")
+    implementation fg.deobf("curse.maven:terrablender-563928:4205732")
+    runtimeOnly fg.deobf("curse.maven:commandstructures-565119:4049363")
+    runtimeOnly fg.deobf("curse.maven:structuregel-378802:4029363")
+    runtimeOnly fg.deobf("curse.maven:worldedit-225608:3922622")
 
     // Dungeons Mods
 //    runtimeOnly fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.45')
@@ -155,12 +152,8 @@ dependencies {
 //    implementation fg.deobf("curse.maven:dungeons-gear-401247:3377033")
 
     //compat
-//    implementation fg.deobf("curse.maven:cavebiomeapi-441706:3489595")
 
     //Compat tests
-//    implementation fg.deobf("curse.maven:arsnouveau-401955:3539097")
-//    implementation fg.deobf("curse.maven:enderlinginvaders-514791:3433192")
-//    implementation fg.deobf("curse.maven:dungeons_content-423533:3506109")
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

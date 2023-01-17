@@ -2,10 +2,8 @@ package com.infamous.dungeons_world.world.biomes;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.StructureFeatureManager;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -16,7 +14,7 @@ import static net.minecraft.client.renderer.FogRenderer.FogMode.FOG_TERRAIN;
 public class BiomeClientEvents {
 
     @SubscribeEvent
-    public static void onRenderFogEvent(EntityViewRenderEvent.RenderFogEvent event) {
+    public static void onRenderFogEvent(ViewportEvent.RenderFog event) {
         if(event.getMode() == FOG_TERRAIN){
             Entity entity = event.getRenderer().getMainCamera().getEntity();
             if(entity != null && entity instanceof Player player && !player.isSpectator() && !player.isCreative()){

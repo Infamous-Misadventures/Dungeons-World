@@ -6,7 +6,7 @@ import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -16,7 +16,7 @@ import static com.infamous.dungeons_world.blocks.ModBlocks.GRASSY_COARSE_DEEP_DI
 @Mod.EventBusSubscriber(modid = DungeonsWorld.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModBlockColors {
     @SubscribeEvent
-    public static void init(ColorHandlerEvent.Block event){
+    public static void init(RegisterColorHandlersEvent.Block event){
         BlockColors blockColors = event.getBlockColors();
         blockColors.register((p_228064_0_, p_228064_1_, p_228064_2_, p_228064_3_) -> {
             return p_228064_1_ != null && p_228064_2_ != null ? BiomeColors.getAverageGrassColor(p_228064_1_, p_228064_2_) : GrassColor.get(0.5D, 1.0D);

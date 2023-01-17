@@ -1,19 +1,12 @@
 package com.infamous.dungeons_world.world.surfacerules;
 
-import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.blocks.ModBlocks;
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
-import static com.infamous.dungeons_world.DungeonsWorld.MODID;
 import static com.infamous.dungeons_world.world.biomes.ModBiomes.CREEPER_WOODS;
 
 public class ModSurfaceRules {
-
-    public static Codec<? extends SurfaceRules.ConditionSource> SIMPLEX_TRESHOLD;
 
     public static final SurfaceRules.ConditionSource WATER_CHECK = SurfaceRules.waterBlockCheck(-1, 0);
 
@@ -26,6 +19,7 @@ public class ModSurfaceRules {
                     DEEP_GRASS_BLOCK_SURFACE
             )
     );
+
 
     public static SurfaceRules.RuleSource getPathRuleSource(){
         return SurfaceRules.sequence(
@@ -45,24 +39,6 @@ public class ModSurfaceRules {
 
     private static SurfaceRules.ConditionSource simplexCondition(double xMultiplier, double zMultiplier, double minThreshold, double maxThreshold, Long seed) {
         return new SimplexTresholdConditionSource(xMultiplier, zMultiplier, minThreshold, maxThreshold, seed);
-    }
-
-    public static void init(){
-        SIMPLEX_TRESHOLD = register("simplex_threshold", SimplexTresholdConditionSource.CODEC);
-    }
-
-    static <P extends SurfaceRules.ConditionSource> Codec<? extends SurfaceRules.ConditionSource> register(String name, Codec<P> codec) {
-        return Registry.register(Registry.CONDITION, new ResourceLocation(MODID, name), codec);
-    }
-
-    public static void bootStrap() {
-    }
-
-    static {
-        Registry.register(Registry.CONDITION, new ResourceLocation(MODID, "simplex_threshold"), SimplexTresholdConditionSource.CODEC);
-
-        DungeonsWorld.LOGGER.info("Dungeons World Rule Sources class loaded.");
-
     }
 
 

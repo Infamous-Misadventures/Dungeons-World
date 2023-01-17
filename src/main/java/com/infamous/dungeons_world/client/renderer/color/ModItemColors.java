@@ -7,7 +7,7 @@ import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -17,7 +17,7 @@ import static com.infamous.dungeons_world.blocks.ModBlocks.GRASSY_COARSE_DEEP_DI
 @Mod.EventBusSubscriber(modid = DungeonsWorld.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModItemColors {
     @SubscribeEvent
-    public static void init(ColorHandlerEvent.Item event){
+    public static void init(RegisterColorHandlersEvent.Item event){
         ItemColors itemColors = event.getItemColors();
         BlockColors blockColors = event.getBlockColors();
         itemColors.register((p_210235_1_, p_210235_2_) -> {

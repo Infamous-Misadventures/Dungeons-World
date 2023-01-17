@@ -1,6 +1,7 @@
 package com.infamous.dungeons_world.world.gen.feature;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.core.BlockPos;
@@ -23,7 +24,7 @@ public class GlowingMushroomsFeature extends Feature<MushroomBlockClusterFeature
 
    @Override
    public boolean place(FeaturePlaceContext<MushroomBlockClusterFeatureConfig> featurePlaceContext) {
-      Random random = featurePlaceContext.random();
+      RandomSource random = featurePlaceContext.random();
       BlockPos blockPos = featurePlaceContext.origin();
       MushroomBlockClusterFeatureConfig config = featurePlaceContext.config();
       WorldGenLevel worldgenlevel = featurePlaceContext.level();

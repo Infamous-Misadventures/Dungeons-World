@@ -10,6 +10,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.infamous.dungeons_world.blocks.ModBlocks.*;
@@ -68,12 +69,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private void blockItemModel(Block block) {
-        String name = block.getRegistryName().getPath();
+        String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
         getBuilder(name).parent(new ModelFile.UncheckedModelFile(modLoc(ModelProvider.BLOCK_FOLDER + "/" + name)));
     }
 
     private void blockInventoryModel(Block block) {
-        String name = block.getRegistryName().getPath();
+        String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
         getBuilder(name).parent(new ModelFile.UncheckedModelFile(modLoc(ModelProvider.BLOCK_FOLDER + "/" + name + "_inventory")));
     }
 

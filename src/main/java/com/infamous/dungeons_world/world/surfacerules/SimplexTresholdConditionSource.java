@@ -3,22 +3,23 @@ package com.infamous.dungeons_world.world.surfacerules;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.patrigan.structure_toolkit.util.OpenSimplex2F;
-import net.minecraft.client.Minecraft;
+import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
 public record SimplexTresholdConditionSource(double xMultiplier, double zMultiplier, double minThreshold, double maxThreshold, Long seed) implements SurfaceRules.ConditionSource {
-    static final Codec<SimplexTresholdConditionSource> CODEC = RecordCodecBuilder.create((builder) -> builder.group(
+    public static final KeyDispatchDataCodec<SimplexTresholdConditionSource> CODEC = KeyDispatchDataCodec.of(RecordCodecBuilder.create((builder) -> builder.group(
             Codec.DOUBLE.fieldOf("x_multiplier").forGetter(SimplexTresholdConditionSource::xMultiplier),
             Codec.DOUBLE.fieldOf("z_multiplier").forGetter(SimplexTresholdConditionSource::zMultiplier),
             Codec.DOUBLE.fieldOf("min_threshold").forGetter(SimplexTresholdConditionSource::minThreshold),
             Codec.DOUBLE.fieldOf("max_threshold").forGetter(SimplexTresholdConditionSource::maxThreshold),
             Codec.LONG.fieldOf("seed").forGetter(SimplexTresholdConditionSource::seed)
-    ).apply(builder, SimplexTresholdConditionSource::new));
+    ).apply(builder, SimplexTresholdConditionSource::new)));
+
 
     @Override
-    public Codec<? extends SurfaceRules.ConditionSource> codec() {
+    public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
         return CODEC;
     }
 

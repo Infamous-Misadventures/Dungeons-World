@@ -2,16 +2,15 @@ package com.infamous.dungeons_world.world.gen.provider;
 
 import com.infamous.dungeons_world.DungeonsWorld;
 import com.mojang.serialization.Codec;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Random;
 
 public class KeySupplierBockStateProvider extends BlockStateProvider {
   public static final Codec<KeySupplierBockStateProvider> CODEC = ResourceLocation.CODEC.fieldOf("key").xmap(KeySupplierBockStateProvider::new, (provider) -> provider.key).codec();
@@ -33,7 +32,7 @@ public class KeySupplierBockStateProvider extends BlockStateProvider {
   }
 
   @Override
-  public BlockState getState(Random randomIn, BlockPos blockPosIn) {
+  public BlockState getState(RandomSource randomIn, BlockPos blockPosIn) {
     if (state == null) {
       Block block = ForgeRegistries.BLOCKS.getValue(key);
       if (block == null) {

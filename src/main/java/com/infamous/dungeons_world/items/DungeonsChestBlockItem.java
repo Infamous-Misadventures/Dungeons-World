@@ -10,11 +10,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.common.util.NonNullLazy;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+
+import net.minecraft.world.item.Item.Properties;
 
 public class DungeonsChestBlockItem extends BlockItem {
     private DungeonsChestType dungeonsChestType;
@@ -25,12 +27,12 @@ public class DungeonsChestBlockItem extends BlockItem {
     }
 
     @Override
-    public void initializeClient(Consumer<IItemRenderProperties> consumer)
+    public void initializeClient(Consumer<IClientItemExtensions> consumer)
     {
-        consumer.accept(new IItemRenderProperties()
+        consumer.accept(new IClientItemExtensions()
         {
             @Override
-            public BlockEntityWithoutLevelRenderer getItemStackRenderer()
+            public BlockEntityWithoutLevelRenderer getCustomRenderer()
             {
                 Supplier<DungeonsChestBlockEntity> modelToUse;
                 modelToUse = switch (dungeonsChestType) {

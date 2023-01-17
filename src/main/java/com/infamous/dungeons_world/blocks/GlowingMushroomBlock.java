@@ -1,5 +1,6 @@
 package com.infamous.dungeons_world.blocks;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -110,11 +111,13 @@ public class GlowingMushroomBlock  extends BushBlock implements BonemealableBloc
         return true;
     }
 
-    public boolean isBonemealSuccess(Level p_180670_1_, Random p_180670_2_, BlockPos p_180670_3_, BlockState p_180670_4_) {
+    @Override
+    public boolean isBonemealSuccess(Level p_180670_1_, RandomSource p_180670_2_, BlockPos p_180670_3_, BlockState p_180670_4_) {
         return true;
     }
 
-    public void performBonemeal(ServerLevel p_225535_1_, Random random, BlockPos p_225535_3_, BlockState p_225535_4_) {
+    @Override
+    public void performBonemeal(ServerLevel p_225535_1_, RandomSource random, BlockPos p_225535_3_, BlockState p_225535_4_) {
         int j = 1;
         int l = 0;
         int i1 = p_225535_3_.getX() - 2;
@@ -166,7 +169,7 @@ public class GlowingMushroomBlock  extends BushBlock implements BonemealableBloc
     }
 
     @Override
-    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
         for(int i = 0; i < rand.nextInt(1) + 1; ++i) {
             if(rand.nextFloat() < 0.15F) {
                 double posX = (double) pos.above().above().getX() + rand.nextDouble() + rand.nextInt(3) - 1.5D;
@@ -183,7 +186,8 @@ public class GlowingMushroomBlock  extends BushBlock implements BonemealableBloc
         }
     }
 
-    public void tick(BlockState blockState, ServerLevel world, BlockPos blockPos, Random random) {
+    @Override
+    public void tick(BlockState blockState, ServerLevel world, BlockPos blockPos, RandomSource random) {
         boolean squeezed = isSqueezed(blockState);
         if (squeezed) {
             this.checkSqueezed(world, blockPos, blockState, squeezed);

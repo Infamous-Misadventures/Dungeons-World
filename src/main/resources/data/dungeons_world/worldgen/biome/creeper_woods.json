@@ -165,6 +165,5 @@
   "spawn_costs": {},
   "precipitation": "rain",
   "temperature": 0.7,
-  "downfall": 0.6,
-  "category": "forest"
+  "downfall": 0.6
 }

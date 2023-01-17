@@ -28,7 +28,7 @@ public class DungeonsMobsCompat {
     }
 
     private static EntityType<?> getRegisteredEntity(String entity) {
-        return ForgeRegistries.ENTITIES.getValue(getDungeonsMobsResource(entity));
+        return ForgeRegistries.ENTITY_TYPES.getValue(getDungeonsMobsResource(entity));
     }
 
     public static boolean isLoaded(){

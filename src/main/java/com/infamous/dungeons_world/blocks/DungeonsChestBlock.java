@@ -12,6 +12,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import static com.infamous.dungeons_world.blockentity.ModBlockEntityTypes.CHEST;
 
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
 public class DungeonsChestBlock extends ChestBlock implements EntityBlock {
 
     DungeonsChestType dungeonsChestType;

@@ -8,6 +8,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.patrigan.structure_toolkit.util.GeneralUtils;
 import mod.patrigan.structure_toolkit.util.RandomType;
 import mod.patrigan.structure_toolkit.world.gen.processors.ProcessorUtil;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.nbt.CompoundTag;
@@ -66,7 +67,7 @@ public class DungeonsChestProcessor extends StructureProcessor {
     @Override
     public StructureTemplate.StructureBlockInfo process(LevelReader world, BlockPos piecePos, BlockPos structurePos, StructureTemplate.StructureBlockInfo rawBlockInfo, StructureTemplate.StructureBlockInfo blockInfo, StructurePlaceSettings settings, StructureTemplate template) {
         if ((blockInfo.state.is(COMMON_CHEST.get()) || blockInfo.state.is(CHEST)) && blockInfo.state.hasBlockEntity()) {
-            Random random;
+            RandomSource random;
             if(blockInfo.state.getValue(TYPE).equals(ChestType.LEFT)) {
                 Direction connectedDirection = getConnectedDirection(blockInfo.state.rotate((LevelAccessor)world, blockInfo.pos, settings.getRotation()));
                 random = ProcessorUtil.getRandom(randomType, blockInfo.pos.relative(connectedDirection), piecePos, structurePos, world, SEED);
