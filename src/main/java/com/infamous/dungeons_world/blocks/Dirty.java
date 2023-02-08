@@ -4,15 +4,16 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.infamous.dungeons_world.init.BlocksInit;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChangeOverTimeBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 import java.util.Optional;
-import java.util.Random;
 import java.util.function.Supplier;
 
 import static com.infamous.dungeons_world.init.BlocksInit.*;
@@ -20,7 +21,7 @@ import static net.minecraft.tags.BlockTags.DIRT;
 import static net.minecraft.world.level.block.Blocks.POLISHED_GRANITE;
 
 
-public interface Dirty extends Degradable<Dirty.DirtLevel> {
+public interface Dirty extends ChangeOverTimeBlock<Dirty.DirtLevel> {
     float INCREASE_CHANCE = 0.25f;
     Supplier<BiMap<Block, Block>> DIRTY_LEVEL_INCREASES = () -> {
         BiMap<Block, Block> biMap = HashBiMap.create();
@@ -67,19 +68,19 @@ public interface Dirty extends Degradable<Dirty.DirtLevel> {
         return BlockHelper.getStateWithProperties(getUnaffectedDirtyBlock(state.getBlock()), state);
     }
 
-    default Optional<BlockState> getDegradationResult(BlockState state) {
+    default Optional<BlockState> getNext(BlockState state) {
         return getIncreasedDirtyBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
     }
 
-    default float getDegradationChanceMultiplier() {
-        return this.getDegradationLevel() == DirtLevel.UNAFFECTED ? 0.75F : 0.50F;
+    default float getChanceModifier() {
+        return this.getAge() == DirtLevel.UNAFFECTED ? 0.75F : 0.50F;
     }
 
-    default void tickDegradation(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+    default void onRandomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         float f = INCREASE_CHANCE;
         AABB area = new AABB(pos).inflate(1, 0, 1).expandTowards(0, 1, 0);
         if (random.nextFloat() < f && world.getBlockStates(area).anyMatch(blockState -> blockState.is(DIRT) || blockState.getBlock() instanceof Dirty)) {
-            this.tryDegrade(state, world, pos, random);
+            this.applyChangeOverTime(state, world, pos, random);
         }
     }
 

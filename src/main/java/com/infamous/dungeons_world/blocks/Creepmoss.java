@@ -4,17 +4,18 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.infamous.dungeons_world.init.BlocksInit;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChangeOverTimeBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Optional;
-import java.util.Random;
 import java.util.function.Supplier;
 
-public interface Creepmoss extends Degradable<Creepmoss.CreepmossLevel> {
+public interface Creepmoss extends ChangeOverTimeBlock<Creepmoss.CreepmossLevel> {
     Supplier<BiMap<Block, Block>> CREEPMOSS_LEVEL_INCREASES = () -> {
         BiMap<Block, Block> biMap = HashBiMap.create();
         addBuildingBlockHelpersToBimap(biMap, Blocks.STONE, Blocks.STONE_SLAB, Blocks.STONE_STAIRS, BlocksInit.LOW_CREEPMOSS_STONE);
@@ -63,18 +64,18 @@ public interface Creepmoss extends Degradable<Creepmoss.CreepmossLevel> {
         return BlockHelper.getStateWithProperties(getUnaffectedCreepmossBlock(state.getBlock()), state);
     }
 
-    default Optional<BlockState> getDegradationResult(BlockState state) {
+    default Optional<BlockState> getNext(BlockState state) {
         return getIncreasedCreepmossBlock(state.getBlock()).map(block -> BlockHelper.getStateWithProperties(block, state));
     }
 
-    default float getDegradationChanceMultiplier() {
-        return this.getDegradationLevel() == Creepmoss.CreepmossLevel.UNAFFECTED ? 0.75F : 1.0F;
+    default float getChanceModifier() {
+        return this.getAge() == Creepmoss.CreepmossLevel.UNAFFECTED ? 0.75F : 1.0F;
     }
 
-    default void tickDegradation(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+    default void onRandomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         float f = 1;
         if (random.nextFloat() < f) {
-            this.tryDegrade(state, world, pos, random);
+            this.applyChangeOverTime(state, world, pos, random);
         }
 
     }

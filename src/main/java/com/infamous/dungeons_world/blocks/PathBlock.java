@@ -1,23 +1,20 @@
 package com.infamous.dungeons_world.blocks;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.FenceGateBlock;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.server.level.ServerLevel;
-
-import java.util.Random;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PathBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
@@ -55,7 +52,7 @@ public class PathBlock extends Block {
         return super.updateShape(blockState, direction, blockState1, world, blockPos, blockPos1);
     }
 
-    public void tick(BlockState blockState, ServerLevel world, BlockPos blockPos, Random random) {
+    public void tick(BlockState blockState, ServerLevel world, BlockPos blockPos, RandomSource random) {
         world.setBlockAndUpdate(blockPos, pushEntitiesUp(blockState, unshoveled.defaultBlockState(), world, blockPos));
     }
 
