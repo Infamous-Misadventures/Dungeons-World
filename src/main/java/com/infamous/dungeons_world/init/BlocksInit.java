@@ -3,10 +3,12 @@ package com.infamous.dungeons_world.init;
 import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.blockentity.DungeonsChestType;
 import com.infamous.dungeons_world.blocks.*;
+import com.infamous.dungeons_world.blocks.grower.SoggyOakTreeGrower;
 import com.infamous.dungeons_world.items.DungeonsChestBlockItem;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
@@ -132,7 +134,13 @@ public class BlocksInit {
     public static final RegistryObject<Block> SPIDER_EGG = registerBlock("spider_egg", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
     // Soggy Swamp
-    //
+    // soggy_oak
+    public static final RegistryObject<Block> SOGGY_OAK_LOG = registerBlock("soggy_oak_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(2.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> SOGGY_OAK_WOOD = registerBlock("soggy_oak_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(2.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> SOGGY_OAK_LEAVES = registerBlock("soggy_oak_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BlocksInit::ocelotOrParrot).isSuffocating(BlocksInit::never).isViewBlocking(BlocksInit::never));
+    public static final RegistryObject<Block> SOGGY_OAK_SAPLING = registerBlock("soggy_oak_sapling", () -> new WaterloggedSaplingBlock(new SoggyOakTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> SOGGY_OAK_PLANKS = registerBlock("soggy_oak_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+
 
     private static RegistryObject<Block> registerBlock(String id, Supplier<Block> sup) {
         BLOCK_IDS.add(id);
@@ -229,5 +237,14 @@ public class BlocksInit {
 
     private static boolean always(BlockState p_235426_0_, BlockGetter p_235426_1_, BlockPos p_235426_2_) {
         return true;
+    }
+
+
+    private static Boolean ocelotOrParrot(BlockState p_50822_, BlockGetter p_50823_, BlockPos p_50824_, EntityType<?> p_50825_) {
+        return (boolean)(p_50825_ == EntityType.OCELOT || p_50825_ == EntityType.PARROT);
+    }
+
+    private static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
+        return false;
     }
 }
