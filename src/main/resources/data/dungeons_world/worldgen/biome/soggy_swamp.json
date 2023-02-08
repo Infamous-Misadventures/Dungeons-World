@@ -7,11 +7,12 @@
       "offset": 2
     },
     "grass_color_modifier": "swamp",
-    "sky_color": 7907327,
-    "foliage_color": 6975545,
-    "fog_color": 12638463,
-    "water_color": 6388580,
-    "water_fog_color": 2302743
+    "sky_color": 5086568,
+    "fog_color": 3236674,
+    "water_color": 6795894,
+    "water_fog_color": 2302743,
+    "grass_color": 4022873,
+    "foliage_color": 5206108
   },
   "carvers": {
     "air": [
@@ -22,8 +23,8 @@
   "features": [
     [],
     [
-      "minecraft:lake_lava_surface",
-      "minecraft:lake_lava_underground"
+      "minecraft:lake_lava_underground",
+      "minecraft:lake_lava_surface"
     ],
     [
       "minecraft:amethyst_geode"
@@ -71,7 +72,7 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_swamp",
+      "dungeons_world:soggy_swamp/straight_acacia",
       "minecraft:flower_swamp",
       "minecraft:patch_grass_normal",
       "minecraft:patch_dead_bush",

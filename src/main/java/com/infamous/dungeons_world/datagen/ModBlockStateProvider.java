@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
-import static com.infamous.dungeons_world.blocks.ModBlocks.*;
+import static com.infamous.dungeons_world.init.BlocksInit.*;
 import static net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock.FACE;
 import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;

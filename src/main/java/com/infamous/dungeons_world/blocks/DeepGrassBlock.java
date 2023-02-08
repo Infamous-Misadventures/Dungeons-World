@@ -1,5 +1,6 @@
 package com.infamous.dungeons_world.blocks;
 
+import com.infamous.dungeons_world.init.BlocksInit;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
@@ -11,10 +12,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.lighting.LayerLightEngine;
 import net.minecraft.server.level.ServerLevel;
-
-import java.util.Random;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class DeepGrassBlock extends GrassBlock {
     public DeepGrassBlock(Properties p_i48388_1_) {
@@ -43,14 +40,14 @@ public class DeepGrassBlock extends GrassBlock {
     public void randomTick(BlockState p_225542_1_, ServerLevel p_225542_2_, BlockPos p_225542_3_, RandomSource p_225542_4_) {
         if (!canBeGrass(p_225542_1_, p_225542_2_, p_225542_3_)) {
             if (!p_225542_2_.isAreaLoaded(p_225542_3_, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
-            p_225542_2_.setBlockAndUpdate(p_225542_3_, ModBlocks.DEEP_DIRT.get().defaultBlockState());
+            p_225542_2_.setBlockAndUpdate(p_225542_3_, BlocksInit.DEEP_DIRT.get().defaultBlockState());
         } else {
             if (p_225542_2_.getMaxLocalRawBrightness(p_225542_3_.above()) >= 9) {
                 BlockState blockstate = this.defaultBlockState();
 
                 for(int i = 0; i < 4; ++i) {
                     BlockPos blockpos = p_225542_3_.offset(p_225542_4_.nextInt(3) - 1, p_225542_4_.nextInt(5) - 3, p_225542_4_.nextInt(3) - 1);
-                    if (p_225542_2_.getBlockState(blockpos).is(ModBlocks.DEEP_DIRT.get()) && canPropagate(blockstate, p_225542_2_, blockpos)) {
+                    if (p_225542_2_.getBlockState(blockpos).is(BlocksInit.DEEP_DIRT.get()) && canPropagate(blockstate, p_225542_2_, blockpos)) {
                         p_225542_2_.setBlockAndUpdate(blockpos, blockstate.setValue(SNOWY, Boolean.valueOf(p_225542_2_.getBlockState(blockpos.above()).is(Blocks.SNOW))));
                     }
                 }

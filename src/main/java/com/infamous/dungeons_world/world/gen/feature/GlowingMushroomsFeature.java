@@ -6,16 +6,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.infamous.dungeons_world.blocks.GlowingMushroomBlock.MUSHROOMS;
-import static com.infamous.dungeons_world.blocks.ModBlocks.FULL_GLOWING_MUSHROOM;
+import static com.infamous.dungeons_world.init.BlocksInit.FULL_GLOWING_MUSHROOM;
 
 public class GlowingMushroomsFeature extends Feature<MushroomBlockClusterFeatureConfig> {
    public GlowingMushroomsFeature(Codec<MushroomBlockClusterFeatureConfig> p_i231979_1_) {

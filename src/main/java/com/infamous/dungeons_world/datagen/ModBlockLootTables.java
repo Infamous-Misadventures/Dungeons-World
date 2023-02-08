@@ -1,6 +1,7 @@
 package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.blocks.*;
+import com.infamous.dungeons_world.init.BlocksInit;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -21,7 +22,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.infamous.dungeons_world.blocks.ModBlocks.*;
+import static com.infamous.dungeons_world.init.BlocksInit.*;
 
 public class ModBlockLootTables extends BlockLoot {
 
@@ -29,10 +30,10 @@ public class ModBlockLootTables extends BlockLoot {
     private static final LootItemCondition.Builder NO_SILK_TOUCH = SILK_TOUCH.invert();
     @Override
     protected void addTables() {
-        ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::buildBlockLootTables);
-        ModBlocks.SINGLE_BLOCKS.forEach(block -> this.add(block.get(), BlockLoot::createSingleItemTable));
-        ModBlocks.PATH_BLOCKS.forEach(pathBlock -> this.add(pathBlock.get(), block -> createSingleItemTableWithSilkTouch(block, ((PathBlock) block).getUnshoveled())));
-        ModBlocks.ROTTEN_BLOCKS.forEach(block -> this.add(block.get(), BlockLoot::createSingleItemTable));
+        BlocksInit.BUILDING_BLOCK_HELPERS.forEach(this::buildBlockLootTables);
+        BlocksInit.SINGLE_BLOCKS.forEach(block -> this.add(block.get(), BlockLoot::createSingleItemTable));
+        BlocksInit.PATH_BLOCKS.forEach(pathBlock -> this.add(pathBlock.get(), block -> createSingleItemTableWithSilkTouch(block, ((PathBlock) block).getUnshoveled())));
+        BlocksInit.ROTTEN_BLOCKS.forEach(block -> this.add(block.get(), BlockLoot::createSingleItemTable));
         handleSpecialClassBlocks();
         this.add(COMMON_CHEST.get(), BlockLoot::createSingleItemTable);
         this.add(FANCY_CHEST.get(), BlockLoot::createSingleItemTable);

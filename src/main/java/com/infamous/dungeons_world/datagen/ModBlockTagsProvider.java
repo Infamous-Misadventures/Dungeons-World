@@ -2,14 +2,14 @@ package com.infamous.dungeons_world.datagen;
 
 import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.blocks.BuildingBlockHelper;
-import com.infamous.dungeons_world.blocks.ModBlocks;
+import com.infamous.dungeons_world.init.BlocksInit;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-import static com.infamous.dungeons_world.blocks.ModBlocks.*;
+import static com.infamous.dungeons_world.init.BlocksInit.*;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
 
@@ -19,7 +19,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags() {
-        ModBlocks.BUILDING_BLOCK_HELPERS.forEach(this::addBlocksToTags);
+        BlocksInit.BUILDING_BLOCK_HELPERS.forEach(this::addBlocksToTags);
         this.tag(BlockTags.DIRT).add(DEEP_DIRT.get());
         this.tag(BlockTags.DIRT).add(PEBBLED_DEEP_DIRT.get());
         this.tag(BlockTags.DIRT).add(DEEP_GRASSY_DIRT.get());

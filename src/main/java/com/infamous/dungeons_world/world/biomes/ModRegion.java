@@ -29,6 +29,7 @@ public class ModRegion extends Region {
             // Simple example:
             // Replace the Vanilla desert with our hot_red biome
             builder.replaceBiome(Biomes.FOREST, ModBiomes.CREEPER_WOODS);
+            builder.replaceBiome(Biomes.SWAMP, ModBiomes.SOGGY_SWAMP);
         });
     }
 }

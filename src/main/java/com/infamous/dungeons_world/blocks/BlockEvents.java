@@ -14,7 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.infamous.dungeons_world.blocks.ModBlocks.PATH_BLOCKS;
+import static com.infamous.dungeons_world.init.BlocksInit.PATH_BLOCKS;
 import static net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN;
 
 @Mod.EventBusSubscriber(modid = DungeonsWorld.MODID)

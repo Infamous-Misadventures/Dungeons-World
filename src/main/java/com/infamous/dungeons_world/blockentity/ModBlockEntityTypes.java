@@ -6,7 +6,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
-import static com.infamous.dungeons_world.blocks.ModBlocks.*;
+import static com.infamous.dungeons_world.init.BlocksInit.*;
 
 public class ModBlockEntityTypes {
 

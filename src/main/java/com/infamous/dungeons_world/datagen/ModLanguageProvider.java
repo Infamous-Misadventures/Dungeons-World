@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 
 import static com.infamous.dungeons_world.world.biomes.ModBiomes.BIOME_NAMES;
-import static com.infamous.dungeons_world.blocks.ModBlocks.BLOCK_IDS;
+import static com.infamous.dungeons_world.init.BlocksInit.BLOCK_IDS;
 import static com.infamous.dungeons_world.items.ModItems.ITEM_IDS;
 import static net.minecraftforge.registries.ForgeRegistries.BLOCKS;
 import static net.minecraftforge.registries.ForgeRegistries.ITEMS;

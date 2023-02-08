@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.function.Consumer;
 
 import static com.infamous.dungeons_world.DungeonsWorld.MODID;
-import static com.infamous.dungeons_world.blocks.ModBlocks.BUILDING_BLOCK_HELPERS;
+import static com.infamous.dungeons_world.init.BlocksInit.BUILDING_BLOCK_HELPERS;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;

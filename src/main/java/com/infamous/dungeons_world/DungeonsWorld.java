@@ -1,7 +1,7 @@
 package com.infamous.dungeons_world;
 
 import com.infamous.dungeons_world.blockentity.ModBlockEntityTypes;
-import com.infamous.dungeons_world.blocks.ModBlocks;
+import com.infamous.dungeons_world.init.BlocksInit;
 import com.infamous.dungeons_world.client.renderer.tileentity.DungeonsChestBlockEntityRenderer;
 import com.infamous.dungeons_world.entity.ModEntityTypes;
 import com.infamous.dungeons_world.init.ConditionSourceInit;
@@ -35,7 +35,7 @@ public class DungeonsWorld {
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
-        ModBlocks.BLOCKS.register(modEventBus);
+        BlocksInit.BLOCKS.register(modEventBus);
         ModEntityTypes.ENTITY_TYPES.register(modEventBus);
         ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
@@ -52,7 +52,7 @@ public class DungeonsWorld {
     public static final CreativeModeTab TAB = new CreativeModeTab(MODID) {
         @Override
         public ItemStack makeIcon(){
-            return new ItemStack(ModBlocks.FANCY_CHEST.get());
+            return new ItemStack(BlocksInit.FANCY_CHEST.get());
         }
     };
 
@@ -65,7 +65,7 @@ public class DungeonsWorld {
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        ModBlocks.initRenderTypes();
+        BlocksInit.initRenderTypes();
         BlockEntityRenderers.register(ModBlockEntityTypes.CHEST.get(), DungeonsChestBlockEntityRenderer::new);
     }
 }

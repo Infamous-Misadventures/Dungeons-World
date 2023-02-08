@@ -1,7 +1,8 @@
-package com.infamous.dungeons_world.blocks;
+package com.infamous.dungeons_world.init;
 
 import com.infamous.dungeons_world.DungeonsWorld;
 import com.infamous.dungeons_world.blockentity.DungeonsChestType;
+import com.infamous.dungeons_world.blocks.*;
 import com.infamous.dungeons_world.items.DungeonsChestBlockItem;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -31,7 +32,7 @@ import static com.infamous.dungeons_world.blocks.BuildingBlockHelper.*;
 import static com.infamous.dungeons_world.items.ModItems.registerBlockItem;
 import static net.minecraft.world.level.block.Blocks.*;
 
-public class ModBlocks {
+public class BlocksInit {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DungeonsWorld.MODID);
     public static final List<String> BLOCK_IDS = new ArrayList<>();
     // Block Groupings
@@ -118,12 +119,11 @@ public class ModBlocks {
     // Creeper Woods Deco
     public static final RegistryObject<Block> FULL_GLOWING_MUSHROOM = registerBlock("full_glowing_mushroom", () -> new GlowingMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE)
             .lightLevel(block -> GlowingMushroomBlock.isSqueezed(block) ? 4 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS) : 2 + 2 * block.getValue(GlowingMushroomBlock.MUSHROOMS)).sound(SoundType.SLIME_BLOCK).noOcclusion()));
-    public static final RegistryObject<Block> GLOWING_MUSHROOM = registerBlock("glowing_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).lightLevel(lightLevel -> 3).hasPostProcess(ModBlocks::always), () -> {
+    public static final RegistryObject<Block> GLOWING_MUSHROOM = registerBlock("glowing_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_ORANGE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).lightLevel(lightLevel -> 3).hasPostProcess(BlocksInit::always), () -> {
         return null;
     }));
     public static final RegistryObject<Block> GRAVE = registerBlock("grave", () -> new CreeperGraveBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
     public static final RegistryObject<Block> MOSSY_GRAVE = registerBlock("mossy_grave", () -> new CreeperGraveBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
-
     // Creepy Crypt Deco
     public static final RegistryObject<Block> CREEPY_SARCOPHAGUS = registerBlock("creepy_sarcophagus", () -> new CreepySarcophagusBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
     public static final RegistryObject<Block> CHANDELIER = registerBlock("chandelier", () -> new ChandelierBlock(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(1.5F, 6.0F).noOcclusion()));
@@ -131,14 +131,8 @@ public class ModBlocks {
     // Spider Caves
     public static final RegistryObject<Block> SPIDER_EGG = registerBlock("spider_egg", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
-
+    // Soggy Swamp
     //
-    /*public static final BuildingBlockHelper CHISELED_STONE_SPIRALS = registerBuildingBlock("chiseled_stone_spirals", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper CHISELED_STONE_RUNE = registerBuildingBlock("chiseled_stone_rune", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final RegistryObject<Block> CREEPER_CRYPT_FACE = registerSingleBlock("creeper_crypt_face", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper HIGH_DIRTY_STONE_TILES = registerBuildingBlock("high_dirty_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper LOW_DIRTY_STONE_TILES = registerBuildingBlock("low_dirty_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
-    public static final BuildingBlockHelper CREEPMOSS_STONE_TILES = registerBuildingBlock("creepmoss_stone_tiles", () -> new Block(AbstractBlock.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));*/
 
     private static RegistryObject<Block> registerBlock(String id, Supplier<Block> sup) {
         BLOCK_IDS.add(id);

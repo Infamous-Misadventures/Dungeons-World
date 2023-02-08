@@ -3,6 +3,7 @@ package com.infamous.dungeons_world.blocks;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.infamous.dungeons_world.init.BlocksInit;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
@@ -14,7 +15,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.function.Supplier;
 
-import static com.infamous.dungeons_world.blocks.ModBlocks.*;
+import static com.infamous.dungeons_world.init.BlocksInit.*;
 import static net.minecraft.tags.BlockTags.DIRT;
 import static net.minecraft.world.level.block.Blocks.POLISHED_GRANITE;
 
@@ -23,11 +24,11 @@ public interface Dirty extends Degradable<Dirty.DirtLevel> {
     float INCREASE_CHANCE = 0.25f;
     Supplier<BiMap<Block, Block>> DIRTY_LEVEL_INCREASES = () -> {
         BiMap<Block, Block> biMap = HashBiMap.create();
-        addBuildingBlockHelpersToBimap(biMap, ModBlocks.STONE_TILES, ModBlocks.DIRTY_STONE_TILES);
-        addBuildingBlockHelpersToBimap(biMap, ModBlocks.DIRTY_STONE_TILES, ModBlocks.HIGH_DIRTY_STONE_TILES);
-        addBuildingBlockHelpersToBimap(biMap, ModBlocks.DETAILED_STONE_TILES, ModBlocks.DIRTY_DETAILED_STONE_TILES);
-        addBuildingBlockHelpersToBimap(biMap, ModBlocks.DIRTY_DETAILED_STONE_TILES, ModBlocks.HIGH_DIRTY_DETAILED_STONE_TILES);
-        addBuildingBlockHelpersToBimap(biMap, POLISHED_GRANITE, Blocks.POLISHED_GRANITE_SLAB, Blocks.POLISHED_GRANITE_STAIRS, ModBlocks.DIRTY_POLISHED_GRANITE);
+        addBuildingBlockHelpersToBimap(biMap, BlocksInit.STONE_TILES, BlocksInit.DIRTY_STONE_TILES);
+        addBuildingBlockHelpersToBimap(biMap, BlocksInit.DIRTY_STONE_TILES, BlocksInit.HIGH_DIRTY_STONE_TILES);
+        addBuildingBlockHelpersToBimap(biMap, BlocksInit.DETAILED_STONE_TILES, BlocksInit.DIRTY_DETAILED_STONE_TILES);
+        addBuildingBlockHelpersToBimap(biMap, BlocksInit.DIRTY_DETAILED_STONE_TILES, BlocksInit.HIGH_DIRTY_DETAILED_STONE_TILES);
+        addBuildingBlockHelpersToBimap(biMap, POLISHED_GRANITE, Blocks.POLISHED_GRANITE_SLAB, Blocks.POLISHED_GRANITE_STAIRS, BlocksInit.DIRTY_POLISHED_GRANITE);
         biMap.put(DEEP_STONE_TILES_PATH.get(), DEEP_DIRTY_STONE_TILES_PATH.get());
         biMap.put(DEEP_DIRTY_STONE_TILES_PATH.get(), DEEP_HIGH_DIRTY_STONE_TILES_PATH.get());
         biMap.put(DEEP_DETAILED_STONE_TILES_PATH.get(), DEEP_DIRTY_DETAILED_STONE_TILES_PATH.get());

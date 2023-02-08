@@ -11,7 +11,6 @@ import mod.patrigan.structure_toolkit.world.gen.processors.ProcessorUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -28,10 +27,9 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.server.level.ServerLevel;
 
 import java.util.List;
-import java.util.Random;
 
-import static com.infamous.dungeons_world.blocks.ModBlocks.CHEST_TYPES;
-import static com.infamous.dungeons_world.blocks.ModBlocks.COMMON_CHEST;
+import static com.infamous.dungeons_world.init.BlocksInit.CHEST_TYPES;
+import static com.infamous.dungeons_world.init.BlocksInit.COMMON_CHEST;
 import static com.infamous.dungeons_world.world.gen.processors.ModProcessors.DUNGEONS_CHESTS;
 import static mod.patrigan.structure_toolkit.util.RandomType.RANDOM_TYPE_CODEC;
 import static net.minecraft.world.level.block.Blocks.AIR;

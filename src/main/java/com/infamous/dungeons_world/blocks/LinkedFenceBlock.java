@@ -25,7 +25,7 @@ public class LinkedFenceBlock extends HorizontalDirectionalBlock {
     protected final VoxelShape[] shapeByIndex;
     private final Object2IntMap<BlockState> stateToIndex = new Object2IntOpenHashMap<>();
 
-    protected LinkedFenceBlock(Properties properties) {
+    public LinkedFenceBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, NORTH).setValue(OPEN, false));
         this.collisionShapeByIndex = this.makeShapes(24D);
