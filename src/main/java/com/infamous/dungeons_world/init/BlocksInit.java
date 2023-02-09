@@ -137,7 +137,7 @@ public class BlocksInit {
     // soggy_oak
     public static final RegistryObject<Block> SOGGY_OAK_LOG = registerBlock("soggy_oak_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(2.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> SOGGY_OAK_WOOD = registerBlock("soggy_oak_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(2.0F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> SOGGY_OAK_LEAVES = registerBlock("soggy_oak_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BlocksInit::ocelotOrParrot).isSuffocating(BlocksInit::never).isViewBlocking(BlocksInit::never));
+    public static final RegistryObject<Block> SOGGY_OAK_LEAVES = registerBlock("soggy_oak_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BlocksInit::ocelotOrParrot).isSuffocating(BlocksInit::never).isViewBlocking(BlocksInit::never)));
     public static final RegistryObject<Block> SOGGY_OAK_SAPLING = registerBlock("soggy_oak_sapling", () -> new WaterloggedSaplingBlock(new SoggyOakTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> SOGGY_OAK_PLANKS = registerBlock("soggy_oak_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BROWN).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 
